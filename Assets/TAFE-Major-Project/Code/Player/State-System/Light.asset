@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cecd49342df7d64e957cee3213cf326, type: 3}
+  m_Name: Light
+  m_EditorClassIdentifier: 
+  transitions:
+  - {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
+  moveSpeedModifier: 1
+  gravityScale: 0.1
+  attackType: Light
+  attackClip: {fileID: 7400000, guid: 9d292207d7a8e894ca3dd03040154b51, type: 2}
+  pogoStrength: 1
