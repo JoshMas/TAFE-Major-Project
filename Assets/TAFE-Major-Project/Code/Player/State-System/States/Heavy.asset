@@ -15,6 +15,6 @@ MonoBehaviour:
   transitions: []
   moveSpeedModifier: 1
   gravityScale: 1
-  attackType: 
+  attackType: Heavy
   attackClip: {fileID: 0}
   pogoStrength: 0
