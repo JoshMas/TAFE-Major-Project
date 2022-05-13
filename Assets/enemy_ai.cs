@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAiTutorial : MonoBehaviour
+public class enemy_ai : MonoBehaviour
 {
     public NavMeshAgent agent;
 
@@ -27,7 +27,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("PlayerObj").transform;
+        player = GameObject.Find("player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -104,7 +104,7 @@ public class EnemyAiTutorial : MonoBehaviour
     }
     private void DestroyEnemy()
     {
-        Destroy(gameObject);
+        Destroy(gameObject); 
     }
 
     private void OnDrawGizmosSelected()

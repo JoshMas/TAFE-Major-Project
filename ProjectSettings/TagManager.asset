@@ -16,8 +16,8 @@ TagManager:
   - PlayerHurtbox
   - EnemyHitbox
   - EnemyHurtbox
-  - 
-  - 
+  - Enemy
+  - Ground
   - 
   - 
   - 
