@@ -44,13 +44,19 @@ public class Player : MonoBehaviour
 
         rigid.useGravity = false;
 
+    }
+
+    private void Start()
+    {
+        camRotationTransform.parent = null;
+
         cameraY = camRotationTransform.eulerAngles.y;
         cameraX = camHeightTransform.eulerAngles.x;
 
         camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
         camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
+        
     }
-
 
     public void ChangeState(AbilityState _newState)
     {
