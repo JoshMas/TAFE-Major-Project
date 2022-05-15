@@ -11,7 +11,7 @@ public class spawner : MonoBehaviour
     private void Start()
     {
         spawnAllowed = true;
-        InvokeRepeating("spawnaenemy", 0f, 0.1f);
+        InvokeRepeating("spawnaenemy", 0f, 20f);
     }
     //private IEnumerator Loop()
     //{

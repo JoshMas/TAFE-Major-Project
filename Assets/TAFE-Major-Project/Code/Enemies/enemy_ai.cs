@@ -104,8 +104,10 @@ public class enemy_ai : MonoBehaviour
     }
     private void DestroyEnemy()
     {
-        Destroy(gameObject); 
+        Destroy(gameObject);
+
     }
+   
 
     private void OnDrawGizmosSelected()
     {
