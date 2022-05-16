@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform camHeightTransform;
     [SerializeField] private Transform cameraTransform;
 
+    [SerializeField] private int health;
+
     public Transform CameraForward
     {
         get
