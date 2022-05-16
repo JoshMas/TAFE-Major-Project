@@ -12,13 +12,12 @@ public class Player : MonoBehaviour
     public Animator Animator => animator;
     private AudioSource audioSrc;
     public AudioSource AudioSrc => audioSrc;
+    private Health health;
 
     [SerializeField] private AbilityState currentState;
     [SerializeField] private Transform camRotationTransform;
     [SerializeField] private Transform camHeightTransform;
     [SerializeField] private Transform cameraTransform;
-
-    [SerializeField] private int health;
 
     public Transform CameraForward
     {
@@ -38,14 +37,32 @@ public class Player : MonoBehaviour
     public bool canDash = true;
     [SerializeField] private LayerMask groundMask;
 
+    /// <summary>
+    /// The amount of damage the player does with attacks
+    /// This variable is only changed in animations
+    /// </summary>
+    [SerializeField] private float damage;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
-
+        health = GetComponent<Health>();
         rigid.useGravity = false;
 
+    }
+
+    private void OnEnable()
+    {
+        health.healthEmpty += Die;
+        health.healthUpdated += GetHit;
+    }
+
+    private void OnDisable()
+    {
+        health.healthEmpty -= Die;
+        health.healthUpdated -= GetHit;
     }
 
     private void Start()
@@ -119,6 +136,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void GetHit(float _healthLoss)
+    {
+        if (_healthLoss >= 0)
+            return;
+    }
+
+    private void Die()
+    {
+
+    }
+
     public void Jump(float _jumpForce)
     {
         if (grounded)
@@ -160,6 +188,7 @@ public class Player : MonoBehaviour
         if (other.isTrigger)
         {
             currentState.OnHitDealt(this);
+            other.GetComponent<Health>().UpdateHealth(-damage);
         }
         else
         {
