@@ -8,18 +8,22 @@ public class Health : MonoBehaviour
     private float currentHealth;
 
     /// <summary>
-    /// called when health changes
+    /// Called when health changes
     /// </summary>
-    /// <param name="_amount"></param>
+    /// <param name="_amount">The amount of health added</param>
     public delegate void HealthUpdated(float _amount);
     public event HealthUpdated healthUpdated;
 
     /// <summary>
-    /// called when health runs out
+    /// Called when health runs out
     /// </summary>
     public delegate void HealthEmpty();
     public event HealthEmpty healthEmpty;
 
+    /// <summary>
+    /// Updates the health value
+    /// </summary>
+    /// <param name="_amount">The amount of health added</param>
     public void UpdateHealth(float _amount)
     {
         float newHealth = Mathf.Clamp(0, maximumHealth, currentHealth + _amount);
