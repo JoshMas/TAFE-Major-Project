@@ -56,13 +56,13 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         health.healthEmpty += Die;
-        health.healthUpdated += GetHit;
+        health.hitTaken += GetHit;
     }
 
     private void OnDisable()
     {
         health.healthEmpty -= Die;
-        health.healthUpdated -= GetHit;
+        health.hitTaken -= GetHit;
     }
 
     private void Start()
@@ -136,15 +136,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void GetHit(float _healthLoss)
+    private void GetHit()
     {
-        if (_healthLoss >= 0)
-            return;
+        Debug.Log("ow");
     }
 
     private void Die()
     {
-
+        Debug.Log("uh oh");
     }
 
     public void Jump(float _jumpForce)
@@ -193,6 +192,7 @@ public class Player : MonoBehaviour
         else
         {
             currentState.OnHitTaken(this);
+            health.UpdateHealth(-1);
         }
     }
 }
