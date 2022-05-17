@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
         else
         {
             currentState.OnHitTaken(this);
-            health.UpdateHealth(-1);
+            //health.UpdateHealth(-1);
         }
     }
 }
