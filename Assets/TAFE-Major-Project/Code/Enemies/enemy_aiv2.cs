@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class enemy_aiv2 : MonoBehaviour
 {
+    private const bool V = true;
     [Header("Atributes")]
     public float health;
     public int damageAttack = 20;
@@ -12,7 +13,7 @@ public class enemy_aiv2 : MonoBehaviour
 
     [Header("Components")]
     private Animator animator;
-    private CapsuleCollider collider;
+   // private CapsuleCollider collider;
     private NavMeshAgent navigation;
 
     [Header("Player Detection")]
@@ -23,7 +24,7 @@ public class enemy_aiv2 : MonoBehaviour
     [SerializeField] private int currentWaypointIndex = 0;
     [SerializeField] private float waypointMinDistance;
 
-    private bool isWalking = false;
+    private bool isWalking = V;
     private bool isAttacking = false;
     private bool attackingRound = false;
     public float sphereAttackRadius = 1;
@@ -31,7 +32,7 @@ public class enemy_aiv2 : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        collider = GetComponent<CapsuleCollider>();
+       // collider = GetComponent<CapsuleCollider>();
         navigation = GetComponent<NavMeshAgent>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -56,7 +57,7 @@ public class enemy_aiv2 : MonoBehaviour
                 if (playerDistance <= navigation.stoppingDistance)
                 {
                     LookTarget();
-                    animator.SetBool("Walk Forward", false);
+                    animator.SetBool("Walk Forward", true);
                     StartCoroutine(Attack());
                 }
                 else
@@ -152,7 +153,7 @@ public class enemy_aiv2 : MonoBehaviour
 
             if (distance <= waypointMinDistance)
             {
-                currentWaypointIndex = Random.Range(0, waypoints.Count);
+                currentWaypointIndex = Random.Range(30, waypoints.Count);
             }
         }
     }
