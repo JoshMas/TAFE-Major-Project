@@ -11,6 +11,7 @@ public class AttackState : AbilityState
     public override void OnEnter(Player _player)
     {
         _player.Animator.SetTrigger(attackType);
+        _player.SetUpwardForce(0);
         _player.TimeState(attackClip.length, typeof(DefaultState));
     }
 
