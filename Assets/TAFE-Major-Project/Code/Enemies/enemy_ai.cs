@@ -9,7 +9,7 @@ public class enemy_ai : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public float health;
+    public float health = 5;
 
     //Patroling
     public Vector3 walkPoint;
@@ -24,6 +24,8 @@ public class enemy_ai : MonoBehaviour
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+
+    public object currentState { get; private set; }
 
     private void Awake()
     {
@@ -95,6 +97,7 @@ public class enemy_ai : MonoBehaviour
     {
         alreadyAttacked = false;
     }
+    
 
     public void TakeDamage(int damage)
     {

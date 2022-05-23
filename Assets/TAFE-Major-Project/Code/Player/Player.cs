@@ -88,15 +88,20 @@ public class Player : MonoBehaviour
     {
         currentState.OnUpdate(this);
 
-        camRotationTransform.position = transform.position;
-        camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
-        camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
+        
         
         grounded = Physics.CheckBox(transform.position, new Vector3(.5f, .1f, .5f), transform.rotation, groundMask);
         if (grounded)
         {
             AirReset();
         }
+    }
+
+    private void LateUpdate()
+    {
+        camRotationTransform.position = transform.position;
+        camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
+        camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
     }
 
     private void FixedUpdate()
