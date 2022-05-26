@@ -11,6 +11,7 @@ public class enemy_aiv2 : MonoBehaviour
     public int damageAttack = 20;
     public float lookRadius = 5;
 
+    
     [Header("Components")]
     private Animator animator;
    // private CapsuleCollider collider;

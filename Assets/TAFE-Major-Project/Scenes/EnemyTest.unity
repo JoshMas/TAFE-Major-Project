@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2213032491725688704, guid: 54a80e3c6e758814092cdf78f2feb521, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.091114
+      value: 15.9
       objectReference: {fileID: 0}
     - target: {fileID: 2213032491725688704, guid: 54a80e3c6e758814092cdf78f2feb521, type: 3}
       propertyPath: m_LocalRotation.w
@@ -273,15 +273,15 @@ PrefabInstance:
       objectReference: {fileID: 6165893448952576226}
     - target: {fileID: 7902864953620301590, guid: 54a80e3c6e758814092cdf78f2feb521, type: 3}
       propertyPath: lookRadius
-      value: 62.83
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7902864953620301590, guid: 54a80e3c6e758814092cdf78f2feb521, type: 3}
       propertyPath: waypointMinDistance
-      value: 60
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7902864953620301590, guid: 54a80e3c6e758814092cdf78f2feb521, type: 3}
       propertyPath: waypoints.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54a80e3c6e758814092cdf78f2feb521, type: 3}
@@ -405,7 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8349296588594027376, guid: 4962f8e8d73cddf4d8a78e0672172451, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.310855
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8349296588594027376, guid: 4962f8e8d73cddf4d8a78e0672172451, type: 3}
       propertyPath: m_LocalRotation.w
@@ -440,9 +440,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 617691158}
     - target: {fileID: 8902371038181446063, guid: 4962f8e8d73cddf4d8a78e0672172451, type: 3}
+      propertyPath: health
+      value: 5.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902371038181446063, guid: 4962f8e8d73cddf4d8a78e0672172451, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 6165893448952576226}
+    - target: {fileID: 8902371038181446063, guid: 4962f8e8d73cddf4d8a78e0672172451, type: 3}
+      propertyPath: sightRange
+      value: 35.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902371038181446063, guid: 4962f8e8d73cddf4d8a78e0672172451, type: 3}
+      propertyPath: attackRange
+      value: 10.99
+      objectReference: {fileID: 0}
     - target: {fileID: 8902371038181446063, guid: 4962f8e8d73cddf4d8a78e0672172451, type: 3}
       propertyPath: timeBetweenAttacks
       value: 5
