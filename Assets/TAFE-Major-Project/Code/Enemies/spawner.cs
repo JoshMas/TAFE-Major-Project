@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class spawner : MonoBehaviour
 {
-    public Transform[] spawnpoint;
-    public GameObject[] enemys;
-    public static bool spawnAllowed;
+    public GameObject Enemy;
+    private float _spawnTime = 6;
+    private int _spawnPosition = 1;
+    private int _spawnCoordinateX;
+    private float _runningTime;
 
-    private void Start()
+    private void Update()
     {
-        spawnAllowed = true;
-        InvokeRepeating("spawnaenemy", 0f, 20f);
-    }
-    //private IEnumerator Loop()
-    //{
-    //    while (true)
-    //    {
-    //        yield return new WaitForSeconds(1);
-    //        spawnaenemy();
-    //    }
-    //}
-    void spawnaenemy ()
+        _runningTime += Time.deltaTime;
 
-    {
-        if (spawnAllowed)
+        if (_runningTime >= _spawnTime)
         {
-            int Randomspawnpoint = Random.Range(0, spawnpoint.Length);
-            int Randomenemy = Random.Range(0, enemys.Length);
-            Instantiate(enemys[Randomenemy], spawnpoint[Randomspawnpoint].position, Quaternion.identity);
+            switch (_spawnPosition)
+            {
+                case (1):
+                    _spawnCoordinateX = -5;
+                    _spawnPosition = 2;
+                    break;
+                case (2):
+                    _spawnCoordinateX = 1;
+                    _spawnPosition = 3;
+                    break;
+                case (3):
+                    _spawnCoordinateX = 7;
+                    _spawnPosition = 1;
+                    break;
+            }
 
+            GameObject newObject = Instantiate(Enemy, new Vector3(_spawnCoordinateX, 0, 0), Quaternion.identity);
+            _runningTime = 0;
         }
     }
 }
