@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public Animator Animator => animator;
     private AudioSource audioSrc;
     public AudioSource AudioSrc => audioSrc;
+    private Health health;
 
     [SerializeField] private AbilityState currentState;
     [SerializeField] private Transform camRotationTransform;
@@ -36,21 +37,45 @@ public class Player : MonoBehaviour
     public bool canDash = true;
     [SerializeField] private LayerMask groundMask;
 
+    /// <summary>
+    /// The amount of damage the player does with attacks
+    /// This variable is only changed in animations
+    /// </summary>
+    [SerializeField] private float damage;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
-
+        health = GetComponent<Health>();
         rigid.useGravity = false;
+
+    }
+
+    private void OnEnable()
+    {
+        health.healthEmpty += Die;
+        health.hitTaken += GetHit;
+    }
+
+    private void OnDisable()
+    {
+        health.healthEmpty -= Die;
+        health.hitTaken -= GetHit;
+    }
+
+    private void Start()
+    {
+        camRotationTransform.parent = null;
 
         cameraY = camRotationTransform.eulerAngles.y;
         cameraX = camHeightTransform.eulerAngles.x;
 
         camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
         camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
+        
     }
-
 
     public void ChangeState(AbilityState _newState)
     {
@@ -116,6 +141,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void GetHit()
+    {
+        Debug.Log("ow");
+    }
+
+    private void Die()
+    {
+        Debug.Log("uh oh");
+    }
+
     public void Jump(float _jumpForce)
     {
         if (grounded)
@@ -157,10 +192,12 @@ public class Player : MonoBehaviour
         if (other.isTrigger)
         {
             currentState.OnHitDealt(this);
+            other.GetComponent<Health>()?.UpdateHealth(-damage);
         }
         else
         {
             currentState.OnHitTaken(this);
+            health.UpdateHealth(-1);
         }
     }
 }
