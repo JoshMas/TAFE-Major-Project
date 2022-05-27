@@ -706,7 +706,7 @@ MonoBehaviour:
   canDash: 1
   groundMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4097
   damage: 0
 --- !u!114 &2943885101151678958
 MonoBehaviour:

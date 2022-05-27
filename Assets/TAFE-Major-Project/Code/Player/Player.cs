@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody), typeof(Animator), typeof(AudioSource))]
 public class Player : MonoBehaviour
@@ -149,6 +150,13 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("uh oh");
+        StartCoroutine(nameof(Died));
+    }
+
+    private IEnumerator Died()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Jump(float _jumpForce)
