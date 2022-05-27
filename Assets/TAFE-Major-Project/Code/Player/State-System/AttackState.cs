@@ -7,6 +7,7 @@ public class AttackState : AbilityState
 {
     [SerializeField] private string attackType;
     [SerializeField] private AnimationClip attackClip;
+    [SerializeField] private float jump = 0;
     [SerializeField] private float pogoStrength;
 
     [Space]
@@ -17,7 +18,7 @@ public class AttackState : AbilityState
     public override void OnEnter(Player _player)
     {
         _player.Animator.SetTrigger(attackType);
-        _player.SetUpwardForce(0);
+        _player.SetUpwardForce(jump);
         _player.TimeState(attackClip.length, typeof(DefaultState));
     }
 

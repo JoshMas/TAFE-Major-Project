@@ -19,6 +19,7 @@ MonoBehaviour:
   gravityScale: 1
   attackType: Heavy
   attackClip: {fileID: 7400000, guid: d81d44e440077a84eab1894c36d6adb5, type: 2}
+  jump: 4
   pogoStrength: 0
   heavy: 1
   heavyPogo: 15
