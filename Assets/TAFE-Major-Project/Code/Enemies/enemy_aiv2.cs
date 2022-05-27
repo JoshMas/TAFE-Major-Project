@@ -7,7 +7,7 @@ public class enemy_aiv2 : MonoBehaviour
 {
     private const bool V = true;
     [Header("Atributes")]
-    public float health;
+    private Health health;
     public int damageAttack = 20;
     public float lookRadius = 5;
 
@@ -28,7 +28,13 @@ public class enemy_aiv2 : MonoBehaviour
     private bool isWalking = V;
     private bool isAttacking = false;
     private bool attackingRound = false;
-    public float sphereAttackRadius = 1;
+    public float sphereAttackRadius = 3;
+
+    private void Awake()
+    {
+        health = GetComponentInParent<Health>();
+        
+    }
 
     void Start()
     {
@@ -39,10 +45,25 @@ public class enemy_aiv2 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    private void OnEnable()
+    {
+        health.healthEmpty += Kill;
+    }
+
+    private void OnDisable()
+    {
+        health.healthEmpty -= Kill;
+    }
+
+    private void Kill()
+    {
+        Destroy(gameObject);
+    }
+
     void Update()
     {
 
-        if (health > 0)
+        if (true)
         {
             float playerDistance = Vector3.Distance(transform.position, player.position);
 
@@ -52,13 +73,13 @@ public class enemy_aiv2 : MonoBehaviour
                 {
                     navigation.SetDestination(player.position);
                     navigation.isStopped = false;
-                    animator.SetBool("Walk Forward", true);
+                    //animator.SetBool("Walk Forward", true);
                 }
 
                 if (playerDistance <= navigation.stoppingDistance)
                 {
                     LookTarget();
-                    animator.SetBool("Walk Forward", true);
+                    //animator.SetBool("Walk Forward", true);
                     StartCoroutine(Attack());
                 }
                 else
@@ -130,20 +151,20 @@ public class enemy_aiv2 : MonoBehaviour
         return null;
     }
 
-    public void GetDamageByAttack(int damage)
-    {
-        health -= damage;
-        StopCoroutine("Attack");
+    //public void GetDamageByAttack(int damage)
+    //{
+    //    health -= damage;
+    //    StopCoroutine("Attack");
 
-        if (health <= 0)
-        {
-            animator.SetTrigger("Die");
-        }
-        else
-        {
-            animator.SetTrigger("Take Damage");
-        }
-    }
+    //    if (health <= 0)
+    //    {
+    //        animator.SetTrigger("Die");
+    //    }
+    //    else
+    //    {
+    //        animator.SetTrigger("Take Damage");
+    //    }
+    //}
 
     public void MoveToWayPoint()
     {
