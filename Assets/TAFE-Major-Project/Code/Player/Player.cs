@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AbilityState currentState;
     [SerializeField] private Transform camRotationTransform;
     [SerializeField] private Transform camHeightTransform;
-    [SerializeField] private Transform cameraTransform;
+    [SerializeField] private Transform camTargetTransform;
 
     [SerializeField] private bool timingWindowAnim = false;
     [HideInInspector] public bool timingWindowValid = false;
@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         camRotationTransform.parent = null;
+        Camera.main.transform.parent = null;
 
         cameraY = camRotationTransform.eulerAngles.y;
         cameraX = camHeightTransform.eulerAngles.x;
@@ -113,6 +114,20 @@ public class Player : MonoBehaviour
         camRotationTransform.position = transform.position;
         camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
         camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
+
+        Vector3 camPosition;
+
+        if(Physics.Raycast(transform.position + Vector3.up, (camTargetTransform.position - transform.position).normalized, out RaycastHit hit, -camTargetTransform.localPosition.z, groundMask))
+        {
+            camPosition = hit.point;
+        }
+        else
+        {
+            camPosition = camTargetTransform.position;
+        }
+
+        Camera.main.transform.position = camPosition;
+        Camera.main.transform.rotation = camTargetTransform.rotation;
     }
 
     private void FixedUpdate()
