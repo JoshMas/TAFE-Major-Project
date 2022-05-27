@@ -20,6 +20,16 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform camHeightTransform;
     [SerializeField] private Transform cameraTransform;
 
+    [SerializeField] private bool timingWindowAnim = false;
+    [HideInInspector] public bool timingWindowValid = false;
+    public bool TimingWindow
+    {
+        get
+        {
+            return timingWindowAnim && timingWindowValid;
+        }
+    }
+
     public Transform CameraForward
     {
         get
@@ -136,6 +146,9 @@ public class Player : MonoBehaviour
                 break;
             case "Heavy":
                 currentState.OnHeavyAttack(this);
+                break;
+            case "UnHeavy":
+                currentState.OnHeavyRelease(this);
                 break;
             default:
                 break;
