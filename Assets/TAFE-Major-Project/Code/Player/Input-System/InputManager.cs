@@ -33,8 +33,8 @@ public class InputManager : MonoBehaviour
         inputBuffer = new Queue<InputEnum[]>();
         player = GetComponent<Player>();
 
-        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()

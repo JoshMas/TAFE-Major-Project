@@ -40,10 +40,15 @@ public class AttackState : AbilityState
         {
             _player.SetUpwardForce(heavyPogo);
         }
+        else
+        {
+            _player.timingWindowLost = true;
+        }
     }
 
     public override void OnExit(Player _player)
     {
         _player.timingWindowValid = false;
+        _player.timingWindowLost = false;
     }
 }

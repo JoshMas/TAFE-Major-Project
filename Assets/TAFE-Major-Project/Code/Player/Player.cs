@@ -22,11 +22,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool timingWindowAnim = false;
     [HideInInspector] public bool timingWindowValid = false;
+    [HideInInspector] public bool timingWindowLost = false;
     public bool TimingWindow
     {
         get
         {
-            return timingWindowAnim && timingWindowValid;
+            return timingWindowAnim && timingWindowValid && !timingWindowLost;
         }
     }
 
@@ -115,16 +116,13 @@ public class Player : MonoBehaviour
         camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
         camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
 
-        Vector3 camPosition;
-
-        if(Physics.Raycast(transform.position + Vector3.up, (camTargetTransform.position - transform.position).normalized, out RaycastHit hit, -camTargetTransform.localPosition.z, groundMask))
+        Vector3 camPosition = camTargetTransform.position;
+        Vector3 playerPos = transform.position + Vector3.up;
+        if (Physics.Linecast(playerPos, camTargetTransform.position, out RaycastHit hit, groundMask))
         {
             camPosition = hit.point;
         }
-        else
-        {
-            camPosition = camTargetTransform.position;
-        }
+
 
         Camera.main.transform.position = camPosition;
         Camera.main.transform.rotation = camTargetTransform.rotation;
