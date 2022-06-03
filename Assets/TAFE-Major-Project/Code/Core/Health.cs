@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
     /// <param name="_amount">The amount of health added</param>
     public void UpdateHealth(float _amount)
     {
+        Debug.Log(name);
         if (_amount < 0)
             hitTaken?.Invoke();
         currentHealth = Mathf.Clamp(currentHealth + _amount, 0, maximumHealth);
