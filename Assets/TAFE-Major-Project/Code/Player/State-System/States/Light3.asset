@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cecd49342df7d64e957cee3213cf326, type: 3}
-  m_Name: Light
+  m_Name: Light3
   m_EditorClassIdentifier: 
   transitions:
   - {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
-  - {fileID: 11400000, guid: 0cddf267618933941b35becfdf49d363, type: 2}
-  - {fileID: 11400000, guid: 9768603319afea648aec14862adabaaf, type: 2}
   moveSpeedModifier: 1
-  gravityScale: 0.1
+  gravityScale: 1
   attackType: Light
-  attackClip: {fileID: 7400000, guid: 96edbfa83a62c4544b36f66678f25e59, type: 2}
+  attackClip: {fileID: 7400000, guid: 9d292207d7a8e894ca3dd03040154b51, type: 2}
   jump: 0
   pogoStrength: 1
   heavy: 0

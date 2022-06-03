@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
     {
         if(movementVector.magnitude > 0)
         {
-            transform.forward = Vector3.Slerp(transform.forward, movementVector, .5f);
+            transform.forward = Vector3.Slerp(transform.forward, movementVector, 5 * Time.deltaTime);
         }
     }
 
@@ -197,7 +197,6 @@ public class Player : MonoBehaviour
         float timer = 0;
         while (timer < _duration)
         {
-            Debug.Log("a");
             yield return new WaitForFixedUpdate();
             timer += Time.fixedDeltaTime;
             rigid.AddForce(Vector3.up * _force, ForceMode.Acceleration);
@@ -219,6 +218,11 @@ public class Player : MonoBehaviour
     {
         IEnumerator coroutine = TimeCoroutine(_duration, _t);
         StartCoroutine(coroutine);
+    }
+
+    public void StopTimeState()
+    {
+        StopCoroutine(nameof(TimeCoroutine));
     }
 
     private IEnumerator TimeCoroutine(float _duration, Type _t)

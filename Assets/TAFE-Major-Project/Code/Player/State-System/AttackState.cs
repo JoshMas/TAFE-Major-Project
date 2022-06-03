@@ -27,11 +27,25 @@ public class AttackState : AbilityState
     public override void OnHitDealt(Player _player)
     {
         _player.SetUpwardForce(pogoStrength);
-        _player.timingWindowValid2 = true;
+        _player.timingWindowValid = true;
         _player.AirReset();
+
+        if (!heavy)
+            return;
         if (_player.timingWindowValid && _player.timingWindowValid2)
         {
             _player.SetUpwardForce(heavyPogo);
+        }
+    }
+
+    public override void OnLightAttack(Player _player)
+    {
+        if (heavy)
+            return;
+        if(_player.timingWindowAnim)
+        {
+            _player.StopTimeState();
+            ChangeState(_player, typeof(AttackState));
         }
     }
 
@@ -42,7 +56,7 @@ public class AttackState : AbilityState
 
         if (_player.timingWindowAnim)
         {
-            _player.timingWindowValid = true;
+            _player.timingWindowValid2 = true;
         }
         if(_player.timingWindowValid && _player.timingWindowValid2)
         {
