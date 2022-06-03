@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public Animator Animator => animator;
     private AudioSource audioSrc;
     public AudioSource AudioSrc => audioSrc;
-    private Health health;
+    public Health health;
 
     [SerializeField] private AbilityState currentState;
     [SerializeField] private Transform camRotationTransform;
@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     public float cameraX;
     public float cameraY;
     public float gravity = -9.8f;
+    
 
     private bool grounded = true;
     private bool canDoubleJump = true;
@@ -62,7 +63,6 @@ public class Player : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         health = GetComponent<Health>();
         rigid.useGravity = false;
-
     }
 
     private void OnEnable()
@@ -100,8 +100,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         currentState.OnUpdate(this);
-
-        
         
         grounded = Physics.CheckBox(transform.position, new Vector3(.5f, .1f, .5f), transform.rotation, groundMask);
         if (grounded)
@@ -185,16 +183,31 @@ public class Player : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void Jump(float _jumpForce)
+    public void Jump(float _jumpForce, float _jumpDuration)
     {
+        IEnumerator jump = JumpCoroutine(_jumpForce, _jumpDuration);
         if (grounded)
         {
             rigid.velocity = new Vector3(rigid.velocity.x, _jumpForce, rigid.velocity.z);
+            StartCoroutine(jump);
         }
         else if (canDoubleJump)
         {
             rigid.velocity = new Vector3(rigid.velocity.x, _jumpForce, rigid.velocity.z);
+            StartCoroutine(jump);
             canDoubleJump = false;
+        }
+    }
+
+    private IEnumerator JumpCoroutine(float _force, float _duration)
+    {
+        float timer = 0;
+        while (timer < _duration)
+        {
+            Debug.Log("a");
+            yield return new WaitForFixedUpdate();
+            timer += Time.fixedDeltaTime;
+            rigid.AddForce(Vector3.up * _force, ForceMode.Acceleration);
         }
     }
 

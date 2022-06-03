@@ -6,10 +6,11 @@ using UnityEngine;
 public class DefaultState : AbilityState
 {
     [SerializeField] private float jumpForce = 5;
+    [SerializeField] private float jumpDuration = 1;
 
     public override void OnJump(Player _player)
     {
-        _player.Jump(jumpForce);
+        _player.Jump(jumpForce, jumpDuration);
     }
 
     public override void OnDash(Player _player)
