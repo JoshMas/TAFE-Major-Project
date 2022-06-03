@@ -20,16 +20,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform camHeightTransform;
     [SerializeField] private Transform camTargetTransform;
 
-    [SerializeField] private bool timingWindowAnim = false;
+    public bool timingWindowAnim = false;
     [HideInInspector] public bool timingWindowValid = false;
-    [HideInInspector] public bool timingWindowLost = false;
-    public bool TimingWindow
-    {
-        get
-        {
-            return timingWindowAnim && timingWindowValid && !timingWindowLost;
-        }
-    }
+    [HideInInspector] public bool timingWindowValid2 = false;
 
     public Transform CameraForward
     {
