@@ -129,7 +129,13 @@ public class Player : MonoBehaviour
     {
         if(movementVector.magnitude > 0)
         {
-            transform.forward = Vector3.Slerp(transform.forward, movementVector, 5 * Time.deltaTime);
+            Vector3 newForward = Vector3.Slerp(transform.forward, movementVector.normalized, 5 * Time.deltaTime);
+            animator.SetFloat("TurnSpeed", Vector3.Angle(newForward, transform.forward));
+            transform.forward = new Vector3(newForward.x, 0, newForward.z);
+        }
+        else
+        {
+            animator.SetFloat("TurnSpeed", 0);
         }
     }
 
