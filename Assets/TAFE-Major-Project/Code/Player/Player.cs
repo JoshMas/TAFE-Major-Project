@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
         currentState.OnUpdate(this);
         
         grounded = Physics.CheckBox(transform.position, new Vector3(.5f, .1f, .5f), transform.rotation, groundMask);
+        animator.SetFloat("Grounded", grounded ? 1 : 0);
         if (grounded)
         {
             AirReset();
@@ -176,17 +177,17 @@ public class Player : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void Jump(float _jumpForce, float _jumpDuration)
+    public void Jump(float _initialJumpForce, float _continuousJumpForce, float _jumpDuration)
     {
-        IEnumerator jump = JumpCoroutine(_jumpForce, _jumpDuration);
+        IEnumerator jump = JumpCoroutine(_continuousJumpForce, _jumpDuration);
         if (grounded)
         {
-            rigid.velocity = new Vector3(rigid.velocity.x, _jumpForce, rigid.velocity.z);
+            rigid.velocity = new Vector3(rigid.velocity.x, _initialJumpForce, rigid.velocity.z);
             StartCoroutine(jump);
         }
         else if (canDoubleJump)
         {
-            rigid.velocity = new Vector3(rigid.velocity.x, _jumpForce, rigid.velocity.z);
+            rigid.velocity = new Vector3(rigid.velocity.x, _initialJumpForce, rigid.velocity.z);
             StartCoroutine(jump);
             canDoubleJump = false;
         }
