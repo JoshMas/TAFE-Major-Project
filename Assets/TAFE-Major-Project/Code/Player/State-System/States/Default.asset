@@ -19,5 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 099caa9744ebf9d41b5cf444f162c1c7, type: 2}
   moveSpeedModifier: 7
   gravityScale: 3
-  jumpForce: 12
-  jumpDuration: 0.5
+  initialJumpForce: 12
+  continuousJumpForce: 8
+  jumpDuration: 1
