@@ -49,6 +49,11 @@ public class AttackState : AbilityState
         }
     }
 
+    public override void OnHeavyAttack(Player _player)
+    {
+        _player.timingWindowInvalid = true;
+    }
+
     public override void OnHeavyRelease(Player _player)
     {
         if (!heavy)
@@ -58,7 +63,7 @@ public class AttackState : AbilityState
         {
             _player.timingWindowValid2 = true;
         }
-        if(_player.timingWindowValid && _player.timingWindowValid2)
+        if(_player.timingWindowValid && _player.timingWindowValid2 && !_player.timingWindowInvalid)
         {
             _player.SetUpwardForce(heavyPogo);
         }
@@ -68,5 +73,6 @@ public class AttackState : AbilityState
     {
         _player.timingWindowValid = false;
         _player.timingWindowValid2 = false;
+        _player.timingWindowInvalid = false;
     }
 }

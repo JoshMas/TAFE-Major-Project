@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public bool timingWindowAnim = false;
     [HideInInspector] public bool timingWindowValid = false;
     [HideInInspector] public bool timingWindowValid2 = false;
+    [HideInInspector] public bool timingWindowInvalid = false;
 
     public Transform CameraForward
     {
@@ -36,7 +37,8 @@ public class Player : MonoBehaviour
     public float cameraX;
     public float cameraY;
     public float gravity = -9.8f;
-    
+
+    private IEnumerator jumpCoroutine;
 
     private bool grounded = true;
     private bool canDoubleJump = true;
@@ -56,6 +58,7 @@ public class Player : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         health = GetComponent<Health>();
         rigid.useGravity = false;
+        jumpCoroutine = JumpCoroutine(0, 0);
     }
 
     private void OnEnable()
@@ -185,16 +188,17 @@ public class Player : MonoBehaviour
 
     public void Jump(float _initialJumpForce, float _continuousJumpForce, float _jumpDuration)
     {
-        IEnumerator jump = JumpCoroutine(_continuousJumpForce, _jumpDuration);
+        StopCoroutine(jumpCoroutine);
+        jumpCoroutine = JumpCoroutine(_continuousJumpForce, _jumpDuration);
         if (grounded)
         {
             rigid.velocity = new Vector3(rigid.velocity.x, _initialJumpForce, rigid.velocity.z);
-            StartCoroutine(jump);
+            StartCoroutine(jumpCoroutine);
         }
         else if (canDoubleJump)
         {
             rigid.velocity = new Vector3(rigid.velocity.x, _initialJumpForce, rigid.velocity.z);
-            StartCoroutine(jump);
+            StartCoroutine(jumpCoroutine);
             canDoubleJump = false;
         }
     }
