@@ -773,6 +773,7 @@ MonoBehaviour:
   dashKey: 304
   lightKey: 323
   heavyKey: 324
+  pauseKey: 27
   mouseSensitivity: {x: 1, y: 1}
   inputList:
   - {fileID: 11400000, guid: 66eece9932517d64b9a7ccf609817789, type: 2}
@@ -781,6 +782,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab5043a88bb3c0a4abd232e0203c4d35, type: 2}
   - {fileID: 11400000, guid: 6c46a84ba886dc54a8341f804730aed5, type: 2}
   - {fileID: 11400000, guid: dfbebbbd92ca54d40bd3b52d892d95b5, type: 2}
+  - {fileID: 11400000, guid: 405ef6846a482004799a94c8d2a0f79b, type: 2}
 --- !u!114 &6376404067544387280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,6 +803,7 @@ MonoBehaviour:
   timingWindowAnim: 0
   timingWindowValid: 0
   timingWindowValid2: 0
+  timingWindowInvalid: 0
   movementVector: {x: 0, y: 0, z: 0}
   cameraX: 0
   cameraY: 0

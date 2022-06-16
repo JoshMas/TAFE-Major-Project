@@ -8,4 +8,5 @@ public enum InputEnum
     Dash,
     Light,
     Heavy,
+    Pause
 }

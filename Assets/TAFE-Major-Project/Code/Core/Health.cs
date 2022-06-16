@@ -13,16 +13,16 @@ public class Health : MonoBehaviour
     /// <param name="_current">current health</param>
     /// <param name="_maximum">maximum health</param>
     public delegate void HealthUpdated(float _current, float _maximum);
-    public event HealthUpdated healthUpdated;
+    public event HealthUpdated HealthHasUpdated;
 
     public delegate void HitTaken();
-    public event HitTaken hitTaken;
+    public event HitTaken HitIsTaken;
 
     /// <summary>
     /// Called when health runs out
     /// </summary>
     public delegate void HealthEmpty();
-    public event HealthEmpty healthEmpty;
+    public event HealthEmpty HealthIsEmpty;
 
     private void Awake()
     {
@@ -36,11 +36,11 @@ public class Health : MonoBehaviour
     public void UpdateHealth(float _amount)
     {
         if (_amount < 0)
-            hitTaken?.Invoke();
+            HitIsTaken?.Invoke();
         currentHealth = Mathf.Clamp(currentHealth + _amount, 0, maximumHealth);
         Debug.Log(currentHealth);
-        healthUpdated?.Invoke(currentHealth, maximumHealth);
+        HealthHasUpdated?.Invoke(currentHealth, maximumHealth);
         if (currentHealth <= 0)
-            healthEmpty?.Invoke();
+            HealthIsEmpty?.Invoke();
     }
 }

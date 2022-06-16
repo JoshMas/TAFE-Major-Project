@@ -12,8 +12,10 @@ public class InputManager : MonoBehaviour
     [SerializeField] private KeyCode dashKey = KeyCode.LeftShift;
     [SerializeField] private KeyCode lightKey = KeyCode.Mouse0;
     [SerializeField] private KeyCode heavyKey = KeyCode.Mouse1;
+    [SerializeField] private KeyCode pauseKey = KeyCode.Escape;
 
     private Player player;
+    private bool inputEnabled;
 
     [Space]
     [SerializeField] private Vector2 mouseSensitivity = Vector2.one;
@@ -35,10 +37,24 @@ public class InputManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        inputEnabled = true;
+    }
+
+    private void OnEnable()
+    {
+        GameManager.Instance.IsPaused += EnableInput;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.IsPaused -= EnableInput;
     }
 
     private void Update()
     {
+        if (!inputEnabled)
+            return;
+
         player.movementVector = player.CameraForward.TransformDirection(Vector3.ClampMagnitude(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")), 1));
         player.cameraX -= Input.GetAxis("Mouse Y") * mouseSensitivity.x;
         player.cameraY += Input.GetAxis("Mouse X") * mouseSensitivity.y;
@@ -55,6 +71,11 @@ public class InputManager : MonoBehaviour
                 inputBuffer.Clear();
             }
         }
+    }
+
+    private void EnableInput(bool _isInputPaused)
+    {
+        inputEnabled = !_isInputPaused;
     }
 
     private InputEnum[] RecordInputs()
@@ -80,6 +101,8 @@ public class InputManager : MonoBehaviour
             currentInputs.Add(InputEnum.Light);
         if (Input.GetKey(heavyKey))
             currentInputs.Add(InputEnum.Heavy);
+        if (Input.GetKey(pauseKey))
+            currentInputs.Add(InputEnum.Pause);
 
         return currentInputs.ToArray();
     }

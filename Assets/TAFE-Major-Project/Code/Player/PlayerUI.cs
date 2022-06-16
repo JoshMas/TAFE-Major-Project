@@ -19,12 +19,12 @@ public class PlayerUI : MonoBehaviour
 
     private void OnEnable()
     {
-        health.healthUpdated += UpdateHealthBar;
+        health.HealthHasUpdated += UpdateHealthBar;
     }
 
     private void OnDisable()
     {
-        health.healthUpdated -= UpdateHealthBar;
+        health.HealthHasUpdated -= UpdateHealthBar;
     }
 
     private void UpdateHealthBar(float _current, float _maximum)

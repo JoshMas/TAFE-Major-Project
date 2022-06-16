@@ -63,14 +63,14 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        health.healthEmpty += Die;
-        health.hitTaken += GetHit;
+        health.HealthIsEmpty += Die;
+        health.HitIsTaken += GetHit;
     }
 
     private void OnDisable()
     {
-        health.healthEmpty -= Die;
-        health.hitTaken -= GetHit;
+        health.HealthIsEmpty -= Die;
+        health.HitIsTaken -= GetHit;
     }
 
     private void Start()
@@ -163,6 +163,9 @@ public class Player : MonoBehaviour
                 break;
             case "UnHeavy":
                 currentState.OnHeavyRelease(this);
+                break;
+            case "Pause":
+                GameManager.Instance.Pause();
                 break;
             default:
                 break;
