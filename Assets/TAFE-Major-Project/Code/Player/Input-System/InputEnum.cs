@@ -1,9 +1,9 @@
 public enum InputEnum
 {
+    Right,
+    Back,
+    Left,
     Forward,
-    Down,
-    Backward,
-    Up,
     Jump,
     Dash,
     Light,

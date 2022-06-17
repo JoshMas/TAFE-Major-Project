@@ -81,17 +81,17 @@ public class InputManager : MonoBehaviour
     private InputEnum[] RecordInputs()
     {
         List<InputEnum> currentInputs = new List<InputEnum>();
-        float xVal = player.movementVector.x;
-        float yVal = player.movementVector.y;
+        float xVal = Input.GetAxis("Horizontal");
+        float yVal = Input.GetAxis("Vertical");
         if (xVal > 0)
-            currentInputs.Add(InputEnum.Forward);
+            currentInputs.Add(InputEnum.Right);
         else if (xVal < 0)
-            currentInputs.Add(InputEnum.Backward);
+            currentInputs.Add(InputEnum.Left);
 
         if (yVal > 0)
-            currentInputs.Add(InputEnum.Up);
+            currentInputs.Add(InputEnum.Forward);
         else if (yVal < 0)
-            currentInputs.Add(InputEnum.Down);
+            currentInputs.Add(InputEnum.Back);
 
         if (Input.GetKey(jumpKey))
             currentInputs.Add(InputEnum.Jump);

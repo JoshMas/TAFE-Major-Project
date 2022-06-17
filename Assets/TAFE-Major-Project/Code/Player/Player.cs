@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
         if(Physics.Linecast(playerPos - transform.right * cameraCheckLength, camTargetTransform.position - camTargetTransform.right * cameraCheckLength, out RaycastHit hitL, groundMask) 
             && Physics.Linecast(playerPos + transform.right * cameraCheckLength, camTargetTransform.position + camTargetTransform.right * cameraCheckLength, out RaycastHit hitR, groundMask))
         {
-            Vector3 hitPosition = (hitL.point + hitR.point) / 2;
+            Vector3 hitPosition = (hitL.point + hitR.point) / 2 + Vector3.up * .5f;
             Vector3 localHitPosition = camTargetTransform.InverseTransformPoint(hitPosition);
             //float distance = Vector3.Distance(hitPosition, camPosition);
             Vector3 lerp = Vector3.Lerp(localCamPosition, localHitPosition, cameraSpeed * Time.deltaTime);
@@ -181,7 +181,11 @@ public class Player : MonoBehaviour
             case "Jump":
                 currentState.OnJump(this);
                 break;
-            case "Dash":
+            case "Dash": 
+            case "Dash1":
+            case "Dash2":
+            case "Dash3":
+            case "Dash4":
                 currentState.OnDash(this);
                 break;
             case "Light":
