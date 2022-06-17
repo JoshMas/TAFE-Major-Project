@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform camRotationTransform;
     [SerializeField] private Transform camHeightTransform;
     [SerializeField] private Transform camTargetTransform;
+    [SerializeField] private float cameraSpeed = 10;
+    [SerializeField] private float cameraCheckLength = 4;
 
     public bool timingWindowAnim = false;
     [HideInInspector] public bool timingWindowValid = false;
@@ -77,6 +79,7 @@ public class Player : MonoBehaviour
     {
         camRotationTransform.parent = null;
         Camera.main.transform.parent = null;
+        Camera.main.transform.position = camTargetTransform.position;
 
         cameraY = camRotationTransform.eulerAngles.y;
         cameraX = camHeightTransform.eulerAngles.x;
@@ -111,16 +114,42 @@ public class Player : MonoBehaviour
         camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
         camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
 
-        Vector3 camPosition = camTargetTransform.position;
+        Vector3 camPosition;
         Vector3 playerPos = transform.position + Vector3.up;
-        if (Physics.Linecast(playerPos, camTargetTransform.position, out RaycastHit hit, groundMask))
-        {
-            camPosition = hit.point;
-        }
 
+        Vector3 localCamPosition = camTargetTransform.InverseTransformPoint(Camera.main.transform.position);
+
+        if(Physics.Linecast(playerPos - transform.right * cameraCheckLength, camTargetTransform.position, out RaycastHit hitL, groundMask) 
+            && Physics.Linecast(playerPos + transform.right * cameraCheckLength, camTargetTransform.position, out RaycastHit hitR, groundMask))
+        {
+            Vector3 hitPosition = (hitL.point + hitR.point) / 2;
+            Vector3 localHitPosition = camTargetTransform.InverseTransformPoint(hitPosition);
+            //float distance = Vector3.Distance(hitPosition, camPosition);
+            Vector3 lerp = Vector3.Lerp(localCamPosition, localHitPosition, cameraSpeed * Time.deltaTime);
+            camPosition = camTargetTransform.TransformPoint(new Vector3(0, 0, lerp.z));//camTargetTransform.TransformDirection(Vector3.back * distance);
+        }
+        else
+        {
+            Vector3 lerp = Vector3.Lerp(localCamPosition, camTargetTransform.localPosition, cameraSpeed * Time.deltaTime);
+            camPosition = camTargetTransform.TransformPoint(new Vector3(0, 0, lerp.z));//camTargetTransform.TransformDirection(Vector3.back * distance);
+        }
 
         Camera.main.transform.position = camPosition;
         Camera.main.transform.rotation = camTargetTransform.rotation;
+
+        //Vector3 camPosition = camTargetTransform.position;
+        //Vector3 playerPosL = transform.position + Vector3.up + Vector3.left;
+        //Vector3 playerPosR = transform.position + Vector3.up + Vector3.right;
+        //if (Physics.Linecast(playerPosL, camTargetTransform.position, out RaycastHit hitL, groundMask) 
+        //     && Physics.Linecast(playerPosR, camTargetTransform.position, out RaycastHit hitR, groundMask))
+        //{
+        //    camPosition = (hitL.point + hitR.point)/2;
+        //}
+
+
+
+        //Camera.main.transform.rotation = camTargetTransform.rotation;
+        //Camera.main.transform.position = camPosition;
     }
 
     private void FixedUpdate()

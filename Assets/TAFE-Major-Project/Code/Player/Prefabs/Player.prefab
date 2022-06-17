@@ -640,7 +640,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!95 &6376404067544387295
 Animator:
   serializedVersion: 3
@@ -800,6 +800,8 @@ MonoBehaviour:
   camRotationTransform: {fileID: 6376404067265627908}
   camHeightTransform: {fileID: 6376404067026393453}
   camTargetTransform: {fileID: 6324780175526489278}
+  cameraSpeed: 10
+  cameraCheckLength: 2.5
   timingWindowAnim: 0
   timingWindowValid: 0
   timingWindowValid2: 0

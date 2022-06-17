@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Arena : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject barrier;
+    private Collider trigger;
+
+    private void Awake()
     {
-        
+        trigger = GetComponent<Collider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        barrier.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        barrier.SetActive(true);
+        trigger.enabled = false;
+    }
+
+    private void ArenaCleared()
+    {
+        barrier.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
