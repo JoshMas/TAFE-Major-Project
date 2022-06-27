@@ -47,4 +47,14 @@ public class GameManager : MonoBehaviour
             SceneManager.UnloadSceneAsync("PauseMenu");
         }
     }
+
+    public void Win()
+    {
+
+    }
+
+    public void Lose()
+    {
+
+    }
 }
