@@ -15,6 +15,11 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Options menu under construction.");
     }
 
+    public void ReturnToTitle()
+    {
+        SceneManager.LoadSceneAsync("TitleScreen");
+    }
+
     public void Quit()
     {
         Application.Quit();
