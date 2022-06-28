@@ -17,11 +17,15 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToTitle()
     {
+        GameManager.Instance.SetSpawnpoint(Vector3.zero);
+        GameManager.Instance.Pause();
         SceneManager.LoadSceneAsync("TitleScreen");
     }
 
     public void Quit()
     {
+        //Add something here for saving when I get around to it
+
         Application.Quit();
     }
 }

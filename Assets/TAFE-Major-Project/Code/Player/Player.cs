@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody), typeof(Animator), typeof(AudioSource))]
 public class Player : MonoBehaviour
@@ -86,7 +85,8 @@ public class Player : MonoBehaviour
 
         camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
         camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
-        
+
+        GameManager.Instance.PlaceAtSpawnpoint(transform);
     }
 
     public void ChangeState(AbilityState _newState)
@@ -213,13 +213,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("uh oh");
-        StartCoroutine(nameof(Died));
-    }
-
-    private IEnumerator Died()
-    {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.Lose();
     }
 
     public void Jump(float _initialJumpForce, float _continuousJumpForce, float _jumpDuration)

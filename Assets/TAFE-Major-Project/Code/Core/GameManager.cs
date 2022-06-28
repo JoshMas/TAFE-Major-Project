@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public delegate void Paused(bool _isPaused);
     public event Paused IsPaused;
 
+    private Vector3 spawnPosition;
+
     private void Singleton()
     {
         if(Instance == null)
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Singleton();
+        Debug.Log(spawnPosition);
     }
 
     public void Pause()
@@ -50,11 +53,26 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-
+        SetSpawnpoint(Vector3.zero);
     }
 
     public void Lose()
     {
+        Invoke(nameof(ReloadScene), 1);
+    }
 
+    private void ReloadScene()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void PlaceAtSpawnpoint(Transform _objectToPlace)
+    {
+        _objectToPlace.position = spawnPosition;
+    }
+
+    public void SetSpawnpoint(Vector3 _newPosition)
+    {
+        spawnPosition = _newPosition;
     }
 }

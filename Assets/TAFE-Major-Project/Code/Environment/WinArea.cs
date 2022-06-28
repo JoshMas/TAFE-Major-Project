@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class WinArea : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameManager.Instance.Win();
     }
 }
