@@ -13,6 +13,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void Return()
     {
+        GameManager.Instance.SetSpawnpoint(Vector3.zero);
         SceneManager.LoadSceneAsync("LevelSelect");
     }
 }
