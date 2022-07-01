@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour
     public delegate void Paused(bool _isPaused);
     public event Paused IsPaused;
 
+    public delegate void PlayerLost();
+    public event PlayerLost HasLost;
+
+    public delegate void PlayerWon();
+    public event PlayerWon HasWon;
+
     private Vector3 spawnPosition;
 
     private void Singleton()
@@ -53,17 +59,26 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        HasWon?.Invoke();
         SetSpawnpoint(Vector3.zero);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        SceneManager.LoadSceneAsync("Win", LoadSceneMode.Additive);
     }
 
     public void Lose()
     {
-        Invoke(nameof(ReloadScene), 1);
+        HasLost?.Invoke();
+        Invoke(nameof(GameOverScreen), 1);
     }
 
-    private void ReloadScene()
+    private void GameOverScreen()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        SceneManager.LoadSceneAsync("GameOver", LoadSceneMode.Additive);
     }
 
     public void PlaceAtSpawnpoint(Transform _objectToPlace)

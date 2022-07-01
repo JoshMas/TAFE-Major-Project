@@ -3,25 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleScreen : MonoBehaviour
+public class GameOverMenu : MonoBehaviour
 {
-    private void Start()
+    public void Retry()
     {
         Time.timeScale = 1;
+        SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(0).buildIndex);
     }
 
-    public void Play()
+    public void Return()
     {
         SceneManager.LoadSceneAsync("LevelSelect");
-    }
-
-    public void Options()
-    {
-
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
     }
 }

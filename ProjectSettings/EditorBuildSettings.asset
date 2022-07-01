@@ -5,16 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/TAFE-Major-Project/Scenes/PlayerControlTest/PlayerControlTest.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/TAFE-Major-Project/Scenes/TitleScreen.unity
     guid: 42314c3f3d7463c4fb5b33dcc439f6bf
+  - enabled: 1
+    path: Assets/TAFE-Major-Project/Scenes/LevelSelect.unity
+    guid: e102ebeee2c513a4b9f50ea206186d6d
   - enabled: 1
     path: Assets/TAFE-Major-Project/Scenes/PlayerControlTest/PlaytestScene.unity
     guid: ed37884fd1dd55a4c82f742c8d30ae76
   - enabled: 1
     path: Assets/TAFE-Major-Project/Scenes/UI/PauseMenu.unity
     guid: c873b6bd1a49c434dbf643d39ce3215e
+  - enabled: 1
+    path: Assets/TAFE-Major-Project/Scenes/UI/OptionsMenu.unity
+    guid: bb60da41752d90a4eb99066c1f01b6e4
+  - enabled: 1
+    path: Assets/TAFE-Major-Project/Scenes/UI/GameOver.unity
+    guid: 57515e28d865dbc4ea89efee0aebd4ce
+  - enabled: 1
+    path: Assets/TAFE-Major-Project/Scenes/UI/Win.unity
+    guid: d6bddac94065caa44b7c1a748eaa4855
   m_configObjects: {}

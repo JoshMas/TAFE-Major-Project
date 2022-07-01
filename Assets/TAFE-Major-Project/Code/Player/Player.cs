@@ -214,6 +214,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("uh oh");
         GameManager.Instance.Lose();
+        enabled = false;
     }
 
     public void Jump(float _initialJumpForce, float _continuousJumpForce, float _jumpDuration)

@@ -43,11 +43,15 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.IsPaused += EnableInput;
+        GameManager.Instance.HasLost += DisableInput;
+        GameManager.Instance.HasWon += DisableInput;
     }
 
     private void OnDisable()
     {
         GameManager.Instance.IsPaused -= EnableInput;
+        GameManager.Instance.HasLost -= DisableInput;
+        GameManager.Instance.HasWon -= DisableInput;
     }
 
     private void Update()
@@ -76,6 +80,11 @@ public class InputManager : MonoBehaviour
     private void EnableInput(bool _isInputPaused)
     {
         inputEnabled = !_isInputPaused;
+    }
+
+    private void DisableInput()
+    {
+        inputEnabled = false;
     }
 
     private InputEnum[] RecordInputs()
