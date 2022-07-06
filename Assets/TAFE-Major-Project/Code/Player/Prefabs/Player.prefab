@@ -769,11 +769,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputTime: 0.25
-  jumpKey: 32
-  dashKey: 304
-  lightKey: 323
-  heavyKey: 324
-  pauseKey: 27
+  jumpKey:
+    intended: 32
+    alternative: 0
+  dashKey:
+    intended: 304
+    alternative: 303
+  lightKey:
+    intended: 323
+    alternative: 0
+  heavyKey:
+    intended: 324
+    alternative: 0
+  pauseKey:
+    intended: 27
+    alternative: 0
+  leftKey:
+    intended: 276
+    alternative: 97
+  rightKey:
+    intended: 275
+    alternative: 100
+  upKey:
+    intended: 273
+    alternative: 119
+  downKey:
+    intended: 274
+    alternative: 115
   mouseSensitivity: {x: 1, y: 1}
   inputList:
   - {fileID: 11400000, guid: 66eece9932517d64b9a7ccf609817789, type: 2}

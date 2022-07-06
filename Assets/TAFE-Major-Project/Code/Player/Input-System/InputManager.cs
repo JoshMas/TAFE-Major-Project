@@ -8,11 +8,17 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float inputTime = 1;
 
     [Space]
-    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
-    [SerializeField] private KeyCode dashKey = KeyCode.LeftShift;
-    [SerializeField] private KeyCode lightKey = KeyCode.Mouse0;
-    [SerializeField] private KeyCode heavyKey = KeyCode.Mouse1;
-    [SerializeField] private KeyCode pauseKey = KeyCode.Escape;
+    [SerializeField] private InputKeyDouble jumpKey;
+    [SerializeField] private InputKeyDouble dashKey;
+    [SerializeField] private InputKeyDouble lightKey;
+    [SerializeField] private InputKeyDouble heavyKey;
+    [SerializeField] private InputKeyDouble pauseKey;
+
+    [Space]
+    [SerializeField] private InputKeyDouble leftKey;
+    [SerializeField] private InputKeyDouble rightKey;
+    [SerializeField] private InputKeyDouble upKey;
+    [SerializeField] private InputKeyDouble downKey;
 
     private Player player;
     private bool inputEnabled;
@@ -102,15 +108,15 @@ public class InputManager : MonoBehaviour
         else if (yVal < 0)
             currentInputs.Add(InputEnum.Back);
 
-        if (Input.GetKey(jumpKey))
+        if (jumpKey.KeyPressed())
             currentInputs.Add(InputEnum.Jump);
-        if (Input.GetKey(dashKey))
+        if (dashKey.KeyPressed())
             currentInputs.Add(InputEnum.Dash);
-        if (Input.GetKey(lightKey))
+        if (lightKey.KeyPressed())
             currentInputs.Add(InputEnum.Light);
-        if (Input.GetKey(heavyKey))
+        if (heavyKey.KeyPressed())
             currentInputs.Add(InputEnum.Heavy);
-        if (Input.GetKey(pauseKey))
+        if (pauseKey.KeyPressed())
             currentInputs.Add(InputEnum.Pause);
 
         return currentInputs.ToArray();
