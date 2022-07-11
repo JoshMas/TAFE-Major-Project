@@ -17,3 +17,9 @@ MonoBehaviour:
     disallowedInputs: 06000000
   - requiredInputs: 06000000
     disallowedInputs: 
+  - requiredInputs: 
+    disallowedInputs: 
+  - requiredInputs: 
+    disallowedInputs: 
+  - requiredInputs: 
+    disallowedInputs: 

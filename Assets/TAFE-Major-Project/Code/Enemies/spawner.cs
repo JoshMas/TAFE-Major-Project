@@ -10,6 +10,14 @@ public class spawner : MonoBehaviour
     private int _spawnCoordinateX;
     private float _runningTime;
 
+    public delegate void ArenaCleared();
+    /// <summary>
+    /// Invoke this event when the enemies are all defeated
+    /// OnArenaClear?.Invoke();
+    /// </summary>
+    public static event ArenaCleared OnArenaClear;
+
+
     private void Update()
     {
         _runningTime += Time.deltaTime;
@@ -31,7 +39,6 @@ public class spawner : MonoBehaviour
                     _spawnPosition = 1;
                     break;
             }
-
             GameObject newObject = Instantiate(Enemy, new Vector3(_spawnCoordinateX, 0, 0), Quaternion.identity);
             _runningTime = 0;
         }

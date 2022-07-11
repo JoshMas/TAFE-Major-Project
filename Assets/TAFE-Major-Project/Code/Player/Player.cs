@@ -189,6 +189,9 @@ public class Player : MonoBehaviour
             case "Dash4":
                 currentState.OnDash(this);
                 break;
+            case "MultiButtonTest":
+                Debug.Log("multi test success");
+                break;
             case "Light":
                 currentState.OnLightAttack(this);
                 break;

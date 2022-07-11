@@ -12,6 +12,16 @@ public class Arena : MonoBehaviour
         trigger = GetComponent<Collider>();
     }
 
+    private void OnEnable()
+    {
+        spawner.OnArenaClear += ArenaCleared;
+    }
+
+    private void OnDisable()
+    {
+        spawner.OnArenaClear -= ArenaCleared;
+    }
+
     private void Start()
     {
         barrier.SetActive(false);
