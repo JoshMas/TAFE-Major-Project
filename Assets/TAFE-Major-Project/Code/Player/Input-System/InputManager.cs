@@ -23,6 +23,9 @@ public class InputManager : MonoBehaviour
     private Player player;
     private bool inputEnabled;
 
+    private Vector2 exactMovementAxis;
+    private Vector2 lerpMovementAxis;
+
     [Space]
     [SerializeField] private Vector2 mouseSensitivity = Vector2.one;
 
@@ -39,7 +42,7 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         inputBuffer = new Queue<InputEnum[]>();
-        player = GetComponent<Player>();
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -65,11 +68,6 @@ public class InputManager : MonoBehaviour
         if (!inputEnabled)
             return;
 
-        player.movementVector = player.CameraForward.TransformDirection(Vector3.ClampMagnitude(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")), 1));
-        player.cameraX -= Input.GetAxis("Mouse Y") * mouseSensitivity.x;
-        player.cameraY += Input.GetAxis("Mouse X") * mouseSensitivity.y;
-        player.cameraX = Mathf.Clamp(player.cameraX, -90, 90);
-
         inputBuffer.Enqueue(RecordInputs());
         if (inputBuffer.Count > InputBufferLength)
             inputBuffer.Dequeue();
@@ -81,6 +79,12 @@ public class InputManager : MonoBehaviour
                 inputBuffer.Clear();
             }
         }
+
+        player.exactMovementVector = player.CameraForward.TransformDirection(Vector3.ClampMagnitude(new Vector3(exactMovementAxis.x, 0, exactMovementAxis.y), 1));
+        player.movementVector = player.CameraForward.TransformDirection(Vector3.ClampMagnitude(new Vector3(lerpMovementAxis.x, 0, lerpMovementAxis.y), 1));
+        player.cameraX -= Input.GetAxis("Mouse Y") * mouseSensitivity.x;
+        player.cameraY += Input.GetAxis("Mouse X") * mouseSensitivity.y;
+        player.cameraX = Mathf.Clamp(player.cameraX, -90, 90);
     }
 
     private void EnableInput(bool _isInputPaused)
@@ -96,17 +100,34 @@ public class InputManager : MonoBehaviour
     private InputEnum[] RecordInputs()
     {
         List<InputEnum> currentInputs = new List<InputEnum>();
-        float xVal = Input.GetAxis("Horizontal");
-        float yVal = Input.GetAxis("Vertical");
-        if (xVal > 0)
-            currentInputs.Add(InputEnum.Right);
-        else if (xVal < 0)
-            currentInputs.Add(InputEnum.Left);
+        exactMovementAxis = Vector2.zero;
 
-        if (yVal > 0)
+        if (rightKey.KeyPressed())
+        {
+            currentInputs.Add(InputEnum.Right);
+            exactMovementAxis += Vector2.right;
+        }
+        if (leftKey.KeyPressed())
+        {
+            currentInputs.Add(InputEnum.Left);
+            exactMovementAxis += Vector2.left;
+        }
+        if (upKey.KeyPressed())
+        {
             currentInputs.Add(InputEnum.Forward);
-        else if (yVal < 0)
+            exactMovementAxis += Vector2.up;
+        }
+        if (downKey.KeyPressed())
+        {
             currentInputs.Add(InputEnum.Back);
+            exactMovementAxis += Vector2.down;
+        }
+
+        lerpMovementAxis = Vector2.MoveTowards(lerpMovementAxis, exactMovementAxis, 3 * Time.deltaTime);
+        if(lerpMovementAxis.magnitude < 0.01)
+        {
+            lerpMovementAxis = Vector2.zero;
+        }
 
         if (jumpKey.KeyPressed())
             currentInputs.Add(InputEnum.Jump);

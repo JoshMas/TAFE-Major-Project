@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    public Vector3 exactMovementVector;
     public Vector3 movementVector;
     public float cameraX;
     public float cameraY;

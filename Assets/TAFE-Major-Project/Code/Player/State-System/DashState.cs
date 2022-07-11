@@ -9,7 +9,7 @@ public class DashState : AbilityState
 
     public override void OnEnter(Player _player)
     {
-        Vector3 direction = _player.movementVector.normalized;
+        Vector3 direction = _player.exactMovementVector;
         if(direction.magnitude > 0)
         {
             _player.Rigid.velocity = direction * moveSpeedModifier;
