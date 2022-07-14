@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitions:
   - {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
-  - {fileID: 11400000, guid: 9768603319afea648aec14862adabaaf, type: 2}
   moveSpeedModifier: 50
   gravityScale: 0
   duration: 0.1

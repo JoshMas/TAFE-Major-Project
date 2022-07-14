@@ -15,7 +15,6 @@ MonoBehaviour:
   transitions:
   - {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
   - {fileID: 11400000, guid: 0cddf267618933941b35becfdf49d363, type: 2}
-  - {fileID: 11400000, guid: 9768603319afea648aec14862adabaaf, type: 2}
   moveSpeedModifier: 1
   gravityScale: 0.1
   attackType: Light

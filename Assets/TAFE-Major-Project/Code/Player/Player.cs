@@ -12,9 +12,8 @@ public class Player : MonoBehaviour
     public Animator Animator => animator;
     private AudioSource audioSrc;
     public AudioSource AudioSrc => audioSrc;
-    public Health health;
+    [HideInInspector] public Health health;
 
-    [SerializeField] private AbilityState currentState;
     [SerializeField] private Transform camRotationTransform;
     [SerializeField] private Transform camHeightTransform;
     [SerializeField] private Transform camTargetTransform;
@@ -42,9 +41,10 @@ public class Player : MonoBehaviour
 
     private IEnumerator jumpCoroutine;
 
-    private bool grounded = true;
+    [SerializeField] private AbilityState currentState;
+    [HideInInspector] private bool grounded = true;
     private bool canDoubleJump = true;
-    public bool canDash = true;
+    [HideInInspector] public bool canDash = true;
     [SerializeField] private LayerMask groundMask;
 
     /// <summary>
