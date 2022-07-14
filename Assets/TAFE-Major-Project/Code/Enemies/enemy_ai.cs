@@ -36,12 +36,12 @@ public class enemy_ai : MonoBehaviour
 
     private void OnEnable()
     {
-        health.healthEmpty += DestroyEnemy;
+        health.HealthIsEmpty += DestroyEnemy;
     }
 
     private void OnDisable()
     {
-        health.healthEmpty -= DestroyEnemy;
+        health.HealthIsEmpty -= DestroyEnemy;
     }
 
     private void Update()

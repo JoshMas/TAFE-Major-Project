@@ -47,12 +47,12 @@ public class enemy_aiv2 : MonoBehaviour
 
     private void OnEnable()
     {
-        health.healthEmpty += Kill;
+        health.HealthIsEmpty += Kill;
     }
 
     private void OnDisable()
     {
-        health.healthEmpty -= Kill;
+        health.HealthIsEmpty -= Kill;
     }
 
     private void Kill()
