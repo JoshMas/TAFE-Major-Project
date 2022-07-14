@@ -9,6 +9,7 @@ public class spawner : MonoBehaviour
     private int _spawnPosition = 1;
     private int _spawnCoordinateX;
     private float _runningTime;
+    
 
     public delegate void ArenaCleared();
     /// <summary>

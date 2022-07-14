@@ -281,6 +281,7 @@ public class Player : MonoBehaviour
     {
         if (other.isTrigger)
         {
+            Debug.Log("a");
             currentState.OnHitDealt(this);
             other.GetComponent<Health>()?.UpdateHealth(-damage);
         }

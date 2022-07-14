@@ -9,7 +9,7 @@ public class enemy_ai : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public float health = 5;
+    private Health health;
 
     //Patroling
     public Vector3 walkPoint;
@@ -31,6 +31,17 @@ public class enemy_ai : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        health = GetComponentInParent<Health>();
+    }
+
+    private void OnEnable()
+    {
+        health.healthEmpty += DestroyEnemy;
+    }
+
+    private void OnDisable()
+    {
+        health.healthEmpty -= DestroyEnemy;
     }
 
     private void Update()
@@ -65,7 +76,7 @@ public class enemy_ai : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        //if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
 
@@ -85,8 +96,9 @@ public class enemy_ai : MonoBehaviour
         {
             ///Attack code here
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            rb.transform.LookAt(player.position + Vector3.up);
+            rb.AddForce(rb.transform.forward * 32f, ForceMode.Impulse);
+            //rb.AddForce(transform.up * 4f, ForceMode.Impulse);
             ///End of attack code
 
             alreadyAttacked = true;
@@ -101,9 +113,9 @@ public class enemy_ai : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        //health -= damage;
 
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+        //if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
     }
     private void DestroyEnemy()
     {
