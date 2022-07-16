@@ -823,7 +823,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
-  currentState: {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
   camRotationTransform: {fileID: 6376404067265627908}
   camHeightTransform: {fileID: 6376404067026393453}
   camTargetTransform: {fileID: 6324780175526489278}
@@ -838,11 +837,12 @@ MonoBehaviour:
   cameraX: 0
   cameraY: 0
   gravity: -9.8
+  currentState: {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
   canDash: 1
   groundMask:
     serializedVersion: 2
     m_Bits: 4097
-  damage: 0
+  damage: 1
 --- !u!114 &2943885101151678958
 MonoBehaviour:
   m_ObjectHideFlags: 0

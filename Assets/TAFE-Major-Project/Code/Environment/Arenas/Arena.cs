@@ -14,12 +14,12 @@ public class Arena : MonoBehaviour
 
     private void OnEnable()
     {
-        spawner.OnArenaClear += ArenaCleared;
+        EnemySpawner.OnArenaClear += ArenaCleared;
     }
 
     private void OnDisable()
     {
-        spawner.OnArenaClear -= ArenaCleared;
+        EnemySpawner.OnArenaClear -= ArenaCleared;
     }
 
     private void Start()
