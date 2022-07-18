@@ -84,7 +84,6 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log(currentEnemies.Count);
             if(currentEnemies.Count == 0)
             {
                 OnArenaClear?.Invoke();

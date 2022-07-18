@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     /// This variable is only changed in animations
     /// </summary>
     [SerializeField] private float damage;
+    [SerializeField] private AbilityState[] universalStates;
 
     private void Awake()
     {
@@ -158,6 +159,18 @@ public class Player : MonoBehaviour
         currentState.OnFixedUpdate(this);
     }
 
+    private void SetUniversalState(Type _t)
+    {
+        foreach (AbilityState state in universalStates)
+        {
+            if (state.GetType() == _t)
+            {
+                ChangeState(state);
+                return;
+            }
+        }
+    }
+
     public void TurnInMovementDirection()
     {
         if(movementVector.magnitude > 0)
@@ -211,7 +224,7 @@ public class Player : MonoBehaviour
 
     private void GetHit()
     {
-        Debug.Log("ow");
+        SetUniversalState(typeof(StunState));
     }
 
     private void Die()
