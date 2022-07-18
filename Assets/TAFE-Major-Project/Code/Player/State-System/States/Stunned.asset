@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
   moveSpeedModifier: 0
   gravityScale: 1
-  duration: 0.5
+  duration: 0.25
