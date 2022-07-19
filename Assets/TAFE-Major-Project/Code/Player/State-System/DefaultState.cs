@@ -9,6 +9,8 @@ public class DefaultState : AbilityState
     [SerializeField] private float continuousJumpForce = 5;
     [SerializeField] private float jumpDuration = 1;
 
+    public override void OnEnter(Player _player) { }
+
     public override void OnJump(Player _player)
     {
         _player.Jump(initialJumpForce, continuousJumpForce, jumpDuration);

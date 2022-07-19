@@ -9,7 +9,14 @@ public class AbilityState : ScriptableObject
     [SerializeField] protected float moveSpeedModifier = 1;
     [SerializeField] protected float gravityScale = 1;
 
-    public virtual void OnEnter(Player _player) { }
+    public virtual void OnEnter(Player _player)
+    {
+        if(_player.exactMovementVector.magnitude > 0)
+        {
+            _player.transform.forward = _player.exactMovementVector;
+        }
+    }
+
     public virtual void OnUpdate(Player _player)
     {
         _player.TurnInMovementDirection();

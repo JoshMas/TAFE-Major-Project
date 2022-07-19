@@ -11,12 +11,12 @@ public class spawner : MonoBehaviour
     private float _runningTime;
     
 
-    public delegate void ArenaCleared();
+    //public delegate void ArenaCleared();
     /// <summary>
     /// Invoke this event when the enemies are all defeated
     /// OnArenaClear?.Invoke();
     /// </summary>
-    public static event ArenaCleared OnArenaClear;
+    //public static event ArenaCleared OnArenaClear;
 
 
     private void Update()

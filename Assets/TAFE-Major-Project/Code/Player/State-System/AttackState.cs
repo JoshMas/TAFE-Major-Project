@@ -15,9 +15,9 @@ public class AttackState : AbilityState
 
     public override void OnEnter(Player _player)
     {
+        base.OnEnter(_player);
         _player.Animator.SetTrigger("Light");
         _player.SetUpwardForce(jump);
-        //_player.TimeState(attackClip.length, typeof(DefaultState));
     }
 
     public override void OnUpdate(Player _player) { }

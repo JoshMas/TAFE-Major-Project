@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PlayerStates/HeavyAttack")]
+[CreateAssetMenu(menuName = "PlayerStates/Heavy Attack")]
 public class HeavyAttackState : AbilityState
 {
     [SerializeField] private float jump = 4;
@@ -10,6 +10,7 @@ public class HeavyAttackState : AbilityState
 
     public override void OnEnter(Player _player)
     {
+        base.OnEnter(_player);
         _player.Animator.SetTrigger("Heavy");
         _player.SetUpwardForce(jump);
     }
