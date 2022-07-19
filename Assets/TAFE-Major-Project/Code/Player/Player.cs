@@ -121,8 +121,8 @@ public class Player : MonoBehaviour
 
         Vector3 localCamPosition = camTargetTransform.InverseTransformPoint(Camera.main.transform.position);
 
-        if(Physics.Linecast(playerPos - transform.right * cameraCheckLength, camTargetTransform.position - camTargetTransform.right * cameraCheckLength, out RaycastHit hitL, groundMask) 
-            && Physics.Linecast(playerPos + transform.right * cameraCheckLength, camTargetTransform.position + camTargetTransform.right * cameraCheckLength, out RaycastHit hitR, groundMask))
+        if(Physics.Linecast(playerPos - camRotationTransform.right * cameraCheckLength, camTargetTransform.position - camTargetTransform.right * cameraCheckLength, out RaycastHit hitL, groundMask) 
+            && Physics.Linecast(playerPos + camRotationTransform.right * cameraCheckLength, camTargetTransform.position + camTargetTransform.right * cameraCheckLength, out RaycastHit hitR, groundMask))
         {
             Vector3 hitPosition = (hitL.point + hitR.point) / 2 + Vector3.up * .5f;
             Vector3 localHitPosition = camTargetTransform.InverseTransformPoint(hitPosition);
