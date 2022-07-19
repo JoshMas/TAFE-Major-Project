@@ -222,6 +222,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void SetStateToDefaultFromAnimation()
+    {
+        SetUniversalState(typeof(DefaultState));
+    }
+
     private void GetHit()
     {
         SetUniversalState(typeof(StunState));

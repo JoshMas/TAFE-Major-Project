@@ -845,6 +845,7 @@ MonoBehaviour:
   damage: 1
   universalStates:
   - {fileID: 11400000, guid: 9768603319afea648aec14862adabaaf, type: 2}
+  - {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
 --- !u!114 &2943885101151678958
 MonoBehaviour:
   m_ObjectHideFlags: 0

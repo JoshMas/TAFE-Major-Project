@@ -30,6 +30,6 @@ public class DefaultState : AbilityState
 
     public override void OnHeavyAttack(Player _player)
     {
-        ChangeState(_player, typeof(AttackState), 1);
+        ChangeState(_player, typeof(HeavyAttackState));
     }
 }
