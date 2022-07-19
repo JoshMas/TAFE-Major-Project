@@ -8,17 +8,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float inputTime = 1;
 
     [Space]
-    [SerializeField] private InputKeyDouble jumpKey;
-    [SerializeField] private InputKeyDouble dashKey;
-    [SerializeField] private InputKeyDouble lightKey;
-    [SerializeField] private InputKeyDouble heavyKey;
-    [SerializeField] private InputKeyDouble pauseKey;
-
-    [Space]
-    [SerializeField] private InputKeyDouble leftKey;
-    [SerializeField] private InputKeyDouble rightKey;
-    [SerializeField] private InputKeyDouble upKey;
-    [SerializeField] private InputKeyDouble downKey;
+    [SerializeField] private InputObject inputObject;
 
     private Player player;
 
@@ -41,7 +31,8 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         inputBuffer = new Queue<InputEnum[]>();
-
+        //inputObject.SaveKeybinds();
+        //inputObject.LoadKeybinds();
     }
 
     private void OnEnable()
@@ -80,29 +71,7 @@ public class InputManager : MonoBehaviour
 
     private InputEnum[] RecordInputs()
     {
-        List<InputEnum> currentInputs = new List<InputEnum>();
-        exactMovementAxis = Vector2.zero;
-
-        if (rightKey.KeyPressed())
-        {
-            currentInputs.Add(InputEnum.Right);
-            exactMovementAxis += Vector2.right;
-        }
-        if (leftKey.KeyPressed())
-        {
-            currentInputs.Add(InputEnum.Left);
-            exactMovementAxis += Vector2.left;
-        }
-        if (upKey.KeyPressed())
-        {
-            currentInputs.Add(InputEnum.Forward);
-            exactMovementAxis += Vector2.up;
-        }
-        if (downKey.KeyPressed())
-        {
-            currentInputs.Add(InputEnum.Back);
-            exactMovementAxis += Vector2.down;
-        }
+        InputEnum[] currentInputs = inputObject.RecordInputs(ref exactMovementAxis);
 
         lerpMovementAxis = Vector2.MoveTowards(lerpMovementAxis, exactMovementAxis, 3 * Time.deltaTime);
         if(lerpMovementAxis.magnitude < 0.01)
@@ -110,17 +79,6 @@ public class InputManager : MonoBehaviour
             lerpMovementAxis = Vector2.zero;
         }
 
-        if (jumpKey.KeyPressed())
-            currentInputs.Add(InputEnum.Jump);
-        if (dashKey.KeyPressed())
-            currentInputs.Add(InputEnum.Dash);
-        if (lightKey.KeyPressed())
-            currentInputs.Add(InputEnum.Light);
-        if (heavyKey.KeyPressed())
-            currentInputs.Add(InputEnum.Heavy);
-        if (pauseKey.KeyPressed())
-            currentInputs.Add(InputEnum.Pause);
-
-        return currentInputs.ToArray();
+        return currentInputs;
     }
 }

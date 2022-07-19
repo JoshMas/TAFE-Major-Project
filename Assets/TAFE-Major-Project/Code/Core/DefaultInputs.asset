@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9cf492828c9c545a68aec88e010eda, type: 3}
+  m_Name: DefaultInputs
+  m_EditorClassIdentifier: 
+  keybinds:
+  - input: 0
+    intended: 275
+    alternative: 100
+  - input: 1
+    intended: 274
+    alternative: 115
+  - input: 2
+    intended: 276
+    alternative: 97
+  - input: 3
+    intended: 273
+    alternative: 119
+  - input: 4
+    intended: 32
+    alternative: 0
+  - input: 5
+    intended: 304
+    alternative: 303
+  - input: 6
+    intended: 323
+    alternative: 0
+  - input: 7
+    intended: 324
+    alternative: 0
+  - input: 8
+    intended: 27
+    alternative: 0
