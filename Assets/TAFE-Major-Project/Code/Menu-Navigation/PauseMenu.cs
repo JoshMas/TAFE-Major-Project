@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public void Resume()
     {
-        GameManager.Instance.Pause();
+        GameManager.Instance.Pause(false);
     }
 
     public void Options()
@@ -17,8 +17,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToTitle()
     {
-        GameManager.Instance.SetSpawnpoint(Vector3.zero);
-        GameManager.Instance.Pause();
+        GameManager.Instance.ResetLevelProgress();
         SceneManager.LoadSceneAsync("TitleScreen");
     }
 

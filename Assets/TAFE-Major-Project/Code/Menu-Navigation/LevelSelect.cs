@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
-    private void Start()
-    {
-        Time.timeScale = 1;
-    }
-
     public void TemporarySelectFunction(string _levelName)
     {
         SceneManager.LoadSceneAsync(_levelName);

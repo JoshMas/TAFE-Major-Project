@@ -21,7 +21,6 @@ public class InputManager : MonoBehaviour
     [SerializeField] private InputKeyDouble downKey;
 
     private Player player;
-    private bool inputEnabled;
 
     private Vector2 exactMovementAxis;
     private Vector2 lerpMovementAxis;
@@ -42,32 +41,24 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         inputBuffer = new Queue<InputEnum[]>();
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        inputEnabled = true;
     }
 
     private void OnEnable()
     {
-        GameManager.Instance.IsPaused += EnableInput;
-        GameManager.Instance.HasLost += DisableInput;
-        GameManager.Instance.HasWon += DisableInput;
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.IsPaused -= EnableInput;
-        GameManager.Instance.HasLost -= DisableInput;
-        GameManager.Instance.HasWon -= DisableInput;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void Update()
     {
-        if (!inputEnabled)
-            return;
-
         inputBuffer.Enqueue(RecordInputs());
         if (inputBuffer.Count > InputBufferLength)
             inputBuffer.Dequeue();
@@ -85,16 +76,6 @@ public class InputManager : MonoBehaviour
         player.cameraX -= Input.GetAxis("Mouse Y") * mouseSensitivity.x;
         player.cameraY += Input.GetAxis("Mouse X") * mouseSensitivity.y;
         player.cameraX = Mathf.Clamp(player.cameraX, -90, 90);
-    }
-
-    private void EnableInput(bool _isInputPaused)
-    {
-        inputEnabled = !_isInputPaused;
-    }
-
-    private void DisableInput()
-    {
-        inputEnabled = false;
     }
 
     private InputEnum[] RecordInputs()

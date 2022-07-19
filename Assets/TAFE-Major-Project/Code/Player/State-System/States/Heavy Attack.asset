@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01ef92c96e427664589ffa8e70279955, type: 3}
-  m_Name: New Heavy Attack
+  m_Name: Heavy Attack
   m_EditorClassIdentifier: 
   transitions: []
   moveSpeedModifier: 1

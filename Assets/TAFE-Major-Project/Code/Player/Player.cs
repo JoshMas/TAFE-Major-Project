@@ -87,8 +87,6 @@ public class Player : MonoBehaviour
 
         camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
         camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
-
-        GameManager.Instance.PlaceAtSpawnpoint(transform);
     }
 
     public void ChangeState(AbilityState _newState)
@@ -215,7 +213,7 @@ public class Player : MonoBehaviour
                 currentState.OnHeavyRelease(this);
                 break;
             case "Pause":
-                GameManager.Instance.Pause();
+                GameManager.Instance.Pause(true);
                 break;
             default:
                 break;

@@ -90,10 +90,10 @@ public class enemy_aiv2 : MonoBehaviour
             }
             else
             {
-                Debug.Log("waypoint");
+                //Debug.Log("waypoint");
                 navigation.isStopped = false;
                 isAttacking = false;
-                animator.SetBool("Walk Forward", true);
+                //animator.SetBool("Walk Forward", true);
                 MoveToWayPoint();
             }
         }

@@ -12,7 +12,6 @@ public class WinScreen : MonoBehaviour
 
     public void Replay()
     {
-        Time.timeScale = 1;
         SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(0).buildIndex);
     }
 }

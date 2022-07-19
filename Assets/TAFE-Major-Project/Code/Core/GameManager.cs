@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     public delegate void PlayerWon();
     public event PlayerWon HasWon;
 
-    private Vector3 spawnPosition;
+    private Vector3 currentSpawnPosition;
+    private bool isStartingLevel = true;
+    private InputManager inputManager;
 
     private void Singleton()
     {
@@ -34,25 +36,27 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Singleton();
-        Debug.Log(spawnPosition);
+        inputManager = GetComponent<InputManager>();
     }
 
-    public void Pause()
+    public void UIMode(bool _uiMode)
     {
-        if (Time.timeScale != 0)
+        inputManager.enabled = !_uiMode;
+        Time.timeScale = _uiMode ? 0 : 1;
+    }
+
+    public void Pause(bool _isPaused)
+    {
+        if (_isPaused)
         {
             IsPaused?.Invoke(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
+            UIMode(true);
             SceneManager.LoadSceneAsync("PauseMenu", LoadSceneMode.Additive);
         }
         else
         {
             IsPaused?.Invoke(false);
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1;
+            UIMode(false);
             SceneManager.UnloadSceneAsync("PauseMenu");
         }
     }
@@ -60,34 +64,45 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         HasWon?.Invoke();
-        SetSpawnpoint(Vector3.zero);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
+        ResetLevelProgress();
+        UIMode(true);
         SceneManager.LoadSceneAsync("Win", LoadSceneMode.Additive);
     }
 
     public void Lose()
     {
         HasLost?.Invoke();
+        inputManager.enabled = false;
         Invoke(nameof(GameOverScreen), 1);
     }
 
     private void GameOverScreen()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
+        UIMode(true);
         SceneManager.LoadSceneAsync("GameOver", LoadSceneMode.Additive);
     }
 
     public void PlaceAtSpawnpoint(Transform _objectToPlace)
     {
-        _objectToPlace.position = spawnPosition;
+        _objectToPlace.position = currentSpawnPosition;
     }
 
     public void SetSpawnpoint(Vector3 _newPosition)
     {
-        spawnPosition = _newPosition;
+        currentSpawnPosition = _newPosition;
+    }
+
+    public void StartLevel(Vector3 _startingSpawn)
+    {
+        if (isStartingLevel)
+        {
+            SetSpawnpoint(_startingSpawn);
+            isStartingLevel = false;
+        }
+    }
+
+    public void ResetLevelProgress()
+    {
+        isStartingLevel = true;
     }
 }

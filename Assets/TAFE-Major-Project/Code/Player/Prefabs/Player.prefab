@@ -581,7 +581,6 @@ GameObject:
   - component: {fileID: 6376404067544387293}
   - component: {fileID: 6376404067544387295}
   - component: {fileID: 6376404067544387294}
-  - component: {fileID: 6376404067544387281}
   - component: {fileID: 6376404067544387280}
   - component: {fileID: 2943885101151678958}
   m_Layer: 6
@@ -756,60 +755,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6376404067544387281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6376404067544387290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c27023f0b9d394d8d51d269b99abaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputTime: 0.25
-  jumpKey:
-    intended: 32
-    alternative: 0
-  dashKey:
-    intended: 304
-    alternative: 303
-  lightKey:
-    intended: 323
-    alternative: 0
-  heavyKey:
-    intended: 324
-    alternative: 0
-  pauseKey:
-    intended: 27
-    alternative: 0
-  leftKey:
-    intended: 276
-    alternative: 97
-  rightKey:
-    intended: 275
-    alternative: 100
-  upKey:
-    intended: 273
-    alternative: 119
-  downKey:
-    intended: 274
-    alternative: 115
-  mouseSensitivity: {x: 1, y: 1}
-  inputList:
-  - {fileID: 11400000, guid: 66eece9932517d64b9a7ccf609817789, type: 2}
-  - {fileID: 11400000, guid: 9ad4b8d334db40a41a86841863f03785, type: 2}
-  - {fileID: 11400000, guid: 82e85cc9814b5f0458a0dcb83af6af9e, type: 2}
-  - {fileID: 11400000, guid: 762c369b490700c49b6e8a3f8ae84756, type: 2}
-  - {fileID: 11400000, guid: c3d25ede3ff27264389a35be24e370f8, type: 2}
-  - {fileID: 11400000, guid: 2f37902ed13f44a479bbb82983c713d1, type: 2}
-  - {fileID: 11400000, guid: d5958209149a8b247bda6a353af47d5e, type: 2}
-  - {fileID: 11400000, guid: 5243ec0ea01c5cc4a94077d9b2dde80e, type: 2}
-  - {fileID: 11400000, guid: ab5043a88bb3c0a4abd232e0203c4d35, type: 2}
-  - {fileID: 11400000, guid: 6c46a84ba886dc54a8341f804730aed5, type: 2}
-  - {fileID: 11400000, guid: dfbebbbd92ca54d40bd3b52d892d95b5, type: 2}
-  - {fileID: 11400000, guid: 405ef6846a482004799a94c8d2a0f79b, type: 2}
 --- !u!114 &6376404067544387280
 MonoBehaviour:
   m_ObjectHideFlags: 0
