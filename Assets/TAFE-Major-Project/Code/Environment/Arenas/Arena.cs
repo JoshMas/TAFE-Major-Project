@@ -15,11 +15,13 @@ public class Arena : MonoBehaviour
     private void OnEnable()
     {
         EnemySpawner.OnArenaClear += ArenaCleared;
+        Tower.OnTowerDestroyed += ArenaCleared;
     }
 
     private void OnDisable()
     {
         EnemySpawner.OnArenaClear -= ArenaCleared;
+        Tower.OnTowerDestroyed -= ArenaCleared;
     }
 
     private void Start()
