@@ -6,9 +6,11 @@ public class Arena : MonoBehaviour
 {
     [SerializeField] private GameObject barrier;
     private Collider trigger;
+    private bool active;
 
     private void Awake()
     {
+        active = false;
         trigger = GetComponent<Collider>();
     }
 
@@ -33,10 +35,13 @@ public class Arena : MonoBehaviour
     {
         barrier.SetActive(true);
         trigger.enabled = false;
+        active = true;
     }
 
     private void ArenaCleared()
     {
+        if (!active)
+            return;
         barrier.SetActive(false);
         gameObject.SetActive(false);
     }

@@ -57,7 +57,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        spawnPositions = GetComponentsInChildren<Transform>();
+        List<Transform> children = new List<Transform>(GetComponentsInChildren<Transform>());
+        children.Remove(transform);
+        spawnPositions = children.ToArray();
 
         foreach(WaveTriggerPair wave in waves)
         {
@@ -101,7 +103,13 @@ public class EnemySpawner : MonoBehaviour
 
         foreach(GameObject enemy in enemiesToSpawn[waveMarker])
         {
-            currentEnemies.Add(Instantiate(enemy, spawnPositions[Random.Range(0, spawnPositions.Length - 1)]));
+            currentEnemies.Add(Instantiate(enemy, GetSpawnPosition(), Quaternion.identity));
         }
+    }
+
+    private Vector3 GetSpawnPosition()
+    {
+        Vector3 position = spawnPositions[Random.Range(0, spawnPositions.Length)].position;
+        return position += Random.insideUnitSphere;
     }
 }
