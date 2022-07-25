@@ -20,11 +20,9 @@ public class InputObject : ScriptableObject
         {
             if (input.KeyPressed())
             {
+                currentInputs.Add(input.input);
                 switch (input.input)
                 {
-                    default:
-                        currentInputs.Add(input.input);
-                        continue;
                     case InputEnum.Right:
                         _inputAxis += Vector2.right;
                         break;

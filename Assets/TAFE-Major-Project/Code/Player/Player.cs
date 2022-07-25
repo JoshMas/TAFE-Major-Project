@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform camTargetTransform;
     [SerializeField] private float cameraSpeed = 10;
     [SerializeField] private float cameraCheckLength = 4;
+    private Vector3 originalCameraPosition;
 
     public bool timingWindowAnim = false;
     [HideInInspector] public bool timingWindowValid = false;
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
     public float cameraX;
     public float cameraY;
     public float gravity = -9.8f;
+    public float dynamicGravityMultiplier = 1;
 
     private IEnumerator jumpCoroutine;
 
@@ -61,7 +63,8 @@ public class Player : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         health = GetComponent<Health>();
         rigid.useGravity = false;
-        jumpCoroutine = JumpCoroutine(0, 0);
+        //jumpCoroutine = JumpCoroutine(0, 0);
+        originalCameraPosition = camTargetTransform.localPosition;
     }
 
     private void OnEnable()
@@ -114,42 +117,44 @@ public class Player : MonoBehaviour
         camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
         camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
 
-        Vector3 camPosition;
-        Vector3 playerPos = transform.position + Vector3.up;
+        //Vector3 camPosition;
+        Vector3 playerPos = transform.position + Vector3.up * 2;
 
-        Vector3 localCamPosition = camTargetTransform.InverseTransformPoint(Camera.main.transform.position);
+        //Vector3 localCamPosition = camTargetTransform.InverseTransformPoint(Camera.main.transform.position);
 
-        if(Physics.Linecast(playerPos - camRotationTransform.right * cameraCheckLength, camTargetTransform.position - camTargetTransform.right * cameraCheckLength, out RaycastHit hitL, groundMask) 
-            && Physics.Linecast(playerPos + camRotationTransform.right * cameraCheckLength, camTargetTransform.position + camTargetTransform.right * cameraCheckLength, out RaycastHit hitR, groundMask))
+        if (Physics.Linecast(playerPos - camRotationTransform.right * cameraCheckLength, camHeightTransform.TransformPoint(originalCameraPosition) - camTargetTransform.right * cameraCheckLength, out RaycastHit hitL, groundMask) 
+            && Physics.Linecast(playerPos + camRotationTransform.right * cameraCheckLength, camHeightTransform.TransformPoint(originalCameraPosition) + camTargetTransform.right * cameraCheckLength, out RaycastHit hitR, groundMask))
         {
             Vector3 hitPosition = (hitL.point + hitR.point) / 2 + Vector3.up * .5f;
-            Vector3 localHitPosition = camTargetTransform.InverseTransformPoint(hitPosition);
-            //float distance = Vector3.Distance(hitPosition, camPosition);
-            Vector3 lerp = Vector3.Lerp(localCamPosition, localHitPosition, cameraSpeed * Time.deltaTime);
-            camPosition = camTargetTransform.TransformPoint(new Vector3(0, 0, lerp.z));//camTargetTransform.TransformDirection(Vector3.back * distance);
+            if (Vector3.Distance(camTargetTransform.position, hitPosition) < 0.1f)
+            {
+                camTargetTransform.position = hitPosition;
+            }
+            else
+            {
+                camTargetTransform.position = Vector3.Lerp(camTargetTransform.position, hitPosition, cameraSpeed * Time.deltaTime);
+            }
+            //Vector3 localHitPosition = camTargetTransform.InverseTransformPoint(hitPosition);
+            ////float distance = Vector3.Distance(hitPosition, camPosition);
+            //Vector3 lerp = Vector3.Lerp(localCamPosition, localHitPosition, cameraSpeed * Time.deltaTime);
+            //camPosition = camTargetTransform.TransformPoint(new Vector3(0, 0, lerp.z));//camTargetTransform.TransformDirection(Vector3.back * distance);
         }
         else
         {
-            Vector3 lerp = Vector3.Lerp(localCamPosition, camTargetTransform.localPosition, cameraSpeed * Time.deltaTime);
-            camPosition = camTargetTransform.TransformPoint(new Vector3(0, 0, lerp.z));//camTargetTransform.TransformDirection(Vector3.back * distance);
+            if (Vector3.Distance(camTargetTransform.localPosition, originalCameraPosition) < 0.1f)
+            {
+                camTargetTransform.localPosition = originalCameraPosition;
+            }
+            else
+            {
+                camTargetTransform.localPosition = Vector3.Lerp(camTargetTransform.localPosition, originalCameraPosition, cameraSpeed * Time.deltaTime);
+            }
+            //Vector3 lerp = Vector3.Lerp(localCamPosition, camTargetTransform.localPosition, cameraSpeed * Time.deltaTime);
+            //camPosition = camTargetTransform.TransformPoint(new Vector3(0, 0, lerp.z));//camTargetTransform.TransformDirection(Vector3.back * distance);
         }
 
-        Camera.main.transform.position = camPosition;
-        Camera.main.transform.rotation = camTargetTransform.rotation;
-
-        //Vector3 camPosition = camTargetTransform.position;
-        //Vector3 playerPosL = transform.position + Vector3.up + Vector3.left;
-        //Vector3 playerPosR = transform.position + Vector3.up + Vector3.right;
-        //if (Physics.Linecast(playerPosL, camTargetTransform.position, out RaycastHit hitL, groundMask) 
-        //     && Physics.Linecast(playerPosR, camTargetTransform.position, out RaycastHit hitR, groundMask))
-        //{
-        //    camPosition = (hitL.point + hitR.point)/2;
-        //}
-
-
-
-        //Camera.main.transform.rotation = camTargetTransform.rotation;
-        //Camera.main.transform.position = camPosition;
+        Camera.main.transform.position = camTargetTransform.position;
+        Camera.main.transform.LookAt(playerPos);// = camTargetTransform.rotation;
     }
 
     private void FixedUpdate()
@@ -192,6 +197,9 @@ public class Player : MonoBehaviour
                 break;
             case "Jump":
                 currentState.OnJump(this);
+                break;
+            case "JumpRelease":
+                currentState.OnJumpRelease(this);
                 break;
             case "Dash": 
             case "Dash1":
@@ -239,17 +247,17 @@ public class Player : MonoBehaviour
 
     public void Jump(float _initialJumpForce, float _continuousJumpForce, float _jumpDuration)
     {
-        StopCoroutine(jumpCoroutine);
-        jumpCoroutine = JumpCoroutine(_continuousJumpForce, _jumpDuration);
+        //StopCoroutine(jumpCoroutine);
+        //jumpCoroutine = JumpCoroutine(_continuousJumpForce, _jumpDuration);
         if (grounded)
         {
             rigid.velocity = new Vector3(rigid.velocity.x, _initialJumpForce, rigid.velocity.z);
-            StartCoroutine(jumpCoroutine);
+            //StartCoroutine(jumpCoroutine);
         }
         else if (canDoubleJump)
         {
             rigid.velocity = new Vector3(rigid.velocity.x, _initialJumpForce, rigid.velocity.z);
-            StartCoroutine(jumpCoroutine);
+            //StartCoroutine(jumpCoroutine);
             canDoubleJump = false;
         }
     }

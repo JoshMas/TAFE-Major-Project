@@ -21,3 +21,5 @@ MonoBehaviour:
     disallowedInputs: 01000000
   - requiredInputs: 01000000
     disallowedInputs: 
+  - requiredInputs: 01000000
+    disallowedInputs: 

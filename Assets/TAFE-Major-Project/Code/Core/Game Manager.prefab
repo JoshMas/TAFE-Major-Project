@@ -61,6 +61,7 @@ MonoBehaviour:
   mouseSensitivity: {x: 1, y: 1}
   inputList:
   - {fileID: 11400000, guid: 66eece9932517d64b9a7ccf609817789, type: 2}
+  - {fileID: 11400000, guid: 32e9f54859c821f4ea3c114172679c11, type: 2}
   - {fileID: 11400000, guid: 9ad4b8d334db40a41a86841863f03785, type: 2}
   - {fileID: 11400000, guid: 82e85cc9814b5f0458a0dcb83af6af9e, type: 2}
   - {fileID: 11400000, guid: 762c369b490700c49b6e8a3f8ae84756, type: 2}

@@ -13,7 +13,23 @@ public class DefaultState : AbilityState
 
     public override void OnJump(Player _player)
     {
+        _player.dynamicGravityMultiplier = 0.5f;
         _player.Jump(initialJumpForce, continuousJumpForce, jumpDuration);
+    }
+
+    public override void OnJumpRelease(Player _player)
+    {
+        _player.dynamicGravityMultiplier = 1;
+    }
+
+    public override void OnFixedUpdate(Player _player)
+    {
+        if(_player.Rigid.velocity.y < 0)
+        {
+            _player.dynamicGravityMultiplier = 1;
+        }
+
+        base.OnFixedUpdate(_player);
     }
 
     public override void OnDash(Player _player)

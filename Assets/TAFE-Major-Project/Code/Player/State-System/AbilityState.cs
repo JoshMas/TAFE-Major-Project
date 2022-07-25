@@ -24,12 +24,13 @@ public class AbilityState : ScriptableObject
     public virtual void OnFixedUpdate(Player _player)
     {
         _player.Rigid.velocity = new Vector3(_player.movementVector.x * moveSpeedModifier, _player.Rigid.velocity.y, _player.movementVector.z * moveSpeedModifier);
-        _player.Rigid.AddForce(_player.gravity * gravityScale * Vector3.up, ForceMode.Acceleration);
+        _player.Rigid.AddForce(_player.gravity * gravityScale * _player.dynamicGravityMultiplier * Vector3.up, ForceMode.Acceleration);
     }
     public virtual void OnExit(Player _player) { }
 
     public virtual void OnMove(Player _player) { }
     public virtual void OnJump(Player _player) { }
+    public virtual void OnJumpRelease(Player _player) { }
     public virtual void OnDash(Player _player) { }
     public virtual void OnLightAttack(Player _player) { }
     public virtual void OnHeavyAttack(Player _player) { }

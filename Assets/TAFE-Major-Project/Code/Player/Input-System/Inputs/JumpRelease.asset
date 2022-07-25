@@ -10,16 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5a1b33c0829a8744945a39ae645cf2d, type: 3}
-  m_Name: Dash4
+  m_Name: JumpRelease
   m_EditorClassIdentifier: 
   inputSet:
-  - requiredInputs: 
-    disallowedInputs: 03000000
-  - requiredInputs: 03000000
+  - requiredInputs: 04000000
     disallowedInputs: 
   - requiredInputs: 
-    disallowedInputs: 03000000
-  - requiredInputs: 03000000
-    disallowedInputs: 
-  - requiredInputs: 03000000
-    disallowedInputs: 
+    disallowedInputs: 04000000
