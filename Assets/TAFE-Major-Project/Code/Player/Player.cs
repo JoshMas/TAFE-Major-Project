@@ -41,8 +41,6 @@ public class Player : MonoBehaviour
     public float gravity = -9.8f;
     public float dynamicGravityMultiplier = 1;
 
-    private IEnumerator jumpCoroutine;
-
     [SerializeField] private AbilityState currentState;
     [HideInInspector] private bool grounded = true;
     private bool canDoubleJump = true;
@@ -63,7 +61,6 @@ public class Player : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         health = GetComponent<Health>();
         rigid.useGravity = false;
-        //jumpCoroutine = JumpCoroutine(0, 0);
         originalCameraPosition = camTargetTransform.localPosition;
     }
 
@@ -245,31 +242,16 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    public void Jump(float _initialJumpForce, float _continuousJumpForce, float _jumpDuration)
+    public void Jump(float _initialJumpForce)
     {
-        //StopCoroutine(jumpCoroutine);
-        //jumpCoroutine = JumpCoroutine(_continuousJumpForce, _jumpDuration);
         if (grounded)
         {
             rigid.velocity = new Vector3(rigid.velocity.x, _initialJumpForce, rigid.velocity.z);
-            //StartCoroutine(jumpCoroutine);
         }
         else if (canDoubleJump)
         {
             rigid.velocity = new Vector3(rigid.velocity.x, _initialJumpForce, rigid.velocity.z);
-            //StartCoroutine(jumpCoroutine);
             canDoubleJump = false;
-        }
-    }
-
-    private IEnumerator JumpCoroutine(float _force, float _duration)
-    {
-        float timer = 0;
-        while (timer < _duration)
-        {
-            yield return new WaitForFixedUpdate();
-            timer += Time.fixedDeltaTime;
-            rigid.AddForce(Vector3.up * _force, ForceMode.Acceleration);
         }
     }
 

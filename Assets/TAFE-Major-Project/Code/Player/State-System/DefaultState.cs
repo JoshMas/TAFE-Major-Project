@@ -5,16 +5,16 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="PlayerStates/Default")]
 public class DefaultState : AbilityState
 {
-    [SerializeField] private float initialJumpForce = 5;
-    [SerializeField] private float continuousJumpForce = 5;
-    [SerializeField] private float jumpDuration = 1;
+    [SerializeField] private float jumpHeight;
+
 
     public override void OnEnter(Player _player) { }
 
     public override void OnJump(Player _player)
     {
         _player.dynamicGravityMultiplier = 0.5f;
-        _player.Jump(initialJumpForce, continuousJumpForce, jumpDuration);
+        float gravity = _player.gravity * _player.dynamicGravityMultiplier * gravityScale;
+        _player.Jump(2 * Mathf.Sqrt(-gravity * jumpHeight));
     }
 
     public override void OnJumpRelease(Player _player)
