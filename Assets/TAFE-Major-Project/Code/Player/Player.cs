@@ -119,8 +119,8 @@ public class Player : MonoBehaviour
 
         //Vector3 localCamPosition = camTargetTransform.InverseTransformPoint(Camera.main.transform.position);
 
-        if (Physics.Linecast(playerPos - camRotationTransform.right * cameraCheckLength, camHeightTransform.TransformPoint(originalCameraPosition) - camTargetTransform.right * cameraCheckLength, out RaycastHit hitL, groundMask) 
-            && Physics.Linecast(playerPos + camRotationTransform.right * cameraCheckLength, camHeightTransform.TransformPoint(originalCameraPosition) + camTargetTransform.right * cameraCheckLength, out RaycastHit hitR, groundMask))
+        if (Physics.Linecast(playerPos, camHeightTransform.TransformPoint(originalCameraPosition) - camRotationTransform.right * cameraCheckLength, out RaycastHit hitL, groundMask) 
+            && Physics.Linecast(playerPos, camHeightTransform.TransformPoint(originalCameraPosition) + camRotationTransform.right * cameraCheckLength, out RaycastHit hitR, groundMask))
         {
             Vector3 hitPosition = (hitL.point + hitR.point) / 2 + Vector3.up * .5f;
             if (Vector3.Distance(camTargetTransform.position, hitPosition) < 0.1f)
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
         }
 
         Camera.main.transform.position = camTargetTransform.position;
-        Camera.main.transform.LookAt(playerPos);// = camTargetTransform.rotation;
+        Camera.main.transform.rotation = camTargetTransform.rotation;
     }
 
     private void FixedUpdate()
