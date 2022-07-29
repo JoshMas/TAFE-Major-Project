@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     private bool canDoubleJump = true;
     [HideInInspector] public bool canDash = true;
     [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float steepestWalkableAngle = 45;
 
     /// <summary>
     /// The amount of damage the player does with attacks
@@ -87,6 +88,7 @@ public class Player : MonoBehaviour
 
         camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
         camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
+        IsGrounded();
     }
 
     public void ChangeState(AbilityState _newState)
@@ -99,13 +101,37 @@ public class Player : MonoBehaviour
     private void Update()
     {
         currentState.OnUpdate(this);
-        
-        grounded = Physics.CheckBox(transform.position, new Vector3(.5f, .1f, .5f), transform.rotation, groundMask);
+
+
         animator.SetFloat("Grounded", grounded ? 1 : 0);
         if (grounded)
         {
             AirReset();
         }
+    }
+
+    private void IsGrounded()
+    {
+        Invoke(nameof(IsGrounded), 0.1f);
+        RaycastHit[] groundHits = Physics.BoxCastAll(transform.position + Vector3.up, new Vector3(.5f, .1f, .5f), Vector3.down, transform.rotation, 1, groundMask);
+        Debug.Log(groundHits.Length);
+        if (groundHits.Length < 1)
+        {
+            grounded = false;
+            return;
+        }
+
+        foreach(RaycastHit hit in groundHits)
+        {
+            Debug.Log(Vector3.Angle(hit.normal, Vector3.up));
+            if (Vector3.Angle(hit.normal, Vector3.up) <= steepestWalkableAngle)
+            {
+                grounded = true;
+                return;
+            }
+        }
+
+        grounded = false;
     }
 
     private void LateUpdate()
