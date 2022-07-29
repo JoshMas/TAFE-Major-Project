@@ -23,7 +23,13 @@ public class AbilityState : ScriptableObject
     }
     public virtual void OnFixedUpdate(Player _player)
     {
-        _player.Rigid.velocity = new Vector3(_player.movementVector.x * moveSpeedModifier, _player.Rigid.velocity.y, _player.movementVector.z * moveSpeedModifier);
+        if (_player.sliding)
+        {
+
+        }
+
+        Vector3 xzPlaneForce = new Vector3(_player.movementVector.x, 0, _player.movementVector.z) * moveSpeedModifier;
+        _player.Rigid.velocity = xzPlaneForce + Vector3.up * _player.Rigid.velocity.y;
         _player.Rigid.AddForce(_player.gravity * gravityScale * _player.dynamicGravityMultiplier * Vector3.up, ForceMode.Acceleration);
     }
     public virtual void OnExit(Player _player) { }

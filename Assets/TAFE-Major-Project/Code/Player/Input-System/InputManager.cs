@@ -64,9 +64,8 @@ public class InputManager : MonoBehaviour
 
         player.exactMovementVector = player.CameraForward.TransformDirection(Vector3.ClampMagnitude(new Vector3(exactMovementAxis.x, 0, exactMovementAxis.y), 1));
         player.movementVector = player.CameraForward.TransformDirection(Vector3.ClampMagnitude(new Vector3(lerpMovementAxis.x, 0, lerpMovementAxis.y), 1));
-        player.cameraX -= Input.GetAxis("Mouse Y") * mouseSensitivity.x;
-        player.cameraY += Input.GetAxis("Mouse X") * mouseSensitivity.y;
-        player.cameraX = Mathf.Clamp(player.cameraX, -90, 90);
+
+        player.SetCameraValues(Input.GetAxis("Mouse Y") * mouseSensitivity.x, Input.GetAxis("Mouse X") * mouseSensitivity.y);
     }
 
     private InputEnum[] RecordInputs()

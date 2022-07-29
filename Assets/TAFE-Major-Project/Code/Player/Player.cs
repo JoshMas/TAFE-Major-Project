@@ -36,13 +36,14 @@ public class Player : MonoBehaviour
 
     public Vector3 exactMovementVector;
     public Vector3 movementVector;
-    public float cameraX;
-    public float cameraY;
+    private float cameraX;
+    private float cameraY;
     public float gravity = -9.8f;
     public float dynamicGravityMultiplier = 1;
 
     [SerializeField] private AbilityState currentState;
-    [HideInInspector] private bool grounded = true;
+    private bool grounded = true;
+    [HideInInspector] public bool sliding = false;
     private bool canDoubleJump = true;
     [HideInInspector] public bool canDash = true;
     [SerializeField] private LayerMask groundMask;
@@ -55,6 +56,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private AbilityState[] universalStates;
 
+    private IEnumerator groundCheck;
+    public Vector3 GroundNormal { get; private set; }
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -63,12 +67,14 @@ public class Player : MonoBehaviour
         health = GetComponent<Health>();
         rigid.useGravity = false;
         originalCameraPosition = camTargetTransform.localPosition;
+        groundCheck = IsGrounded();
     }
 
     private void OnEnable()
     {
         health.HealthIsEmpty += Die;
         health.HitIsTaken += GetHit;
+        StartCoroutine(groundCheck);
     }
 
     private void OnDisable()
@@ -88,7 +94,6 @@ public class Player : MonoBehaviour
 
         camHeightTransform.localEulerAngles = new Vector3(cameraX, 0, 0);
         camRotationTransform.eulerAngles = new Vector3(0, cameraY, 0);
-        IsGrounded();
     }
 
     public void ChangeState(AbilityState _newState)
@@ -110,28 +115,51 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void IsGrounded()
+    private IEnumerator IsGrounded()
     {
-        Invoke(nameof(IsGrounded), 0.1f);
-        RaycastHit[] groundHits = Physics.BoxCastAll(transform.position + Vector3.up, new Vector3(.5f, .1f, .5f), Vector3.down, transform.rotation, 1, groundMask);
-        Debug.Log(groundHits.Length);
-        if (groundHits.Length < 1)
+        while (gameObject.activeSelf)
         {
-            grounded = false;
-            return;
-        }
+            Debug.Log(grounded + ", " + sliding);
+            yield return null;
 
-        foreach(RaycastHit hit in groundHits)
-        {
-            Debug.Log(Vector3.Angle(hit.normal, Vector3.up));
-            if (Vector3.Angle(hit.normal, Vector3.up) <= steepestWalkableAngle)
+            Ray raycast = new Ray(transform.position + Vector3.up, Vector3.down);
+            RaycastHit[] hits = Physics.SphereCastAll(raycast, 0.5f, 0.5f, groundMask);
+            
+            grounded = false;
+            sliding = false;
+
+            if (hits.Length == 0)
             {
-                grounded = true;
-                return;
+                continue;
+            }
+            else
+            {
+                GroundNormal = hits[0].normal;
+                foreach(RaycastHit hit in hits)
+                {
+                    float angle = Vector3.Angle(hit.normal, Vector3.up);
+                    if (angle < steepestWalkableAngle && hit.distance != 0)
+                    {
+                        grounded = true;
+                        sliding = false;
+                        GroundNormal = hit.normal;
+                        break;
+                    }
+                    else if(hit.distance != 0)
+                    {
+                        sliding = true;
+                    }
+                }
+
             }
         }
+    }
 
-        grounded = false;
+    public void SetCameraValues(float _cameraX, float _cameraY)
+    {
+        cameraX -= _cameraX;
+        cameraY += _cameraY;
+        cameraX = Mathf.Clamp(cameraX, -90, 90);
     }
 
     private void LateUpdate()
@@ -268,17 +296,24 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    public void Jump(float _initialJumpForce)
+    public void Jump(float _initialJumpForce, float _timeToReachPeak)
     {
         if (grounded)
         {
             rigid.velocity = new Vector3(rigid.velocity.x, _initialJumpForce, rigid.velocity.z);
+            Invoke(nameof(ResetDynamicGravity), _timeToReachPeak);
         }
         else if (canDoubleJump)
         {
             rigid.velocity = new Vector3(rigid.velocity.x, _initialJumpForce, rigid.velocity.z);
             canDoubleJump = false;
+            Invoke(nameof(ResetDynamicGravity), _timeToReachPeak);
         }
+    }
+
+    private void ResetDynamicGravity()
+    {
+        dynamicGravityMultiplier = 1;
     }
 
     public void AirReset()
