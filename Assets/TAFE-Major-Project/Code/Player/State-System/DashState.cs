@@ -5,7 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PlayerStates/Dash")]
 public class DashState : AbilityState
 {
+    [SerializeField] private float distance;
     [SerializeField] private float duration;
+
+    private void OnValidate()
+    {
+        if (duration <= 0)
+            return;
+        moveSpeedModifier = distance / duration;
+    }
 
     public override void OnEnter(Player _player)
     {
