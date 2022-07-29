@@ -119,11 +119,9 @@ public class Player : MonoBehaviour
     {
         while (gameObject.activeSelf)
         {
-            Debug.Log(grounded + ", " + sliding);
             yield return null;
-
             Ray raycast = new Ray(transform.position + Vector3.up, Vector3.down);
-            RaycastHit[] hits = Physics.SphereCastAll(raycast, 0.5f, 0.5f, groundMask);
+            RaycastHit[] hits = Physics.SphereCastAll(raycast, 0.4f, 0.65f, groundMask);
             
             grounded = false;
             sliding = false;
@@ -138,14 +136,14 @@ public class Player : MonoBehaviour
                 foreach(RaycastHit hit in hits)
                 {
                     float angle = Vector3.Angle(hit.normal, Vector3.up);
-                    if (angle < steepestWalkableAngle && hit.distance != 0)
+                    if (angle < steepestWalkableAngle)
                     {
                         grounded = true;
                         sliding = false;
                         GroundNormal = hit.normal;
                         break;
                     }
-                    else if(hit.distance != 0)
+                    else
                     {
                         sliding = true;
                     }
