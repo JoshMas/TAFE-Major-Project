@@ -49,6 +49,10 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float steepestWalkableAngle = 45;
 
+
+    private float chargeLevel;
+    private float maxCharge;
+
     /// <summary>
     /// The amount of damage the player does with attacks
     /// This variable is only changed in animations

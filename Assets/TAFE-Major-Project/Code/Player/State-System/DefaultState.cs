@@ -14,7 +14,7 @@ public class DefaultState : AbilityState
     {
         _player.dynamicGravityMultiplier = 0.5f;
         float gravity = _player.gravity * _player.dynamicGravityMultiplier * gravityScale;
-        _player.Jump(2 * Mathf.Sqrt(-gravity * jumpHeight), Mathf.Sqrt(-jumpHeight/gravity));
+        _player.Jump(Mathf.Sqrt(4 * -gravity * jumpHeight), Mathf.Sqrt(-jumpHeight/gravity));
     }
 
     public override void OnJumpRelease(Player _player)
