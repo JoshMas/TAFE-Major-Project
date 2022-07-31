@@ -40,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     public static event ArenaCleared OnArenaClear;
 
+    [SerializeField] private bool isEndless = false;
     [SerializeField] private WaveTriggerPair[] waves;
 
     private Transform[] spawnPositions;
