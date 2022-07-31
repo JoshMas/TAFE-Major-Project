@@ -23,17 +23,28 @@ public class AbilityState : ScriptableObject
     }
     public virtual void OnFixedUpdate(Player _player)
     {
-        Vector3 xzPlaneForce = _player.movementVector * moveSpeedModifier;
+        float gravity = _player.gravity * gravityScale * _player.dynamicGravityMultiplier;
         if (_player.sliding)
         {
-            Vector3 force = _player.GroundNormal;
-            force.y = 0;
-            xzPlaneForce = force.normalized;
-        }
+            Vector3 slopeForward = _player.GroundNormal;
+            slopeForward.y = 0;
+            float angle = Vector3.Angle(_player.GroundNormal, Vector3.up);
+            if (Vector3.Angle(_player.movementVector, slopeForward) > 90)
+            {
+                _player.movementVector = Vector3.ProjectOnPlane(_player.movementVector, slopeForward);
+            }
+            gravity = - Mathf.Abs(gravity / Mathf.Sin(angle));
 
-        xzPlaneForce.y = _player.Rigid.velocity.y;
-        _player.Rigid.velocity = xzPlaneForce;
-        _player.Rigid.AddForce(_player.gravity * gravityScale * _player.dynamicGravityMultiplier * Vector3.up, ForceMode.Acceleration);
+        }
+        Debug.Log(_player.GroundNormal + ", " + gravity);
+        Vector3 xzPlaneVector = _player.movementVector;
+        xzPlaneVector *= moveSpeedModifier;
+
+
+        xzPlaneVector.y = _player.Rigid.velocity.y;
+        _player.Rigid.velocity = xzPlaneVector;
+        _player.Rigid.AddForce(gravity * Vector3.up, ForceMode.Acceleration);
+
     }
     public virtual void OnExit(Player _player) { }
 

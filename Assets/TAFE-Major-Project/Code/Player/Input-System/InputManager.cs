@@ -13,7 +13,6 @@ public class InputManager : MonoBehaviour
     private Player player;
 
     private Vector2 exactMovementAxis;
-    private Vector2 lerpMovementAxis;
 
     [Space]
     [SerializeField] private Vector2 mouseSensitivity = Vector2.one;
@@ -63,7 +62,6 @@ public class InputManager : MonoBehaviour
         }
 
         player.exactMovementVector = player.CameraForward.TransformDirection(Vector3.ClampMagnitude(new Vector3(exactMovementAxis.x, 0, exactMovementAxis.y), 1));
-        player.movementVector = player.CameraForward.TransformDirection(Vector3.ClampMagnitude(new Vector3(lerpMovementAxis.x, 0, lerpMovementAxis.y), 1));
 
         player.SetCameraValues(Input.GetAxis("Mouse Y") * mouseSensitivity.x, Input.GetAxis("Mouse X") * mouseSensitivity.y);
     }
@@ -71,12 +69,6 @@ public class InputManager : MonoBehaviour
     private InputEnum[] RecordInputs()
     {
         InputEnum[] currentInputs = inputObject.RecordInputs(ref exactMovementAxis);
-
-        lerpMovementAxis = Vector2.MoveTowards(lerpMovementAxis, exactMovementAxis, 3 * Time.deltaTime);
-        if(lerpMovementAxis.magnitude < 0.01)
-        {
-            lerpMovementAxis = Vector2.zero;
-        }
 
         return currentInputs;
     }

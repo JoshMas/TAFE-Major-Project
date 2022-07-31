@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         health = GetComponent<Health>();
         rigid.useGravity = false;
         originalCameraPosition = camTargetTransform.localPosition;
-        groundCheck = IsGrounded();
+        groundCheck = GroundCheck();
     }
 
     private void OnEnable()
@@ -113,17 +113,24 @@ public class Player : MonoBehaviour
         {
             AirReset();
         }
+
+        movementVector = Vector3.MoveTowards(movementVector, exactMovementVector, 3 * Time.deltaTime);
+        if (movementVector.magnitude < 0.01)
+        {
+            movementVector = Vector3.zero;
+        }
     }
 
-    private IEnumerator IsGrounded()
+    private IEnumerator GroundCheck()
     {
         while (gameObject.activeSelf)
         {
             yield return null;
             Ray raycast = new Ray(transform.position + Vector3.up, Vector3.down);
-            RaycastHit[] hits = Physics.SphereCastAll(raycast, 0.5f, 0.5f, groundMask);
+            RaycastHit[] hits = Physics.SphereCastAll(raycast, 0.5f, 0.55f, groundMask);
             
             grounded = false;
+            sliding = false;
 
             if (hits.Length == 0)
             {
@@ -231,7 +238,7 @@ public class Player : MonoBehaviour
         if(movementVector.magnitude > 0)
         {
             Vector3 newForward = Vector3.Slerp(transform.forward, movementVector.normalized, 5 * Time.deltaTime);
-            animator.SetFloat("TurnSpeed", Vector3.Angle(newForward, transform.forward));
+            animator.SetFloat("TurnSpeed", Vector3.SignedAngle(newForward, transform.forward, Vector3.up));
             transform.forward = new Vector3(newForward.x, 0, newForward.z);
         }
         else
