@@ -81,6 +81,10 @@ public class EnemySpawner : MonoBehaviour
             if (waves[waveMarker].ShouldSpawn(currentEnemies.Count, waveTimer))
             {
                 waveMarker++;
+                if (isEndless)
+                {
+                    waveMarker %= waves.Length;
+                }
                 SpawnNextWave();
                 waveTimer = 0;
             }
@@ -93,6 +97,11 @@ public class EnemySpawner : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    private bool IsSpawning()
+    {
+        return isEndless ? waveMarker <= waves.Length : waveMarker < waves.Length;
     }
 
     private void SpawnNextWave()
