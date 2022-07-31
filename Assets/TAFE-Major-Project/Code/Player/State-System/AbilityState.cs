@@ -33,7 +33,7 @@ public class AbilityState : ScriptableObject
             {
                 _player.movementVector = Vector3.ProjectOnPlane(_player.movementVector, slopeForward);
             }
-            gravity = - Mathf.Abs(gravity / Mathf.Sin(angle));
+            gravity = gravity / Mathf.Sin(angle * Mathf.Deg2Rad);
 
         }
         Debug.Log(_player.GroundNormal + ", " + gravity);
