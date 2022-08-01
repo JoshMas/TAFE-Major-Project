@@ -6,9 +6,8 @@ public class InputManager : MonoBehaviour
 {
     private Queue<InputEnum[]> inputBuffer;
     [SerializeField] private float inputTime = 1;
-
-    [Space]
-    [SerializeField] private KeybindObject inputObject;
+    
+    private KeybindObject keybinds;
 
     private Player player;
 
@@ -32,6 +31,16 @@ public class InputManager : MonoBehaviour
         inputBuffer = new Queue<InputEnum[]>();
         //inputObject.SaveKeybinds();
         //inputObject.LoadKeybinds();
+    }
+
+    private void Start()
+    {
+        GetKeybindObject();
+    }
+
+    public void GetKeybindObject()
+    {
+        keybinds = GameManager.Instance.ActualKeybinds;
     }
 
     private void OnEnable()
@@ -68,7 +77,7 @@ public class InputManager : MonoBehaviour
 
     private InputEnum[] RecordInputs()
     {
-        InputEnum[] currentInputs = inputObject.RecordInputs(ref exactMovementAxis);
+        InputEnum[] currentInputs = keybinds.RecordInputs(ref exactMovementAxis);
 
         return currentInputs;
     }

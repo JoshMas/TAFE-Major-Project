@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private KeybindObject defaultKeybinds;
     [SerializeField] private KeybindObject actualKeybinds;
 
+    public KeybindObject DefaultKeybinds => defaultKeybinds;
+    public KeybindObject ActualKeybinds => actualKeybinds;
+
 
     private void Singleton()
     {
@@ -103,6 +106,11 @@ public class GameManager : MonoBehaviour
             SetSpawnpoint(_startingSpawn);
             isStartingLevel = false;
         }
+    }
+
+    public void ResetKeybinds()
+    {
+        actualKeybinds.keybinds = defaultKeybinds.keybinds;
     }
 
     public void ResetLevelProgress()

@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 753d5bb7582190840829078180200e44, type: 3}
-  m_Name: Dash
+  m_Script: {fileID: 11500000, guid: 812fd88fc3d67e84cb7fe06e0ec1d733, type: 3}
+  m_Name: Sprint
   m_EditorClassIdentifier: 
   transitions:
-  - {fileID: 11400000, guid: 02a0ec251675b7b478ccd72dc92fad01, type: 2}
   - {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
-  moveSpeedModifier: 50
-  gravityScale: 0
-  distance: 5
-  duration: 0.1
+  - {fileID: 11400000, guid: 84ba27dd9e33a8c49892d8e9465a20ad, type: 2}
+  - {fileID: 11400000, guid: 099caa9744ebf9d41b5cf444f162c1c7, type: 2}
+  - {fileID: 11400000, guid: 64daa523eafc2ec45b612fa5e8227d8f, type: 2}
+  moveSpeedModifier: 30
+  gravityScale: 4
+  jumpHeight: 2

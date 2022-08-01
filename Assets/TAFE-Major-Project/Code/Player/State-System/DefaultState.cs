@@ -22,6 +22,21 @@ public class DefaultState : AbilityState
         _player.dynamicGravityMultiplier = 1;
     }
 
+    public override void OnDashRelease(Player _player)
+    {
+        ChangeState(_player, typeof(DefaultState));
+    }
+
+    public override void OnUpdate(Player _player)
+    {
+        base.OnUpdate(_player);
+        if(_player.exactMovementVector.magnitude == 0)
+        {
+            ChangeState(_player, typeof(DefaultState));
+        }
+        _player.Animator.SetFloat("MoveSpeed", _player.movementVector.magnitude);
+    }
+
     public override void OnFixedUpdate(Player _player)
     {
         if(_player.Rigid.velocity.y < 0)

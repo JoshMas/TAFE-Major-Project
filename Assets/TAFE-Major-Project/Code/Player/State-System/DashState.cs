@@ -27,13 +27,29 @@ public class DashState : AbilityState
             _player.Rigid.velocity = _player.transform.forward * moveSpeedModifier;
         }
         _player.transform.forward = _player.Rigid.velocity;
-        _player.TimeState(duration, typeof(DefaultState));
+        _player.StateTimer(duration);
 
         _player.Animator.SetBool("Dash", true);
     }
 
+    public override void OnDashRelease(Player _player)
+    {
+        _player.shouldSprint = false;
+    }
+
     public override void OnFixedUpdate(Player _player) { }
 
+    public override void OnTimer(Player _player)
+    {
+        if (_player.shouldSprint)
+        {
+            ChangeState(_player, typeof(DefaultState));
+        }
+        else
+        {
+            ChangeState(_player, typeof(DefaultState), 1);
+        }
+    }
     public override void OnExit(Player _player)
     {
         _player.Animator.SetBool("Dash", false);

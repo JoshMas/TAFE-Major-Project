@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(Animator), typeof(AudioSource))]
+[RequireComponent(typeof(Rigidbody), typeof(AudioSource))]
 public class Player : MonoBehaviour
 {
     private Rigidbody rigid;
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool canDash = true;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float steepestWalkableAngle = 45;
-
+    [HideInInspector] public bool shouldSprint = false;
 
     private float chargeLevel;
     private float maxCharge;
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         audioSrc = GetComponent<AudioSource>();
         health = GetComponent<Health>();
         rigid.useGravity = false;
@@ -264,12 +264,18 @@ public class Player : MonoBehaviour
             case "JumpRelease":
                 currentState.OnJumpRelease(this);
                 break;
-            case "Dash": 
+            case "Dash":
+                shouldSprint = true;
+                currentState.OnDash(this);
+                break;
             case "Dash1":
             case "Dash2":
             case "Dash3":
             case "Dash4":
                 currentState.OnDash(this);
+                break;
+            case "DashRelease":
+                currentState.OnDashRelease(this);
                 break;
             case "MultiButtonTest":
                 Debug.Log("multi test success");
@@ -339,21 +345,16 @@ public class Player : MonoBehaviour
         rigid.velocity = new Vector3(rigid.velocity.x, _force, rigid.velocity.z);
     }
 
-    public void TimeState(float _duration, Type _t)
+    public void StateTimer(float _duration)
     {
-        IEnumerator coroutine = TimeCoroutine(_duration, _t);
+        IEnumerator coroutine = TimeCoroutine(_duration);
         StartCoroutine(coroutine);
     }
 
-    public void StopTimeState()
-    {
-        StopCoroutine(nameof(TimeCoroutine));
-    }
-
-    private IEnumerator TimeCoroutine(float _duration, Type _t)
+    private IEnumerator TimeCoroutine(float _duration)
     {
         yield return new WaitForSeconds(_duration);
-        currentState.ChangeState(this, _t);
+        currentState.OnTimer(this);
     }
 
     private void OnTriggerEnter(Collider other)

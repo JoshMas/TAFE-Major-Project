@@ -33,10 +33,10 @@ public class AbilityState : ScriptableObject
             {
                 _player.movementVector = Vector3.ProjectOnPlane(_player.movementVector, slopeForward);
             }
-            gravity = gravity / Mathf.Sin(angle * Mathf.Deg2Rad);
+            gravity /= Mathf.Sin(angle * Mathf.Deg2Rad);
 
         }
-        Debug.Log(_player.GroundNormal + ", " + gravity);
+        //Debug.Log(_player.GroundNormal + ", " + gravity);
         Vector3 xzPlaneVector = _player.movementVector;
         xzPlaneVector *= moveSpeedModifier;
 
@@ -52,6 +52,7 @@ public class AbilityState : ScriptableObject
     public virtual void OnJump(Player _player) { }
     public virtual void OnJumpRelease(Player _player) { }
     public virtual void OnDash(Player _player) { }
+    public virtual void OnDashRelease(Player _player) { }
     public virtual void OnLightAttack(Player _player) { }
     public virtual void OnHeavyAttack(Player _player) { }
 
@@ -59,7 +60,7 @@ public class AbilityState : ScriptableObject
 
     public virtual void OnHitDealt(Player _player) { }
     public virtual void OnHitTaken(Player _player) { }
-
+    public virtual void OnTimer(Player _player) { }
     public void ChangeState(Player _player, Type _t)
     {
         foreach(AbilityState transition in transitions)

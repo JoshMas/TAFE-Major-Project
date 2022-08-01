@@ -9,7 +9,7 @@ public class StunState : AbilityState
 
     public override void OnEnter(Player _player)
     {
-        _player.TimeState(duration, typeof(DefaultState));
+        _player.StateTimer(duration);
         _player.Animator.SetTrigger("Stunned");
         _player.Rigid.velocity = Vector3.zero;
     }
@@ -17,4 +17,8 @@ public class StunState : AbilityState
     public override void OnUpdate(Player _player) { }
 
     public override void OnFixedUpdate(Player _player) { }
+    public override void OnTimer(Player _player)
+    {
+        ChangeState(_player, typeof(DefaultState));
+    }
 }
