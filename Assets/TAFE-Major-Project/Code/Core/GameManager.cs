@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     private bool isStartingLevel = true;
     private InputManager inputManager;
 
+    [SerializeField] private KeybindObject defaultKeybinds;
+    [SerializeField] private KeybindObject actualKeybinds;
+
+
     private void Singleton()
     {
         if(Instance == null)

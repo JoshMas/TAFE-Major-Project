@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61681073adb544d4f860bca2c30034cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultKeybinds: {fileID: 11400000, guid: 532c42bf516d25646ac9b906e5093413, type: 2}
+  actualKeybinds: {fileID: 11400000, guid: 1f2bf27be6215b04a813683486a0bdd9, type: 2}
 --- !u!114 &2514354044401665003
 MonoBehaviour:
   m_ObjectHideFlags: 0

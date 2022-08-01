@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float inputTime = 1;
 
     [Space]
-    [SerializeField] private InputObject inputObject;
+    [SerializeField] private KeybindObject inputObject;
 
     private Player player;
 

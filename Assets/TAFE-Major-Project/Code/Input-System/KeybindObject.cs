@@ -6,8 +6,8 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/InputObject")]
-public class InputObject : ScriptableObject
+[CreateAssetMenu(menuName = "ScriptableObjects/KeybindObject")]
+public class KeybindObject : ScriptableObject
 {
     public InputKeyDouble[] keybinds;
 

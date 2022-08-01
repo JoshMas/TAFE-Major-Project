@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a9cf492828c9c545a68aec88e010eda, type: 3}
-  m_Name: DefaultInputs
+  m_Name: DefaultKeybinds
   m_EditorClassIdentifier: 
   keybinds:
   - input: 0
