@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float steepestWalkableAngle = 45;
     [HideInInspector] public bool shouldSprint = false;
 
-    private float chargeLevel;
+    private float chargeLevel = 0;
     private float maxCharge;
 
     /// <summary>
