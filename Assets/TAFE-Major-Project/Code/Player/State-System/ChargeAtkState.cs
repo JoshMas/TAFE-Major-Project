@@ -10,4 +10,6 @@ public class ChargeAtkState : AbilityState
         base.OnEnter(_player);
 
     }
+
+
 }

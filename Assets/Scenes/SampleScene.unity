@@ -44604,6 +44604,7 @@ GameObject:
   - component: {fileID: 4264329835422421800}
   - component: {fileID: 4264329835422421799}
   - component: {fileID: 4264329835422421798}
+  - component: {fileID: 4264329835422421801}
   m_Layer: 6
   m_Name: TempPlayer
   m_TagString: Player
@@ -44807,6 +44808,22 @@ MonoBehaviour:
   universalStates:
   - {fileID: 11400000, guid: 9768603319afea648aec14862adabaaf, type: 2}
   - {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
+--- !u!208 &4264329835422421801
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264329835422421794}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.5, y: 1.5, z: 1.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &4302513288208059117
 Transform:
   m_ObjectHideFlags: 0

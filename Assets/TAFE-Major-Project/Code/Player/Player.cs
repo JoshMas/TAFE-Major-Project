@@ -345,6 +345,15 @@ public class Player : MonoBehaviour
         rigid.velocity = new Vector3(rigid.velocity.x, _force, rigid.velocity.z);
     }
 
+    public void ChargeAttack(float _chargeRate)
+    {
+        chargeLevel += _chargeRate * Time.deltaTime * (grounded ? 1 : 2);
+        if(chargeLevel > maxCharge)
+        {
+            chargeLevel = maxCharge;
+        }
+    }
+
     public void StateTimer(float _duration)
     {
         IEnumerator coroutine = TimeCoroutine(_duration);
