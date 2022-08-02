@@ -44,13 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247095065e9699f43bbe75d61e2cb247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - wave: {fileID: 11400000, guid: e313975aa859c6249aab0bcb1b9e845c, type: 2}
-    nextWaveTrigger: -1
-  - wave: {fileID: 11400000, guid: e313975aa859c6249aab0bcb1b9e845c, type: 2}
-    nextWaveTrigger: 1
-  - wave: {fileID: 11400000, guid: e313975aa859c6249aab0bcb1b9e845c, type: 2}
-    nextWaveTrigger: 0
+  isEndless: 0
+  waves: []
 --- !u!1 &8941530672770933295
 GameObject:
   m_ObjectHideFlags: 0
