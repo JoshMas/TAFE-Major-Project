@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicWave
   m_EditorClassIdentifier: 
   enemyTable:
-  - enemy: {fileID: 7378943193974818866, guid: 54a80e3c6e758814092cdf78f2feb521, type: 3}
+  - enemy: {fileID: 919132149155446097, guid: 742b4520d7b5d5943a981197c5b6aa44, type: 3}
     weight: 1
   enemyMinNum: 5
   enemyMaxNum: 7

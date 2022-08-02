@@ -32,7 +32,7 @@ public class enemy_aiv2 : MonoBehaviour
 
     private void Awake()
     {
-        health = GetComponentInParent<Health>();
+        health = GetComponent<Health>();
         
     }
 

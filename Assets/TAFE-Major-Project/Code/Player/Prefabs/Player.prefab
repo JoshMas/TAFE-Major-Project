@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 6376404067544387294}
   - component: {fileID: 6376404067544387280}
   - component: {fileID: 2943885101151678958}
+  - component: {fileID: 7193999261553244624}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -779,15 +780,15 @@ MonoBehaviour:
   timingWindowInvalid: 0
   exactMovementVector: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
-  cameraX: 0
-  cameraY: 0
   gravity: -9.8
   dynamicGravityMultiplier: 1
   currentState: {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
+  sliding: 0
   canDash: 1
   groundMask:
     serializedVersion: 2
     m_Bits: 4097
+  steepestWalkableAngle: 45
   damage: 1
   universalStates:
   - {fileID: 11400000, guid: 9768603319afea648aec14862adabaaf, type: 2}
@@ -805,6 +806,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximumHealth: 5
+--- !u!208 &7193999261553244624
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6376404067544387290}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.5, y: 1.5, z: 1.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6376404067861859375
 GameObject:
   m_ObjectHideFlags: 0
