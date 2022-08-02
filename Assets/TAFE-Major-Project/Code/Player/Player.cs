@@ -362,7 +362,19 @@ public class Player : MonoBehaviour
         if (other.isTrigger)
         {
             currentState.OnHitDealt(this);
-            other.GetComponent<Health>()?.UpdateHealth(-damage);
+            Health health;
+            if (other.transform.parent == null)
+            {
+                health = other.GetComponent<Health>();
+            }
+            else
+            {
+                health = other.GetComponentInParent<Health>();
+            }
+            if(health != null)
+            {
+                health.UpdateHealth(-damage);
+            }
         }
         else
         {
