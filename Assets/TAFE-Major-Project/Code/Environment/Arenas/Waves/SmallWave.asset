@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cecd49342df7d64e957cee3213cf326, type: 3}
-  m_Name: Light
+  m_Script: {fileID: 11500000, guid: 326687f9ec45b714fab38ed944915e8e, type: 3}
+  m_Name: SmallWave
   m_EditorClassIdentifier: 
-  transitions:
-  - {fileID: 11400000, guid: 0cddf267618933941b35becfdf49d363, type: 2}
-  moveSpeedModifier: 1
-  gravityScale: 0.1
-  jump: 0
-  pogoStrength: 1
-  heavy: 0
-  heavyPogo: 0
+  enemyTable:
+  - enemy: {fileID: 1727140595139031575, guid: 5f0b743d366017547b3ff2f0c933ba0f, type: 3}
+    weight: 1
+  enemyMinNum: 3
+  enemyMaxNum: 5

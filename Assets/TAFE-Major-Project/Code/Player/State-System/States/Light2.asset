@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: Light2
   m_EditorClassIdentifier: 
   transitions:
-  - {fileID: 11400000, guid: 6b7ffe0c779abcb44aa539d98ea8da1e, type: 2}
   - {fileID: 11400000, guid: 7c4d7982a8f93fc4abbe433cffd865d7, type: 2}
   moveSpeedModifier: 1
   gravityScale: 1
-  attackType: Light
-  attackClip: {fileID: 7400000, guid: 96edbfa83a62c4544b36f66678f25e59, type: 2}
   jump: 0
   pogoStrength: 1
   heavy: 0

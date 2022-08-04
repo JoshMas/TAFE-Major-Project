@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 326687f9ec45b714fab38ed944915e8e, type: 3}
-  m_Name: BasicWave
+  m_Name: MediumWave
   m_EditorClassIdentifier: 
   enemyTable:
   - enemy: {fileID: 1727140595139031575, guid: 5f0b743d366017547b3ff2f0c933ba0f, type: 3}
     weight: 1
-  enemyMinNum: 20
-  enemyMaxNum: 30
+  enemyMinNum: 7
+  enemyMaxNum: 10
