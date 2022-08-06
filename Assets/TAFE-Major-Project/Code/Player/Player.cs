@@ -255,9 +255,6 @@ public class Player : MonoBehaviour
     {
         switch (_move)
         {
-            case "Test":
-                Debug.Log("test successful");
-                break;
             case "Jump":
                 currentState.OnJump(this);
                 break;
@@ -277,8 +274,11 @@ public class Player : MonoBehaviour
             case "DashRelease":
                 currentState.OnDashRelease(this);
                 break;
-            case "MultiButtonTest":
-                Debug.Log("multi test success");
+            case "Charge":
+                currentState.OnChargeAttack(this);
+                break;
+            case "ChargeRelease":
+                currentState.OnChargeRelease(this);
                 break;
             case "Light":
                 currentState.OnLightAttack(this);

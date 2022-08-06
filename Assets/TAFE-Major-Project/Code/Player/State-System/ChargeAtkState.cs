@@ -5,11 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PlayerStates/Charge Attack")]
 public class ChargeAtkState : AbilityState
 {
+    [SerializeField] private float chargeRate;
+
     public override void OnEnter(Player _player)
     {
         base.OnEnter(_player);
 
     }
 
+    public override void OnUpdate(Player _player)
+    {
+        base.OnUpdate(_player);
+        _player.ChargeAttack(chargeRate);
+    }
 
+    public override void OnChargeRelease(Player _player)
+    {
+        
+    }
 }

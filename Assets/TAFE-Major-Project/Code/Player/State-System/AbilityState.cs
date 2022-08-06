@@ -57,6 +57,8 @@ public class AbilityState : ScriptableObject
     public virtual void OnHeavyAttack(Player _player) { }
 
     public virtual void OnHeavyRelease(Player _player) { }
+    public virtual void OnChargeAttack(Player _player) { }
+    public virtual void OnChargeRelease(Player _player) { }
 
     public virtual void OnHitDealt(Player _player) { }
     public virtual void OnHitTaken(Player _player) { }
