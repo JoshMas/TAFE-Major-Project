@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cecd49342df7d64e957cee3213cf326, type: 3}
-  m_Name: Light3
+  m_Script: {fileID: 11500000, guid: b744ba3a47a2998448cd40744c15c33e, type: 3}
+  m_Name: Charging
   m_EditorClassIdentifier: 
-  transitions: []
+  transitions:
+  - {fileID: 11400000, guid: c2cf80e8aa14d2c4d882c62a86c23daa, type: 2}
   moveSpeedModifier: 1
-  gravityScale: 1
-  jump: 0
-  pogoStrength: 1
+  gravityScale: 8
+  chargeRate: 1

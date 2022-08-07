@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cecd49342df7d64e957cee3213cf326, type: 3}
-  m_Name: Light3
+  m_Name: ChargeAttack
   m_EditorClassIdentifier: 
   transitions: []
   moveSpeedModifier: 1
   gravityScale: 1
   jump: 0
-  pogoStrength: 1
+  pogoStrength: 0

@@ -52,6 +52,11 @@ public class DefaultState : AbilityState
         }
     }
 
+    public override void OnChargeAttack(Player _player)
+    {
+        ChangeState(_player, typeof(ChargeAtkState));
+    }
+
     public override void OnLightAttack(Player _player)
     {
         ChangeState(_player, typeof(AttackState));

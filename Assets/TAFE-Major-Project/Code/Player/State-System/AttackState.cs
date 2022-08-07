@@ -8,11 +8,6 @@ public class AttackState : AbilityState
     [SerializeField] private float jump = 0;
     [SerializeField] private float pogoStrength;
 
-    [Space]
-
-    [SerializeField] private bool heavy;
-    [SerializeField] private float heavyPogo;
-
     public override void OnEnter(Player _player)
     {
         base.OnEnter(_player);

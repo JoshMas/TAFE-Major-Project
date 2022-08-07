@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool shouldSprint = false;
 
     private float chargeLevel = 0;
-    private float maxCharge;
+    [SerializeField] private float maxCharge = 1;
 
     /// <summary>
     /// The amount of damage the player does with attacks
@@ -275,6 +275,7 @@ public class Player : MonoBehaviour
                 currentState.OnDashRelease(this);
                 break;
             case "Charge":
+                Debug.Log("zx");
                 currentState.OnChargeAttack(this);
                 break;
             case "ChargeRelease":
@@ -354,6 +355,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ReleaseCharge()
+    {
+        animator.SetFloat("ChargeLevel", chargeLevel / maxCharge);
+        chargeLevel = 0;
+    }
+
     public void StateTimer(float _duration)
     {
         IEnumerator coroutine = TimeCoroutine(_duration);
@@ -371,15 +378,15 @@ public class Player : MonoBehaviour
         if (other.isTrigger)
         {
             currentState.OnHitDealt(this);
-            Health health;
-            if (other.transform.parent == null)
-            {
-                health = other.GetComponent<Health>();
-            }
-            else
-            {
-                health = other.GetComponentInParent<Health>();
-            }
+            Health health = other.transform.root.GetComponentInChildren<Health>();
+            //if (other.transform.parent == null)
+            //{
+            //    health = other.GetComponent<Health>();
+            //}
+            //else
+            //{
+            //    health = other.GetComponentInParent<Health>();
+            //}
             if(health != null)
             {
                 health.UpdateHealth(-damage);
