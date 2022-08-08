@@ -43,7 +43,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private bool isEndless = false;
     [SerializeField] private WaveTriggerPair[] waves;
 
-    private Transform[] spawnPositions;
+    private Transform[] groundSpawnPositions;
+    private Transform[] airSpawnPositions;
 
     private List<List<GameObject>> enemiesToSpawn;
     private List<GameObject> currentEnemies;
@@ -58,9 +59,24 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        List<Transform> children = new List<Transform>(GetComponentsInChildren<Transform>());
-        children.Remove(transform);
-        spawnPositions = children.ToArray();
+        List<Transform> groundTransforms = new List<Transform>(GetComponentsInChildren<Transform>());
+        groundTransforms.Remove(transform);
+        List<Transform> airTransforms = new List<Transform>();
+
+        foreach(Transform transform in groundTransforms)
+        {
+            if (transform.CompareTag("Air"))
+            {
+                airTransforms.Add(transform);
+            }
+        }
+        foreach(Transform transform in airTransforms)
+        {
+            groundTransforms.Remove(transform);
+        }
+
+        groundSpawnPositions = groundTransforms.ToArray();
+        airSpawnPositions = airTransforms.ToArray();
 
         foreach(WaveTriggerPair wave in waves)
         {
@@ -99,10 +115,10 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private bool IsSpawning()
-    {
-        return isEndless ? waveMarker <= waves.Length : waveMarker < waves.Length;
-    }
+    //private bool IsSpawning()
+    //{
+    //    return isEndless ? true : waveMarker < waves.Length;
+    //}
 
     private void SpawnNextWave()
     {
@@ -113,13 +129,13 @@ public class EnemySpawner : MonoBehaviour
 
         foreach(GameObject enemy in enemiesToSpawn[waveMarker])
         {
-            currentEnemies.Add(Instantiate(enemy, GetSpawnPosition(), Quaternion.identity));
+            currentEnemies.Add(Instantiate(enemy, GetSpawnPosition(enemy), Quaternion.identity));
         }
     }
 
-    private Vector3 GetSpawnPosition()
+    private Vector3 GetSpawnPosition(GameObject _enemy)
     {
-        Vector3 position = spawnPositions[Random.Range(0, spawnPositions.Length)].position;
+        Vector3 position = groundSpawnPositions[Random.Range(0, groundSpawnPositions.Length)].position;
         return position += Random.insideUnitSphere;
     }
 }
