@@ -262,20 +262,12 @@ public class Player : MonoBehaviour
                 currentState.OnJumpRelease(this);
                 break;
             case "Dash":
-                shouldSprint = true;
-                currentState.OnDash(this);
-                break;
-            case "Dash1":
-            case "Dash2":
-            case "Dash3":
-            case "Dash4":
                 currentState.OnDash(this);
                 break;
             case "DashRelease":
                 currentState.OnDashRelease(this);
                 break;
             case "Charge":
-                Debug.Log("zx");
                 currentState.OnChargeAttack(this);
                 break;
             case "ChargeRelease":

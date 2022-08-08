@@ -17,6 +17,7 @@ public class DashState : AbilityState
 
     public override void OnEnter(Player _player)
     {
+        _player.shouldSprint = true;
         Vector3 direction = _player.exactMovementVector;
         if(direction.magnitude > 0)
         {
