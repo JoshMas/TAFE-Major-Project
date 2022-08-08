@@ -15,5 +15,7 @@ MonoBehaviour:
   enemyTable:
   - enemy: {fileID: 1727140595139031575, guid: 5f0b743d366017547b3ff2f0c933ba0f, type: 3}
     weight: 1
+  - enemy: {fileID: 7300766102066004978, guid: b8b4404a5bbc2784eba9a9178b84df9a, type: 3}
+    weight: 1
   enemyMinNum: 20
   enemyMaxNum: 30

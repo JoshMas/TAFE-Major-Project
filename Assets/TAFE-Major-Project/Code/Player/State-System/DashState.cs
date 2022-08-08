@@ -33,11 +33,6 @@ public class DashState : AbilityState
         _player.Animator.SetBool("Dash", true);
     }
 
-    public override void OnDashRelease(Player _player)
-    {
-        _player.shouldSprint = false;
-    }
-
     public override void OnFixedUpdate(Player _player) { }
 
     public override void OnTimer(Player _player)

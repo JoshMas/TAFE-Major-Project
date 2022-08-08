@@ -270,8 +270,8 @@ public class Player : MonoBehaviour
             case "Charge":
                 currentState.OnChargeAttack(this);
                 break;
-            case "ChargeRelease":
-                currentState.OnChargeRelease(this);
+            case "LightRelease":
+                currentState.OnLightRelease(this);
                 break;
             case "Light":
                 currentState.OnLightAttack(this);

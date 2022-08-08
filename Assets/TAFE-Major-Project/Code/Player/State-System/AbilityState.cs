@@ -52,14 +52,15 @@ public class AbilityState : ScriptableObject
     public virtual void OnJump(Player _player) { }
     public virtual void OnJumpRelease(Player _player) { }
     public virtual void OnDash(Player _player) { }
-    public virtual void OnDashRelease(Player _player) { }
+    public virtual void OnDashRelease(Player _player)
+    {
+        _player.shouldSprint = false;
+    }
     public virtual void OnLightAttack(Player _player) { }
+    public virtual void OnLightRelease(Player _player) { }
     public virtual void OnHeavyAttack(Player _player) { }
-
     public virtual void OnHeavyRelease(Player _player) { }
     public virtual void OnChargeAttack(Player _player) { }
-    public virtual void OnChargeRelease(Player _player) { }
-
     public virtual void OnHitDealt(Player _player) { }
     public virtual void OnHitTaken(Player _player) { }
     public virtual void OnTimer(Player _player) { }

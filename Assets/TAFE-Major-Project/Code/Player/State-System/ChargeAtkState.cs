@@ -20,7 +20,17 @@ public class ChargeAtkState : AbilityState
         _player.ChargeAttack(chargeRate);
     }
 
-    public override void OnChargeRelease(Player _player)
+    public override void OnLightRelease(Player _player)
+    {
+        ChargeAttack(_player);
+    }
+
+    public override void OnHeavyRelease(Player _player)
+    {
+        ChargeAttack(_player);
+    }
+
+    private void ChargeAttack(Player _player)
     {
         _player.ReleaseCharge();
         ChangeState(_player, typeof(AttackState));
