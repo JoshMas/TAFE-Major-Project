@@ -135,7 +135,15 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector3 GetSpawnPosition(GameObject _enemy)
     {
-        Vector3 position = groundSpawnPositions[Random.Range(0, groundSpawnPositions.Length)].position;
+        Vector3 position;
+        if (_enemy.CompareTag("Ground"))
+        {
+            position = groundSpawnPositions[Random.Range(0, groundSpawnPositions.Length)].position;
+        }
+        else
+        {
+            position = airSpawnPositions[Random.Range(0, airSpawnPositions.Length)].position;
+        }
         return position += Random.insideUnitSphere;
     }
 }

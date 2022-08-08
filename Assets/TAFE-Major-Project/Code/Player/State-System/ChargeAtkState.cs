@@ -11,6 +11,7 @@ public class ChargeAtkState : AbilityState
     {
         base.OnEnter(_player);
         _player.Animator.SetTrigger("Charge");
+        _player.SetUpwardForce(0);
     }
 
     public override void OnUpdate(Player _player)
