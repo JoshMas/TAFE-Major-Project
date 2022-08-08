@@ -370,8 +370,7 @@ public class Player : MonoBehaviour
         if (other.isTrigger)
         {
             currentState.OnHitDealt(this);
-            Health health;
-            if(other.transform.root.TryGetComponent(out health))
+            if (other.transform.root.TryGetComponent(out Health health))
             {
                 health.UpdateHealth(-damage);
             }
