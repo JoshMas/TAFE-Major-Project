@@ -790,6 +790,7 @@ MonoBehaviour:
     m_Bits: 4097
   steepestWalkableAngle: 45
   shouldSprint: 0
+  maxCharge: 3
   damage: 1
   universalStates:
   - {fileID: 11400000, guid: 9768603319afea648aec14862adabaaf, type: 2}
@@ -806,7 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c02c66aaf089204eb963ff93ad432c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 5
+  maximumHealth: 25
 --- !u!208 &7193999261553244624
 NavMeshObstacle:
   m_ObjectHideFlags: 0
