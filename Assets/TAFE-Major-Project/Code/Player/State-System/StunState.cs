@@ -12,6 +12,7 @@ public class StunState : AbilityState
         _player.StateTimer(duration);
         _player.Animator.SetTrigger("Stunned");
         _player.Rigid.velocity = Vector3.zero;
+        _player.Rigid.AddExplosionForce(10, _player.transform.position + _player.transform.forward, 2, 1, ForceMode.VelocityChange);
     }
 
     public override void OnUpdate(Player _player) { }

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5a1b33c0829a8744945a39ae645cf2d, type: 3}
-  m_Name: Pause
+  m_Script: {fileID: 11500000, guid: 326687f9ec45b714fab38ed944915e8e, type: 3}
+  m_Name: AirWave
   m_EditorClassIdentifier: 
-  inputSet:
-  - requiredInputs: 
-    disallowedInputs: 08000000
-  - requiredInputs: 08000000
-    disallowedInputs: 
+  enemyTable:
+  - enemy: {fileID: 7300766102066004978, guid: b8b4404a5bbc2784eba9a9178b84df9a, type: 3}
+    weight: 1
+  enemyMinNum: 5
+  enemyMaxNum: 10

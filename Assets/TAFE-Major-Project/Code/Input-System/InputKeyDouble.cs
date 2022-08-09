@@ -6,8 +6,8 @@ using UnityEngine;
 public class InputKeyDouble
 {
     public InputEnum input;
-    [SerializeField] private KeyCode intended;
-    [SerializeField] private KeyCode alternative;
+    public KeyCode intended;
+    public KeyCode alternative;
 
     public bool KeyPressed()
     {
