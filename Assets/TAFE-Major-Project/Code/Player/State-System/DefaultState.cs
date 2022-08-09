@@ -6,7 +6,7 @@ using UnityEngine;
 public class DefaultState : AbilityState
 {
     [SerializeField] private float jumpHeight;
-
+    [SerializeField] private bool sprint;
 
     public override void OnEnter(Player _player) { }
 
@@ -22,15 +22,14 @@ public class DefaultState : AbilityState
         _player.dynamicGravityMultiplier = 1;
     }
 
-    public override void OnDashRelease(Player _player)
-    {
-        ChangeState(_player, typeof(DefaultState));
-    }
-
     public override void OnUpdate(Player _player)
     {
         base.OnUpdate(_player);
         _player.Animator.SetFloat("MoveSpeed", _player.movementVector.magnitude);
+        if(_player.shouldSprint != sprint)
+        {
+            ChangeState(_player, typeof(DefaultState));
+        }
     }
 
     public override void OnFixedUpdate(Player _player)

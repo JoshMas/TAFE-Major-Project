@@ -10,7 +10,7 @@ public class ChargeAtkState : AbilityState
     public override void OnEnter(Player _player)
     {
         base.OnEnter(_player);
-        _player.Animator.SetTrigger("Charge");
+        _player.Animator.SetBool("Charge", true);
         _player.SetUpwardForce(0);
     }
 
@@ -32,7 +32,14 @@ public class ChargeAtkState : AbilityState
 
     private void ChargeAttack(Player _player)
     {
-        _player.ReleaseCharge();
+        _player.ReleaseCharge(true);
         ChangeState(_player, typeof(AttackState));
+    }
+
+    public override void OnExit(Player _player)
+    {
+        base.OnExit(_player);
+        _player.Animator.SetBool("Charge", false);
+        _player.ReleaseCharge(false);
     }
 }

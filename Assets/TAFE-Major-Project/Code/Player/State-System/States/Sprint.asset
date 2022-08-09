@@ -21,3 +21,4 @@ MonoBehaviour:
   moveSpeedModifier: 30
   gravityScale: 4
   jumpHeight: 2
+  sprint: 1

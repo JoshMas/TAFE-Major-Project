@@ -51,7 +51,10 @@ public class AbilityState : ScriptableObject
     public virtual void OnMove(Player _player) { }
     public virtual void OnJump(Player _player) { }
     public virtual void OnJumpRelease(Player _player) { }
-    public virtual void OnDash(Player _player) { }
+    public virtual void OnDash(Player _player)
+    {
+        _player.shouldSprint = true;
+    }
     public virtual void OnDashRelease(Player _player)
     {
         _player.shouldSprint = false;

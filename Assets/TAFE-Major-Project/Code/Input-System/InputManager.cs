@@ -61,13 +61,20 @@ public class InputManager : MonoBehaviour
         inputBuffer.Enqueue(RecordInputs());
         if (inputBuffer.Count > InputBufferLength)
             inputBuffer.Dequeue();
+
+        bool moveActivated = false;
         foreach(MoveInput move in inputList)
         {
             if (move.Check(inputBuffer))
             {
                 move.Activate(player);
-                inputBuffer.Clear();
+                moveActivated = true;
             }
+        }
+        if (moveActivated)
+        {
+            inputBuffer.Clear();
+            inputBuffer.Enqueue(RecordInputs());
         }
 
         player.exactMovementVector = player.CameraForward.TransformDirection(Vector3.ClampMagnitude(new Vector3(exactMovementAxis.x, 0, exactMovementAxis.y), 1));

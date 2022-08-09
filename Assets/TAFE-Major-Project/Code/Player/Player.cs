@@ -347,9 +347,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ReleaseCharge()
+    public void ReleaseCharge(bool _attack)
     {
-        animator.SetFloat("ChargeLevel", chargeLevel / maxCharge);
+        if(_attack)
+            animator.SetFloat("ChargeLevel", chargeLevel / maxCharge);
         chargeLevel = 0;
     }
 
