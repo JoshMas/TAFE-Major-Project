@@ -640,6 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 2729576321818995568}
   keybindText: {fileID: 6663936552940222258}
+  altKeybindtext: {fileID: 644744712640081461}
 --- !u!1 &8486790365746757608
 GameObject:
   m_ObjectHideFlags: 0

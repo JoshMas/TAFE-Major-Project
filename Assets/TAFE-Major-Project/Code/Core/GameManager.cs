@@ -113,6 +113,11 @@ public class GameManager : MonoBehaviour
         actualKeybinds.keybinds = defaultKeybinds.keybinds;
     }
 
+    public void SetKeybinds(KeybindObject _object)
+    {
+        actualKeybinds = _object;
+    }
+
     public void ResetLevelProgress()
     {
         isStartingLevel = true;

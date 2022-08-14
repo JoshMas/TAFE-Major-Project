@@ -41,10 +41,35 @@ public class KeybindRemapUI : MonoBehaviour
 
     private void OnGUI()
     {
-        Event e = Event.current;
-        if (e.isKey)
+        //Event e = Event.current;
+        //if (e.type == EventType.KeyDown)
+        //{
+        //    Debug.Log(e.keyCode);
+        //}
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public IEnumerator GetInput()
+    {
+        bool keyPressed = false;
+        KeyCode key;
+        while (!keyPressed)
         {
-            Debug.Log(e.keyCode);
+            yield return null;
+            foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
+            {
+                if (Input.GetKeyDown(vKey))
+                {
+                    key = vKey;
+                    keyPressed = true;
+                    break;
+                }
+            }
         }
+
     }
 }
