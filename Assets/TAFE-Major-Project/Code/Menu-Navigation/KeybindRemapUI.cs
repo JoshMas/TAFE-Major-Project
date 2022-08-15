@@ -10,15 +10,17 @@ public class KeybindRemapUI : MonoBehaviour
     public static event KeyRebound OnKeyRebind;
 
     private InputKeyDouble keybind;
+    private KeybindUI ui;
     private bool isRebinding = false;
     private bool isAltRebinding = false;
     [SerializeField] private Text nameText;
     [SerializeField] private Text keybindText;
     [SerializeField] private Text altKeybindtext;
 
-    public void Initialise(InputKeyDouble _keybind)
+    public void Initialise(InputKeyDouble _keybind, KeybindUI _ui)
     {
         keybind = _keybind;
+        ui = _ui;
         nameText.text = keybind.input.ToString();
         keybindText.text = keybind.intended.ToString();
         altKeybindtext.text = keybind.alternative.ToString();
@@ -37,6 +39,7 @@ public class KeybindRemapUI : MonoBehaviour
 
     private void RebindInput(KeyCode _key)
     {
+        CheckForDuplicates(keybind.intended, _key);
         keybind.intended = _key;
         keybindText.text = keybind.intended.ToString();
         isRebinding = false;
@@ -50,9 +53,29 @@ public class KeybindRemapUI : MonoBehaviour
 
     public void RebindAltInput(KeyCode _key)
     {
+        CheckForDuplicates(keybind.alternative, _key);
         keybind.alternative = _key;
         altKeybindtext.text = keybind.alternative.ToString();
         isAltRebinding = false;
+    }
+
+    private void CheckForDuplicates(KeyCode _previous, KeyCode _current)
+    {
+        ui.CheckForDuplicates(_previous, _current);
+    }
+
+    public void DuplicateCheck(KeyCode _replacement, KeyCode _check)
+    {
+        if(keybind.intended == _check)
+        {
+            keybind.intended = _replacement;
+            keybindText.text = keybind.intended.ToString();
+        }
+        if (keybind.alternative == _check)
+        {
+            keybind.alternative = _replacement;
+            altKeybindtext.text = keybind.alternative.ToString();
+        }
     }
 
     public IEnumerator GetInput()

@@ -22,14 +22,37 @@ public class KeybindUI : MonoBehaviour
         {
             KeybindRemapUI keyUI = Instantiate(prefab, prefabHolder).GetComponent<KeybindRemapUI>();
             Debug.Log(key.alternative);
-            keyUI.Initialise(key);
+            keyUI.Initialise(key, this);
             uiList.Add(keyUI);
 
         }
     }
 
-    public void CheckForDuplicates()
+    public void CheckForDuplicates(KeyCode _previous, KeyCode _next)
+    {
+        foreach(KeybindRemapUI ui in uiList)
+        {
+            ui.DuplicateCheck(_previous, _next);
+        }
+    }
+
+    public void SaveKeybinds()
     {
 
+        for(int i = 0; i < keybinds.keybinds.Length; ++i)
+        {
+            uiList[i].SetKeybind(ref keybinds.keybinds[i]);
+        }
+
+        GameManager.Instance.SetKeybinds(keybinds);
+    }
+
+    public void ResetKeybinds()
+    {
+        keybinds = GameManager.Instance.DefaultKeybinds;
+        for (int i = 0; i < keybinds.keybinds.Length; ++i)
+        {
+            uiList[i].Initialise(keybinds.keybinds[i], this);
+        }
     }
 }
