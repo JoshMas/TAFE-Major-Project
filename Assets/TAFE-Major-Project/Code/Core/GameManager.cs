@@ -111,7 +111,10 @@ public class GameManager : MonoBehaviour
 
     public void ResetKeybinds()
     {
-        actualKeybinds.keybinds = defaultKeybinds.keybinds;
+        for(int i = 0; i < actualKeybinds.keybinds.Length; ++i)
+        {
+            actualKeybinds.keybinds[i] = DefaultKeybinds.keybinds[i];
+        }
         actualKeybinds.SaveKeybinds();
     }
 
