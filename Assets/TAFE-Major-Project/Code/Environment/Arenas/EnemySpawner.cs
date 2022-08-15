@@ -127,8 +127,6 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        Debug.Log("a");
-
         IEnumerator routine = StaggerSpawns(enemiesToSpawn[waveMarker]);
         StartCoroutine(routine);
 

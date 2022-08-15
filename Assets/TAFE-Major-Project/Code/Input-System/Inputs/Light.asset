@@ -23,3 +23,5 @@ MonoBehaviour:
     disallowedInputs: 
   - requiredInputs: 
     disallowedInputs: 
+  - requiredInputs: 
+    disallowedInputs: 
