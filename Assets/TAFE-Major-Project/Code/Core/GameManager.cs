@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     {
         Singleton();
         inputManager = GetComponent<InputManager>();
+        actualKeybinds.LoadKeybinds();
     }
 
     public void UIMode(bool _uiMode)
@@ -116,6 +117,7 @@ public class GameManager : MonoBehaviour
     public void SetKeybinds(KeybindObject _object)
     {
         actualKeybinds = _object;
+        actualKeybinds.SaveKeybinds();
     }
 
     public void ResetLevelProgress()

@@ -31,32 +31,34 @@ public class KeybindRemapUI : MonoBehaviour
 
     public void RebindInput()
     {
+        isRebinding = true;
+        StartCoroutine(nameof(GetInput));
+    }
 
+    private void RebindInput(KeyCode _key)
+    {
+        keybind.intended = _key;
+        keybindText.text = keybind.intended.ToString();
+        isRebinding = false;
     }
 
     public void RebindAltInput()
     {
-
+        isAltRebinding = true;
+        StartCoroutine(nameof(GetInput));
     }
 
-    private void OnGUI()
+    public void RebindAltInput(KeyCode _key)
     {
-        //Event e = Event.current;
-        //if (e.type == EventType.KeyDown)
-        //{
-        //    Debug.Log(e.keyCode);
-        //}
-    }
-
-    private void Update()
-    {
-        
+        keybind.alternative = _key;
+        altKeybindtext.text = keybind.alternative.ToString();
+        isAltRebinding = false;
     }
 
     public IEnumerator GetInput()
     {
         bool keyPressed = false;
-        KeyCode key;
+        KeyCode key = KeyCode.None;
         while (!keyPressed)
         {
             yield return null;
@@ -71,5 +73,13 @@ public class KeybindRemapUI : MonoBehaviour
             }
         }
 
+        if (isRebinding)
+        {
+            RebindInput(key);
+        }
+        else if (isAltRebinding)
+        {
+            RebindAltInput(key);
+        }
     }
 }

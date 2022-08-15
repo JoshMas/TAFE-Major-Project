@@ -27,4 +27,9 @@ public class KeybindUI : MonoBehaviour
 
         }
     }
+
+    public void CheckForDuplicates()
+    {
+
+    }
 }
