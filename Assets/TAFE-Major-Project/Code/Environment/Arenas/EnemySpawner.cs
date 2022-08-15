@@ -127,9 +127,24 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        foreach(GameObject enemy in enemiesToSpawn[waveMarker])
+        Debug.Log("a");
+
+        IEnumerator routine = StaggerSpawns(enemiesToSpawn[waveMarker]);
+        StartCoroutine(routine);
+
+        //foreach (GameObject enemy in enemiesToSpawn[waveMarker])
+        //{
+        //    currentEnemies.Add(Instantiate(enemy, GetSpawnPosition(enemy), Quaternion.identity));
+        //}
+    }
+
+    private IEnumerator StaggerSpawns(List<GameObject> _enemies)
+    {
+        float interval = 3f / _enemies.Count;
+        foreach (GameObject enemy in _enemies)
         {
             currentEnemies.Add(Instantiate(enemy, GetSpawnPosition(enemy), Quaternion.identity));
+            yield return new WaitForSeconds(interval);
         }
     }
 
