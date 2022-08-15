@@ -373,7 +373,7 @@ public class Player : MonoBehaviour
             currentState.OnHitDealt(this);
             if (other.transform.root.TryGetComponent(out Health health))
             {
-                health.UpdateHealth(-damage);
+                health .UpdateHealth(-damage);
             }
             //if (other.transform.parent == null)
             //{
@@ -387,7 +387,7 @@ public class Player : MonoBehaviour
         else
         {
             currentState.OnHitTaken(this);
-            health.UpdateHealth(-1);
+           health.UpdateHealth(-1);
         }
     }
 }

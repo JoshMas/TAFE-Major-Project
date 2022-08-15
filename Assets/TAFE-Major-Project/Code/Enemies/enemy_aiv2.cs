@@ -10,6 +10,8 @@ public class enemy_aiv2 : MonoBehaviour
     private Health health;
     public int damageAttack = 20;
     public float lookRadius = 5;
+    private float defaultAttacktime = 5f;
+    public float currentAttackTime;
 
     
     [Header("Components")]
@@ -38,6 +40,7 @@ public class enemy_aiv2 : MonoBehaviour
 
     void Start()
     {
+        currentAttackTime = defaultAttacktime / 9;
         animator = GetComponent<Animator>();
        // collider = GetComponent<CapsuleCollider>();
         navigation = GetComponent<NavMeshAgent>();
@@ -103,7 +106,7 @@ public class enemy_aiv2 : MonoBehaviour
     {
         Vector3 direction = (player.position - transform.position).normalized;
         Quaternion lookRadious = Quaternion.LookRotation(new Vector3(direction.x, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRadious, Time.deltaTime * 5);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRadious, Time.deltaTime *9);
     }
 
     IEnumerator Attack()
@@ -114,16 +117,16 @@ public class enemy_aiv2 : MonoBehaviour
             isAttacking = true;
             animator.SetTrigger("Pounce Attack");
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(5f);
 
             GameObject playerHit = GetPlayer();
 
             if (playerHit != null)
             {
-                //playerHit.GetComponent<Player>().GetDamageByAttack(damageAttack);
+               //playerHit.GetComponent<Health>().UpdateHealth(damageAttack);
             }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(68f);
 
             attackingRound = false;
             isAttacking = false;
