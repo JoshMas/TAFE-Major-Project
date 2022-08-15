@@ -372,13 +372,13 @@ public class Player : MonoBehaviour
             }
             if(health != null)
             {
-                health.UpdateHealth(-damage);
+                health .UpdateHealth(-damage);
             }
         }
         else
         {
             currentState.OnHitTaken(this);
-            health.UpdateHealth(-1);
+           health.UpdateHealth(-1);
         }
     }
 }
