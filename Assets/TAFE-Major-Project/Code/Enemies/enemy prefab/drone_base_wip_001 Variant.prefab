@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2771170027921922979, guid: ff1f117fdcf0fe44cb072475511c7cdc, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -2771170027921922979, guid: ff1f117fdcf0fe44cb072475511c7cdc, type: 3}
       propertyPath: playerInAttackRange

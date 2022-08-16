@@ -423,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAttack: 20
   lookRadius: 100
-  currentAttackTime: 0
+  currentAttackTime: 2
   player: {fileID: 6376404067544387292, guid: eb16f8e78f5c37d43ab9aeb977e311ff, type: 3}
   waypoints:
   - {fileID: 6376404067544387292, guid: eb16f8e78f5c37d43ab9aeb977e311ff, type: 3}

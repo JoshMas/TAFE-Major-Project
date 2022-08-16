@@ -51,16 +51,25 @@ public class enemy_aiv2 : MonoBehaviour
     private void OnEnable()
     {
         health.HealthIsEmpty += Kill;
+        health.HitIsTaken += Hit;
     }
 
     private void OnDisable()
     {
         health.HealthIsEmpty -= Kill;
+        health.HitIsTaken -= Hit;
+    }
+
+    private void Hit()
+    {
+        animator.SetTrigger("Take Damage");
     }
 
     private void Kill()
     {
         Destroy(gameObject);
+        animator.SetTrigger("Die");
+
     }
 
     void Update()
