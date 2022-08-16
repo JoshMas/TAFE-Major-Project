@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: Light
   m_EditorClassIdentifier: 
   inputSet:
-  - requiredInputs: 
-    disallowedInputs: 06000000
-  - requiredInputs: 06000000
-    disallowedInputs: 
-  - requiredInputs: 
-    disallowedInputs: 
-  - requiredInputs: 
-    disallowedInputs: 
-  - requiredInputs: 
-    disallowedInputs: 
-  - requiredInputs: 
-    disallowedInputs: 
+  - requiredInputs:
+    - input: 6
+      isPressed: 0
+    timePressed: 0
+  - requiredInputs:
+    - input: 6
+      isPressed: 1
+    timePressed: 0
+  - requiredInputs: []
+    timePressed: 0.02

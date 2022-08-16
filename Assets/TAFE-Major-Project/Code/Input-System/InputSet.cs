@@ -2,42 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public class InputSetComponent
+{
+    public InputEnum input;
+    public bool isPressed;
+}
+
 [System.Serializable]
 public class InputSet
 {
-    [SerializeField] private InputEnum[] requiredInputs;
-    [SerializeField] private InputEnum[] disallowedInputs;
+    [SerializeField] private InputSetComponent[] requiredInputs;
+    [SerializeField, Min(0)] private float timePressed = 0;
 
-    public InputSet(List<InputEnum> _inputs)
+    public bool IsValid(InputEnum[] _playerInputs, ref float timer)
     {
-        requiredInputs = new InputEnum[_inputs.Count];
-        _inputs.CopyTo(requiredInputs, 0);
-    }
-
-    public bool IsValid(InputEnum[] _playerInputs)
-    {
-        foreach(InputEnum _playerInput in _playerInputs)
+        //Check if the input matches
+        foreach(InputSetComponent input in requiredInputs)
         {
-            foreach(InputEnum disallowedInput in disallowedInputs)
+            bool inputPressed = !input.isPressed;
+            foreach (InputEnum _playerinput in _playerInputs)
             {
-                if (_playerInput == disallowedInput)
-                    return false;
-            }
-        }
 
-        foreach (InputEnum requiredInput in requiredInputs)
-        {
-            bool isContained = false;
-            foreach (InputEnum _playerInput in _playerInputs)
-            {
-                if (_playerInput == requiredInput)
-                    isContained = true;
+                if(_playerinput == input.input)
+                {
+                    if (input.isPressed)
+                    {
+                        inputPressed = true;
+                    }
+                    else
+                    {
+                        inputPressed = false;
+                    }
+                }
             }
-            if (!isContained)
-            {
+            if (!inputPressed)
                 return false;
-            }
         }
-        return true;
+
+        //If it matches, check if it's been pressed for long enough
+        if(timer >= timePressed)
+        {
+            return true;
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            return false;
+        }
     }
 }

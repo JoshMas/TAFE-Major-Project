@@ -7,15 +7,18 @@ public class MoveInput : ScriptableObject
 {
     public InputSet[] inputSet;
     private int inputMarker = 0;
+    private float timer = 0;
 
     public bool Check(Queue<InputEnum[]> _inputs)
     {
         inputMarker = 0;
+        timer = 0;
 
         foreach(InputEnum[] _playerInput in _inputs)
         {
-            if (inputSet[inputMarker].IsValid(_playerInput))
+            if (inputSet[inputMarker].IsValid(_playerInput, ref timer))
             {
+                timer = 0;
                 inputMarker++;
                 if(inputMarker >= inputSet.Length)
                 {

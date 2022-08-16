@@ -13,7 +13,15 @@ MonoBehaviour:
   m_Name: Charge
   m_EditorClassIdentifier: 
   inputSet:
-  - requiredInputs: 
-    disallowedInputs: 0600000007000000
-  - requiredInputs: 0600000007000000
-    disallowedInputs: 
+  - requiredInputs:
+    - input: 6
+      isPressed: 0
+    - input: 7
+      isPressed: 0
+    timePressed: 0
+  - requiredInputs:
+    - input: 6
+      isPressed: 1
+    - input: 7
+      isPressed: 1
+    timePressed: 0

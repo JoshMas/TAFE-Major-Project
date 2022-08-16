@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Jump
   m_EditorClassIdentifier: 
   inputSet:
-  - requiredInputs: 
-    disallowedInputs: 04000000
-  - requiredInputs: 04000000
-    disallowedInputs: 
+  - requiredInputs:
+    - input: 4
+      isPressed: 0
+    timePressed: 0
+  - requiredInputs:
+    - input: 4
+      isPressed: 1
+    timePressed: 0

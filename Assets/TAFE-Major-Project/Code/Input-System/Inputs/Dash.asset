@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: 
   inputSet:
-  - requiredInputs: 
-    disallowedInputs: 05000000
-  - requiredInputs: 05000000
-    disallowedInputs: 
+  - requiredInputs:
+    - input: 5
+      isPressed: 0
+    timePressed: 0
+  - requiredInputs:
+    - input: 5
+      isPressed: 1
+    timePressed: 0

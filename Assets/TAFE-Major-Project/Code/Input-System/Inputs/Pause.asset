@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Pause
   m_EditorClassIdentifier: 
   inputSet:
-  - requiredInputs: 
-    disallowedInputs: 08000000
-  - requiredInputs: 08000000
-    disallowedInputs: 
+  - requiredInputs:
+    - input: 8
+      isPressed: 0
+    timePressed: 0
+  - requiredInputs:
+    - input: 8
+      isPressed: 1
+    timePressed: 0
