@@ -29,8 +29,6 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         inputBuffer = new Queue<InputEnum[]>();
-        //inputObject.SaveKeybinds();
-        //inputObject.LoadKeybinds();
     }
 
     private void Start()

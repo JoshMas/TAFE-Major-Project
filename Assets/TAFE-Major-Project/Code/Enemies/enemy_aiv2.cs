@@ -62,13 +62,13 @@ public class enemy_aiv2 : MonoBehaviour
 
     private void Hit()
     {
-        animator.SetTrigger("Take Damage");
+        //animator.SetTrigger("Take Damage");
     }
 
     private void Kill()
     {
         Destroy(gameObject);
-        animator.SetTrigger("Die");
+        //animator.SetTrigger("Die");
 
     }
 

@@ -97,7 +97,7 @@ public class enemy_ai : MonoBehaviour
             ///Attack code here
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.transform.LookAt(player.position + Vector3.up);
-            rb.AddForce(rb.transform.forward * 32f, ForceMode.Impulse);
+            //rb.AddForce(rb.transform.forward * 4f, ForceMode.Impulse);
             //rb.AddForce(transform.up * 4f, ForceMode.Impulse);
             ///End of attack code
 
