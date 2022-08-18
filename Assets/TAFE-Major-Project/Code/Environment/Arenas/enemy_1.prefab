@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 1961705670029930545}
   - component: {fileID: 1961705670029930558}
   - component: {fileID: 1961705670029930556}
+  - component: {fileID: 6449902686383915869}
   m_Layer: 9
   m_Name: enemy_1
   m_TagString: Untagged
@@ -423,6 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAttack: 20
   lookRadius: 5
+  currentAttackTime: 0
   player: {fileID: 6376404067544387292, guid: eb16f8e78f5c37d43ab9aeb977e311ff, type: 3}
   waypoints:
   - {fileID: 6376404067544387292, guid: eb16f8e78f5c37d43ab9aeb977e311ff, type: 3}
@@ -442,6 +444,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximumHealth: 2
+--- !u!95 &6449902686383915869
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727140595139031575}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ab25df612f638848831693ef2529fe9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1961705670292987882
 GameObject:
   m_ObjectHideFlags: 0
