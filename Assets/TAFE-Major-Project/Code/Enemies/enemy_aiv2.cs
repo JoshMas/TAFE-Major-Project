@@ -8,7 +8,7 @@ public class enemy_aiv2 : MonoBehaviour
     private const bool V = true;
     [Header("Atributes")]
     private Health health;
-    public int damageAttack = 20;
+    public int damageAttack = 2;
     public float lookRadius = 5;
     private float defaultAttacktime = 5f;
     public float currentAttackTime;
@@ -24,7 +24,7 @@ public class enemy_aiv2 : MonoBehaviour
 
     [Header("WayPoints")]
     public List<Transform> waypoints = new List<Transform>();
-    [SerializeField] private int currentWaypointIndex = 0;
+    [SerializeField] private int currentWaypointIndex = 3;
     [SerializeField] private float waypointMinDistance;
 
     private bool isWalking = V;
