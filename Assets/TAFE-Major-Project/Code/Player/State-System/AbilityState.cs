@@ -35,7 +35,7 @@ public class AbilityState : ScriptableObject
                 _player.movementVector = Vector3.ProjectOnPlane(_player.movementVector, slopeForward);
             }
             gravity /= Mathf.Sin(angle * Mathf.Deg2Rad);
-
+            gravity = Mathf.Clamp(gravity, float.MinValue, 0);
         }
         //Debug.Log(_player.GroundNormal + ", " + gravity);
         Vector3 xzPlaneVector = _player.movementVector;
