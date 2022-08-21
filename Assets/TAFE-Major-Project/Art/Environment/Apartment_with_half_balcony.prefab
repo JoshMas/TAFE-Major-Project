@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8529006688174159239}
   - component: {fileID: 9025215373544268487}
   - component: {fileID: 4449619480311822592}
-  - component: {fileID: 8961578856773462671}
+  - component: {fileID: -3935573839844856576}
   m_Layer: 0
   m_Name: Apartment_with_half_balcony
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8961578856773462671
+--- !u!65 &-3935573839844856576
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 613.9573, y: 200.00012, z: 500.00012}
-  m_Center: {x: -56.978584, y: -0.000061035156, z: 0}
+  m_Size: {x: 1227.9146, y: 400.00024, z: 1000.00024}
+  m_Center: {x: -113.95717, y: -0.00012207031, z: 0}

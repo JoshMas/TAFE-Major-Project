@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1947041205767199570}
   - component: {fileID: 1813764187794029270}
   - component: {fileID: 3282118228758656551}
-  - component: {fileID: -7223023833212928802}
+  - component: {fileID: -3163197049294869313}
   m_Layer: 0
   m_Name: Bridge1
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-7223023833212928802
+--- !u!65 &-3163197049294869313
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 450, y: 150, z: 429.1128}
+  m_Size: {x: 900, y: 300, z: 858.2256}
   m_Center: {x: 0, y: 0, z: 0}

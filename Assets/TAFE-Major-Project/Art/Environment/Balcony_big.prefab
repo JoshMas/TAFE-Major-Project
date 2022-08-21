@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8618497688295626902}
   - component: {fileID: 3653849607820596995}
   - component: {fileID: 7779649095883122826}
-  - component: {fileID: -1754212776156078531}
+  - component: {fileID: 8054968170203377428}
   m_Layer: 0
   m_Name: Balcony_big
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-1754212776156078531
+--- !u!65 &8054968170203377428
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 636.3357, y: 200, z: 500.00024}
-  m_Center: {x: 318.1678, y: 100, z: 250.00009}
+  m_Size: {x: 1272.6714, y: 400, z: 1000.0005}
+  m_Center: {x: 636.3356, y: 200, z: 500.00018}

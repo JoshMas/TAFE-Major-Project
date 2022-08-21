@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5808230023386435570}
   - component: {fileID: 2766122068461926953}
   - component: {fileID: 1226693722853877929}
-  - component: {fileID: 8190859268327329157}
+  - component: {fileID: 2503959862002450205}
   m_Layer: 0
   m_Name: pCube3
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8190859268327329157
+--- !u!65 &2503959862002450205
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2500, y: 1000, z: 2500}
+  m_Size: {x: 5000, y: 2000, z: 5000}
   m_Center: {x: 0, y: 0, z: 0}
