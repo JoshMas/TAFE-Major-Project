@@ -8,9 +8,16 @@ public class Boid : MonoBehaviour
 
     private Vector3 velocity;
     private Transform target;
+    private Rigidbody rigid;
 
     [HideInInspector] public Vector3 forward;
     [HideInInspector] public Vector3 position;
+
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody>();
+        rigid.useGravity = false;
+    }
 
     public void Initialise(Transform _target, BoidSettings _settings)
     {
@@ -52,10 +59,15 @@ public class Boid : MonoBehaviour
         speed = Mathf.Clamp(speed, settings.minSpeed, settings.maxSpeed);
         velocity = dir * speed;
 
-        transform.position += velocity * Time.deltaTime;
         position = transform.position;
         transform.forward = velocity.normalized;
         forward = transform.forward;
+    }
+
+    private void FixedUpdate()
+    {
+        rigid.velocity = velocity;
+        
     }
 
     private Vector3 SteerTowards(Vector3 _vector)

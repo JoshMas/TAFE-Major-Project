@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5686637964774635015}
   - component: {fileID: 5686637964774635014}
   - component: {fileID: 5686637964774635064}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
