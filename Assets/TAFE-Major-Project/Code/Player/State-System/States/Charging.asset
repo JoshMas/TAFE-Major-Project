@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitions:
   - {fileID: 11400000, guid: c2cf80e8aa14d2c4d882c62a86c23daa, type: 2}
-  moveSpeedModifier: 1
+  moveSpeedModifier: 5
   gravityScale: 4
   chargeRate: 2.5

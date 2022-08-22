@@ -40,6 +40,8 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     public static event ArenaCleared OnArenaClear;
 
+
+    [SerializeField] private Arena arena;
     [SerializeField] private bool isEndless = false;
     [SerializeField] private WaveTriggerPair[] waves;
 
@@ -50,11 +52,34 @@ public class EnemySpawner : MonoBehaviour
     private List<GameObject> currentEnemies;
     private int waveMarker = 0;
     private float waveTimer = 0;
+    private bool active = false;
 
     private void Awake()
     {
         enemiesToSpawn = new List<List<GameObject>>();
         currentEnemies = new List<GameObject>();
+    }
+
+    private void OnEnable()
+    {
+        if(arena != null)
+        {
+            arena.OnArenaClose += Initialise;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (arena != null)
+        {
+            arena.OnArenaClose -= Initialise;
+        }
+    }
+
+    private void Initialise()
+    {
+        active = true;
+        SpawnNextWave();
     }
 
     private void Start()
@@ -84,11 +109,15 @@ public class EnemySpawner : MonoBehaviour
             enemiesToSpawn.Add(newWave);
         }
 
-        SpawnNextWave();
+        if(arena == null)
+            Initialise();
     }
 
     private void Update()
     {
+        if (!active)
+            return;
+
         currentEnemies.RemoveAll(item => item == null);
         if(waveMarker < waves.Length)
         {

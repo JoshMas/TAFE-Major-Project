@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Arena : MonoBehaviour
 {
+    public delegate void ArenaClosed();
+    public event ArenaClosed OnArenaClose;
+
     [SerializeField] private GameObject barrier;
     private Collider trigger;
     private bool active;
@@ -36,6 +39,7 @@ public class Arena : MonoBehaviour
         barrier.SetActive(true);
         trigger.enabled = false;
         active = true;
+        OnArenaClose?.Invoke();
     }
 
     private void ArenaCleared()

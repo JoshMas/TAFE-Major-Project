@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Light3
   m_EditorClassIdentifier: 
   transitions: []
-  moveSpeedModifier: 1
+  moveSpeedModifier: 5
   gravityScale: 1
   jump: 0
   pogoStrength: 1

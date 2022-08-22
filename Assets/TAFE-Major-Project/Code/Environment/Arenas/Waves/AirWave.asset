@@ -16,4 +16,4 @@ MonoBehaviour:
   - enemy: {fileID: 7300766102066004978, guid: b8b4404a5bbc2784eba9a9178b84df9a, type: 3}
     weight: 1
   enemyMinNum: 5
-  enemyMaxNum: 10
+  enemyMaxNum: 6

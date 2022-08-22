@@ -320,6 +320,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434481664}
     m_Modifications:
+    - target: {fileID: 2347194459431287233, guid: 3b78b895f1c18454999627a56e50dba1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347194459431287233, guid: 3b78b895f1c18454999627a56e50dba1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347194459431287233, guid: 3b78b895f1c18454999627a56e50dba1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5686637964774635013, guid: 3b78b895f1c18454999627a56e50dba1, type: 3}
       propertyPath: m_Name
       value: Arena
@@ -928,9 +940,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boidPrefab: {fileID: 7986480848325980644, guid: eb919f52f7d95b44a8628d7f2cdf3923, type: 3}
   settings: {fileID: 11400000, guid: e261b26d8ee36234e9120bedbaf5a8bf, type: 2}
-  target: {fileID: 6376404068175401912}
-  spawnRadius: 5
-  spawnCount: 50
+  target: {fileID: 0}
+  spawnRadius: 10
+  spawnCount: 500
 --- !u!4 &1476438054
 Transform:
   m_ObjectHideFlags: 0
@@ -1093,11 +1105,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee5b71690fac57441a43a49b4423fb0e, type: 3}
---- !u!4 &6376404068175401912 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6376404067544387292, guid: eb16f8e78f5c37d43ab9aeb977e311ff, type: 3}
-  m_PrefabInstance: {fileID: 1571134820}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7740795880007961848
 PrefabInstance:
   m_ObjectHideFlags: 0
