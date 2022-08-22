@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AbilityState currentState;
     private bool grounded = true;
+    private readonly float coyoteTime = 0.1f;
+    private float coyoteTimer = 0;
     [HideInInspector] public bool sliding = false;
     private bool canDoubleJump = true;
     [HideInInspector] public bool canDash = true;
@@ -132,8 +134,12 @@ public class Player : MonoBehaviour
             yield return null;
             Ray raycast = new Ray(transform.position + Vector3.up, Vector3.down);
             RaycastHit[] hits = Physics.SphereCastAll(raycast, 0.5f, 0.55f, groundMask);
-            
-            grounded = false;
+
+            coyoteTimer += Time.deltaTime;
+            if(coyoteTimer >= coyoteTime)
+            {
+                grounded = false;
+            }
             sliding = false;
 
             if (hits.Length == 0)
@@ -153,6 +159,7 @@ public class Player : MonoBehaviour
                     if (angle < steepestWalkableAngle)
                     {
                         grounded = true;
+                        coyoteTimer = 0;
                         sliding = false;
                         GroundNormal = hit.normal;
                         break;
