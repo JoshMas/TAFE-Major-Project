@@ -151,11 +151,17 @@ public class EnemySpawner : MonoBehaviour
         Vector3 position;
         if (_enemy.CompareTag("Ground"))
         {
-            position = groundSpawnPositions[Random.Range(0, groundSpawnPositions.Length)].position;
+            if (groundSpawnPositions.Length == 0)
+                position = transform.position;
+            else
+                position = groundSpawnPositions[Random.Range(0, groundSpawnPositions.Length)].position;
         }
         else
         {
-            position = airSpawnPositions[Random.Range(0, airSpawnPositions.Length)].position;
+            if (airSpawnPositions.Length == 0)
+                position = transform.position;
+            else
+                position = airSpawnPositions[Random.Range(0, airSpawnPositions.Length)].position;
         }
         return position += Random.insideUnitSphere;
     }
