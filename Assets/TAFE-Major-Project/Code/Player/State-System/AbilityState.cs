@@ -11,7 +11,7 @@ public class AbilityState : ScriptableObject
 
     public virtual void OnEnter(Player _player)
     {
-        Debug.Log(this);
+        //Debug.Log(this);
         if(_player.exactMovementVector.magnitude > 0)
         {
             _player.transform.forward = _player.exactMovementVector;
