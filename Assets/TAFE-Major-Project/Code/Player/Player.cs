@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
 
     private float chargeLevel = 0;
     [SerializeField] private float maxCharge = 1;
+    public float attackTimer = 0;
 
     /// <summary>
     /// The amount of damage the player does with attacks

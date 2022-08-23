@@ -13,6 +13,8 @@ public class PauseMenu : MonoBehaviour
     public void Options()
     {
         Debug.Log("Options menu under construction.");
+        SceneManager.LoadSceneAsync(SceneManager.GetSceneAt(0).buildIndex);
+
     }
 
     public void ReturnToTitle()

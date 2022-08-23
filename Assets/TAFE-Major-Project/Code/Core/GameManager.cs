@@ -127,5 +127,6 @@ public class GameManager : MonoBehaviour
     public void ResetLevelProgress()
     {
         isStartingLevel = true;
+        LevelManager.savedTimer = 0;
     }
 }

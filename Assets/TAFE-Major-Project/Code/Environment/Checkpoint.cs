@@ -9,5 +9,6 @@ public class Checkpoint : MonoBehaviour
         Debug.Log("Checkpoint set");
         GameManager.Instance.SetSpawnpoint(transform.position);
         gameObject.SetActive(false);
+        LevelManager.savedTimer = PlayerUI.timer;
     }
 }

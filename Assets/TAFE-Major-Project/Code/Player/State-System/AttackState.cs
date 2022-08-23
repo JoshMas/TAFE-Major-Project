@@ -7,6 +7,14 @@ public class AttackState : AbilityState
 {
     [SerializeField] private float jump = 0;
     [SerializeField] private float pogoStrength;
+    [SerializeField] private float dashDistance;
+    [SerializeField] private float dashDuration;
+    private float dashSpeed;
+
+    private void OnValidate()
+    {
+        dashSpeed = dashDistance / dashDuration;
+    }
 
     public override void OnEnter(Player _player)
     {
@@ -21,6 +29,14 @@ public class AttackState : AbilityState
         {
             ChangeState(_player, typeof(AttackState));
         }
+        _player.attackTimer += Time.deltaTime;
+    }
+
+    public override void OnFixedUpdate(Player _player)
+    {
+        if (_player.attackTimer < dashDuration)
+            return;
+        base.OnFixedUpdate(_player);
     }
 
     public override void OnHitDealt(Player _player)
@@ -37,5 +53,6 @@ public class AttackState : AbilityState
     public override void OnExit(Player _player)
     {
         _player.timingWindowValid = false;
+        _player.attackTimer = 0;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     private Transform player;
+    public static float savedTimer = 0;
 
     private void Start()
     {

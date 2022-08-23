@@ -10,11 +10,16 @@ public class PlayerUI : MonoBehaviour
     private float width;
     private float height;
 
+    public static float timer = 0;
+    [SerializeField] private Text timerText;
+
     private void Awake()
     {
         health = GetComponentInParent<Health>();
         width = healthBarImage.rectTransform.rect.width;
         height = healthBarImage.rectTransform.rect.height;
+        timer = LevelManager.savedTimer;
+        timerText.text = timer + "";
     }
 
     private void OnEnable()
@@ -25,6 +30,12 @@ public class PlayerUI : MonoBehaviour
     private void OnDisable()
     {
         health.HealthHasUpdated -= UpdateHealthBar;
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        timerText.text = timer.ToString("F2");
     }
 
     private void UpdateHealthBar(float _current, float _maximum)

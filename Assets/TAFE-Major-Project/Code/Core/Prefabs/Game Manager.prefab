@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c27023f0b9d394d8d51d269b99abaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputTime: 0.25
+  inputTime: 0.5
   mouseSensitivity: {x: 1, y: 1}
   inputList:
   - {fileID: 11400000, guid: 66eece9932517d64b9a7ccf609817789, type: 2}
