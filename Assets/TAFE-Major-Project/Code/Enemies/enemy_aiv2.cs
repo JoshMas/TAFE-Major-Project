@@ -62,7 +62,7 @@ public class enemy_aiv2 : MonoBehaviour
 
     private void Hit()
     {
-        //animator.SetTrigger("Take Damage");
+        animator.SetTrigger("Hit");
     }
 
     private void Kill()
