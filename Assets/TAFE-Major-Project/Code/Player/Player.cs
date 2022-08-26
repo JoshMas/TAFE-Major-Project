@@ -310,6 +310,9 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        rigid.velocity = Vector3.zero;
+        rigid.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        rigid.isKinematic = true;
         Debug.Log("uh oh");
         GameManager.Instance.Lose();
         enabled = false;
@@ -394,8 +397,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            currentState.OnHitTaken(this);
-           health.UpdateHealth(-1);
+           //currentState.OnHitTaken(this);
         }
     }
 }

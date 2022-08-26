@@ -7,6 +7,7 @@ public class destroy : MonoBehaviour
 {
     
     public float speed = 8f;
+    [SerializeField] private float damage = 1;
     private Rigidbody bulletRigidbody;
 
     void Start()
@@ -18,17 +19,10 @@ public class destroy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.transform.root.TryGetComponent(out Health health))
         {
-            Player playerController = other.GetComponent<Player>();
-            if (playerController != null)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject, 15);
-            }
+            health.UpdateHealth(-damage);
+            Destroy(gameObject);
         }
     }
 }

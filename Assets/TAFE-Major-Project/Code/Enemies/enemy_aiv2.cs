@@ -124,18 +124,18 @@ public class enemy_aiv2 : MonoBehaviour
         {
             attackingRound = true;
             isAttacking = true;
-            animator.SetTrigger("Pounce Attack");
+            animator.SetTrigger("Attack");
 
             yield return new WaitForSeconds(5f);
 
-            GameObject playerHit = GetPlayer();
+            //GameObject playerHit = GetPlayer();
 
-            if (playerHit != null)
-            {
-               //playerHit.GetComponent<Health>().UpdateHealth(damageAttack);
-            }
+            //if (playerHit != null)
+            //{
+            //   playerHit.GetComponent<Health>().UpdateHealth(damageAttack);
+            //}
 
-            yield return new WaitForSeconds(68f);
+            //yield return new WaitForSeconds(68f);
 
             attackingRound = false;
             isAttacking = false;
@@ -188,6 +188,17 @@ public class enemy_aiv2 : MonoBehaviour
             if (distance <= waypointMinDistance)
             {
                 currentWaypointIndex = Random.Range(30, waypoints.Count);
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.isTrigger)
+        {
+            if(other.transform.root.TryGetComponent(out Health health))
+            {
+                health.UpdateHealth(-damageAttack);
             }
         }
     }
