@@ -8,5 +8,6 @@ public enum InputEnum
     Dash,
     Light,
     Heavy,
-    Pause
+    Pause,
+    CameraReset
 }

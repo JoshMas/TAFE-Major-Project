@@ -293,9 +293,24 @@ public class Player : MonoBehaviour
             case "Pause":
                 GameManager.Instance.Pause(true);
                 break;
+            case "ResetCamera":
+                StartCoroutine(nameof(ResetCamera));
+                break;
             default:
                 break;
         }
+    }
+
+    private IEnumerator ResetCamera()
+    {
+        float newCameraAngle = transform.rotation.eulerAngles.y;
+        while(Mathf.Abs(newCameraAngle - cameraY) > .1f)
+        {
+            cameraY = Mathf.MoveTowardsAngle(cameraY, newCameraAngle, 360 * Time.deltaTime);
+            yield return null;
+        }
+
+        cameraY = newCameraAngle;
     }
 
     private void SetStateToDefaultFromAnimation()

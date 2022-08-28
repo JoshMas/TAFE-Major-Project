@@ -40,3 +40,6 @@ MonoBehaviour:
   - input: 8
     intended: 27
     alternative: 0
+  - input: 9
+    intended: 306
+    alternative: 305
