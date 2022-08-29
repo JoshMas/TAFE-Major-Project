@@ -7,6 +7,7 @@ public class Lever : MonoBehaviour
     [HideInInspector] public bool isOpen = false;
     [SerializeField] private Collider triggerCollider;
     private Door door;
+
     public void SetDoor(Door _door)
     {
         door = _door;
@@ -17,5 +18,6 @@ public class Lever : MonoBehaviour
         isOpen = true;
         triggerCollider.enabled = false;
         door.CheckIfOpen();
+        gameObject.SetActive(false);
     }
 }

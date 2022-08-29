@@ -29,7 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TAFE-Major-Project/Scenes/UI/Win.unity
     guid: d6bddac94065caa44b7c1a748eaa4855
-  - enabled: 1
+  - enabled: 0
     path: Assets/TAFE-Major-Project/Scenes/Level 1/ConstructionZone.unity
     guid: c56ae4aac2e5b514582971a6c29f9c98
+  - enabled: 1
+    path: Assets/TAFE-Major-Project/Scenes/Level 1/V2_Construction.unity
+    guid: 56f51b88db77c134ca34071925851f68
   m_configObjects: {}

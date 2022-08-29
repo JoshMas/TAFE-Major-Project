@@ -7,8 +7,8 @@ public class KillPlane : MonoBehaviour
     [SerializeField] private float damage = 100;
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        other.GetComponentInParent<Health>().UpdateHealth(-damage);
+        collision.transform.root.GetComponent<Health>().UpdateHealth(-damage);
     }
 }

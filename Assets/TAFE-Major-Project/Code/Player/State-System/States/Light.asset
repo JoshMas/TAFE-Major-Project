@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitions:
   - {fileID: 11400000, guid: 0cddf267618933941b35becfdf49d363, type: 2}
-  moveSpeedModifier: 20
+  moveSpeedModifier: 10
   gravityScale: 0.1
   jump: 0
   pogoStrength: 1
