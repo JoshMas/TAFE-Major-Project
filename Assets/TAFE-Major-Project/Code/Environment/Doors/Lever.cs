@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Lever : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector] public bool isOpen = false;
+    [SerializeField] private Collider triggerCollider;
+    private Door door;
+    public void SetDoor(Door _door)
     {
-        
+        door = _door;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        isOpen = true;
+        triggerCollider.enabled = false;
+        door.CheckIfOpen();
     }
 }

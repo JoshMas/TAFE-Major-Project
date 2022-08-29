@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarImage: {fileID: 6998970812477774790}
-  timerText: {fileID: 0}
+  timerText: {fileID: 3385055387347688783}
 --- !u!1 &2482872842359536259
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,7 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c02c66aaf089204eb963ff93ad432c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 25
+  maximumHealth: 5
 --- !u!208 &7193999261553244624
 NavMeshObstacle:
   m_ObjectHideFlags: 0

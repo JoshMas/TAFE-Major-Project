@@ -6,15 +6,28 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private Lever[] levers;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        foreach(Lever lever in levers)
+        {
+            lever.SetDoor(this);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CheckIfOpen()
     {
-        
+        bool isOpen = true;
+        foreach(Lever lever in levers)
+        {
+            if (!lever.isOpen)
+                isOpen = false;
+        }
+        if (isOpen)
+            Open();
+    }
+
+    private void Open()
+    {
+        Destroy(gameObject);
     }
 }
