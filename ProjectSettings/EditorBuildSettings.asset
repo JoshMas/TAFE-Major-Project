@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/TAFE-Major-Project/Scenes/PlayerControlTest/PlaytestScene.unity
     guid: ed37884fd1dd55a4c82f742c8d30ae76
-  - enabled: 1
+  - enabled: 0
     path: Assets/TAFE-Major-Project/Scenes/ArenaTesting/ArenaTesting.unity
     guid: 3e368be23ec87ea41b526d26869f358d
   - enabled: 1
