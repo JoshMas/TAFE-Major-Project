@@ -301,6 +301,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void JumpFromDash()
+    {
+        currentState.OnJump(this);
+    }
+
     private IEnumerator ResetCamera()
     {
         float newCameraAngle = transform.rotation.eulerAngles.y;

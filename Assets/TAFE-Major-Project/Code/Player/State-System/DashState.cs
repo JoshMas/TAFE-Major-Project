@@ -33,6 +33,12 @@ public class DashState : AbilityState
         _player.Animator.SetBool("Dash", true);
     }
 
+    public override void OnJump(Player _player)
+    {
+        ChangeState(_player, typeof(DefaultState));
+        _player.JumpFromDash();
+    }
+
     public override void OnFixedUpdate(Player _player) { }
 
     public override void OnTimer(Player _player)
