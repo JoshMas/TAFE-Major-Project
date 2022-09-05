@@ -3,7 +3,12 @@ guid: 04d770e4a712baa4e8e39f33b32af62a
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UV Checker
+    second: {fileID: 2100000, guid: 172ce10c04bd91c469f6eab61b5c4150, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

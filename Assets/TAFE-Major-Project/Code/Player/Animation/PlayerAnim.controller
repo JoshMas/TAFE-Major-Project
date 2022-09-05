@@ -86,8 +86,16 @@ BlendTree:
   m_Name: Midair
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 801d8ab97fe5f6743b26bd3a184834a4, type: 3}
-    m_Threshold: 0
+    m_Motion: {fileID: 7400000, guid: 6497302911bb621439533e8281b8ab53, type: 2}
+    m_Threshold: -1
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: MoveSpeed
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 06026bc3b1c625b498c8f71e8b071f01, type: 2}
+    m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -95,9 +103,9 @@ BlendTree:
     m_Mirror: 0
   m_BlendParameter: MoveSpeed
   m_BlendParameterY: Blend
-  m_MinThreshold: 0
+  m_MinThreshold: -1
   m_MaxThreshold: 1
-  m_UseAutomaticThresholds: 1
+  m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
 --- !u!1102 &-7812799613334003866
@@ -360,6 +368,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-4179164000669402497
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jumpSquat
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: f7e535ce2d22f1b49a5110fe9526dadf, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-4037676619345472937
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1064,7 +1098,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e4736b236b6782f4d97c562831004f25, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7850adaaa13089140845ca21c1910632, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1261,7 +1295,7 @@ BlendTree:
   m_Name: Grounded
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: a365d5c3880a9614684a6f5a7f0b19a2, type: 3}
+    m_Motion: {fileID: 7400000, guid: bc850fff4ce231748823b3b9e8e49384, type: 2}
     m_Threshold: 0
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -1269,7 +1303,7 @@ BlendTree:
     m_DirectBlendParameter: MoveSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: a365d5c3880a9614684a6f5a7f0b19a2, type: 3}
+    m_Motion: {fileID: 7400000, guid: e307478acd0998f4b8a83b346d2001ea, type: 2}
     m_Threshold: 0.33333334
     m_Position: {x: 0, y: 0}
     m_TimeScale: 0.01
@@ -1277,7 +1311,7 @@ BlendTree:
     m_DirectBlendParameter: MoveSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 0}
+    m_Motion: {fileID: 7400000, guid: 8b57b1956304c0c4393b0a1475103893, type: 2}
     m_Threshold: 0.6666667
     m_Position: {x: 0, y: 5}
     m_TimeScale: 1
@@ -1285,7 +1319,7 @@ BlendTree:
     m_DirectBlendParameter: MoveSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 0}
+    m_Motion: {fileID: 7400000, guid: 826bc75b94beb364ca5c9e49d2b8540c, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: -5}
     m_TimeScale: 1
@@ -1570,10 +1604,16 @@ AnimatorStateMachine:
     m_Position: {x: 300, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2865518871094577305}
-    m_Position: {x: 490, y: 470, z: 0}
+    m_Position: {x: 450, y: 460, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1258282596998099852}
     m_Position: {x: 680, y: 540, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -4179164000669402497}
+    m_Position: {x: 580, y: 190, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 7548306033564559212}
+    m_Position: {x: 620, y: 260, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -4878036220231931956}
@@ -1586,6 +1626,32 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1362479164656234637}
+--- !u!1102 &7548306033564559212
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jumpLand
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: f414607802f01e447a73416f8980e9a7, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &7744887489627971938
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
