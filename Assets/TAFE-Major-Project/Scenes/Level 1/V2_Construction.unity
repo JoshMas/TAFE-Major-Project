@@ -10829,6 +10829,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -42.7
       objectReference: {fileID: 0}
+    - target: {fileID: 3520060295969325742, guid: 3b78b895f1c18454999627a56e50dba1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 12e59b0cc816c7341b39f1a8e8a5f3d1, type: 2}
     - target: {fileID: 5686637964774635013, guid: 3b78b895f1c18454999627a56e50dba1, type: 3}
       propertyPath: m_Name
       value: Arena
@@ -32809,6 +32813,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1371373369149630185, guid: 51df62eed3cc12d4eb3a3d2f933e3dab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 12e59b0cc816c7341b39f1a8e8a5f3d1, type: 2}
     - target: {fileID: 1371373369149630186, guid: 51df62eed3cc12d4eb3a3d2f933e3dab, type: 3}
       propertyPath: m_Enabled
       value: 1
