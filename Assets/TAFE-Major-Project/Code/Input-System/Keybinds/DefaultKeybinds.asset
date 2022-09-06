@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keybinds:
   - input: 0
-    intended: 275
-    alternative: 100
+    intended: 100
+    alternative: 275
   - input: 1
-    intended: 274
-    alternative: 115
+    intended: 115
+    alternative: 274
   - input: 2
-    intended: 276
-    alternative: 97
+    intended: 97
+    alternative: 276
   - input: 3
-    intended: 273
-    alternative: 119
+    intended: 119
+    alternative: 273
   - input: 4
     intended: 32
     alternative: 0

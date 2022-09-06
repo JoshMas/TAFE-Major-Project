@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class KeybindRemapUI : MonoBehaviour
 {
-    public delegate void KeyRebound(KeyCode oldKey, KeyCode newKey);
-    public static event KeyRebound OnKeyRebind;
 
     private InputKeyDouble keybind;
     private KeybindUI ui;

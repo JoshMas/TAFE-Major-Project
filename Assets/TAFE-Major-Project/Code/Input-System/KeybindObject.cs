@@ -42,6 +42,17 @@ public class KeybindObject : ScriptableObject
         return currentInputs.ToArray();
     }
 
+    public void ResetKeybinds()
+    {
+        KeybindObject defaultKeys = GameManager.Instance.DefaultKeybinds;
+        for(int i = 0; i < keybinds.Length; ++i)
+        {
+            keybinds[i].input = defaultKeys.keybinds[i].input;
+            keybinds[i].intended = defaultKeys.keybinds[i].intended;
+            keybinds[i].alternative = defaultKeys.keybinds[i].alternative;
+        }
+    }
+
     public void SaveKeybinds()
     {
         BinaryFormatter bf = new BinaryFormatter();
