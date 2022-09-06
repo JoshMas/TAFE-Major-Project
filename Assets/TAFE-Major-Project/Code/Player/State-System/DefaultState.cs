@@ -60,7 +60,17 @@ public class DefaultState : AbilityState
         ChangeState(_player, typeof(AttackState));
     }
 
+    public override void OnLightRelease(Player _player)
+    {
+        ChangeState(_player, typeof(AttackState));
+    }
+
     public override void OnHeavyAttack(Player _player)
+    {
+        ChangeState(_player, typeof(HeavyAttackState));
+    }
+
+    public override void OnHeavyRelease(Player _player)
     {
         ChangeState(_player, typeof(HeavyAttackState));
     }

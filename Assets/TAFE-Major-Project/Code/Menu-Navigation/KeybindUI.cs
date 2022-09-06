@@ -49,7 +49,7 @@ public class KeybindUI : MonoBehaviour
 
     public void ResetKeybinds()
     {
-        keybinds = GameManager.Instance.DefaultKeybinds;
+        keybinds.ResetKeybinds();
         for (int i = 0; i < keybinds.keybinds.Length; ++i)
         {
             uiList[i].Initialise(keybinds.keybinds[i], this);
