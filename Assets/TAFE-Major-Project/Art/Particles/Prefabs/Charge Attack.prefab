@@ -6514,8 +6514,8 @@ ParticleSystem:
     orbitalY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 8
-      minScalar: 12
+      scalar: 12
+      minScalar: 16
       maxCurve:
         serializedVersion: 2
         m_Curve:
