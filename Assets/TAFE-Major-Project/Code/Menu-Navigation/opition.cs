@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleScreen : MonoBehaviour
+public class opition : MonoBehaviour
 {
     private void Start()
     {
@@ -12,12 +12,12 @@ public class TitleScreen : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadSceneAsync("LevelSelect");
+       
     }
 
-    public void menu ()
+    public void Options()
     {
-        SceneManager.LoadSceneAsync("TitleScreen");
+        SceneManager.LoadSceneAsync("OptionsMenu");
     }
 
     public void Quit()
