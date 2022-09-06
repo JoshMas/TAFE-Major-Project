@@ -114,7 +114,6 @@ public class Player : MonoBehaviour
     {
         currentState.OnUpdate(this);
 
-
         animator.SetFloat("Grounded", grounded ? 1 : 0);
         if (grounded)
         {
