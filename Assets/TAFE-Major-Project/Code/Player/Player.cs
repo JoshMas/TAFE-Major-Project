@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
         if (grounded)
         {
             AirReset();
-            animator.SetFloat("MoveSpeed", movementVector.magnitude);
+            animator.SetFloat("MoveSpeed", movementVector.magnitude * (shouldSprint ? 1 : .5f));
         }
         else
         {
@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
         while (gameObject.activeSelf)
         {
             yield return null;
-            Ray raycast = new Ray(transform.position + Vector3.up, Vector3.down);
+            Ray raycast = new Ray(transform.position + Vector3.up * 0.166f, Vector3.down);
             RaycastHit[] hits = Physics.SphereCastAll(raycast, 0.5f, 0.55f, groundMask);
 
             coyoteTimer += Time.deltaTime;
