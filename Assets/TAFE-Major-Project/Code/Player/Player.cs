@@ -119,6 +119,11 @@ public class Player : MonoBehaviour
         if (grounded)
         {
             AirReset();
+            animator.SetFloat("MoveSpeed", movementVector.magnitude);
+        }
+        else
+        {
+            animator.SetFloat("MoveSpeed", rigid.velocity.y);
         }
 
         movementVector = Vector3.MoveTowards(movementVector, exactMovementVector, 3 * Time.deltaTime);

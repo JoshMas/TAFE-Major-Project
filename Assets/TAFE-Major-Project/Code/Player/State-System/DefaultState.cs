@@ -25,7 +25,6 @@ public class DefaultState : AbilityState
     public override void OnUpdate(Player _player)
     {
         base.OnUpdate(_player);
-        _player.Animator.SetFloat("MoveSpeed", _player.movementVector.magnitude);
         if(_player.shouldSprint != sprint)
         {
             ChangeState(_player, typeof(DefaultState));
