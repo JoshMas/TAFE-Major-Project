@@ -3076,7 +3076,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555584304}
   m_LocalRotation: {x: 0.4007081, y: 0.0015701975, z: 0.4638519, w: 0.79010886}
-  m_LocalPosition: {x: -155.8, y: 26.9, z: 74.3}
+  m_LocalPosition: {x: -155.8, y: 24.84, z: 74.3}
   m_LocalScale: {x: 0.32221, y: 0.32221, z: 0.32221}
   m_Children: []
   m_Father: {fileID: 1977336325}
@@ -4537,7 +4537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2068235887478270125, guid: 5f0b743d366017547b3ff2f0c933ba0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 43.16085
+      value: 39.92
       objectReference: {fileID: 0}
     - target: {fileID: 2068235887478270125, guid: 5f0b743d366017547b3ff2f0c933ba0f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6348,7 +6348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2068235887478270125, guid: 5f0b743d366017547b3ff2f0c933ba0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 43.36174
+      value: 40.99
       objectReference: {fileID: 0}
     - target: {fileID: 2068235887478270125, guid: 5f0b743d366017547b3ff2f0c933ba0f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8442,7 +8442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180628385}
   m_LocalRotation: {x: 0.4007081, y: 0.0015701975, z: 0.4638519, w: 0.79010886}
-  m_LocalPosition: {x: -134.5, y: 16.8, z: 66.2}
+  m_LocalPosition: {x: -134.5, y: 15.35, z: 66.2}
   m_LocalScale: {x: 0.32221, y: 0.32221, z: 0.32221}
   m_Children: []
   m_Father: {fileID: 1977336325}
@@ -8739,7 +8739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc684a254672254a9a00d7ea5427416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 1e+21
 --- !u!43 &1187783519
 Mesh:
   m_ObjectHideFlags: 0
@@ -10395,7 +10395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308272390}
   m_LocalRotation: {x: 0.4007081, y: 0.0015701975, z: 0.4638519, w: 0.79010886}
-  m_LocalPosition: {x: -187, y: 23.2, z: 99.5}
+  m_LocalPosition: {x: -187, y: 21.9, z: 99.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1977336325}
@@ -11186,7 +11186,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23250
+  m_Name: pb_Mesh18214
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28026,7 +28026,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740336305}
   m_LocalRotation: {x: 0.4007081, y: 0.0015701975, z: 0.4638519, w: 0.79010886}
-  m_LocalPosition: {x: -134.7, y: 13.4, z: 46.9}
+  m_LocalPosition: {x: -134.7, y: 12.3, z: 46.9}
   m_LocalScale: {x: 0.32221, y: 0.32221, z: 0.32221}
   m_Children: []
   m_Father: {fileID: 1977336325}
@@ -32777,6 +32777,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1371373369149630186, guid: 51df62eed3cc12d4eb3a3d2f933e3dab, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371373369149630186, guid: 51df62eed3cc12d4eb3a3d2f933e3dab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1371373369149630187, guid: 51df62eed3cc12d4eb3a3d2f933e3dab, type: 3}
       propertyPath: m_Name
       value: Door
@@ -32791,6 +32799,18 @@ PrefabInstance:
       objectReference: {fileID: 1315494184}
     - target: {fileID: 1371373369149630190, guid: 51df62eed3cc12d4eb3a3d2f933e3dab, type: 3}
       propertyPath: levers.Array.data[1]
+      value: 
+      objectReference: {fileID: 1811413622}
+    - target: {fileID: 1371373369149630190, guid: 51df62eed3cc12d4eb3a3d2f933e3dab, type: 3}
+      propertyPath: levers.Array.data[2]
+      value: 
+      objectReference: {fileID: 1811413622}
+    - target: {fileID: 1371373369149630190, guid: 51df62eed3cc12d4eb3a3d2f933e3dab, type: 3}
+      propertyPath: levers.Array.data[3]
+      value: 
+      objectReference: {fileID: 1811413622}
+    - target: {fileID: 1371373369149630190, guid: 51df62eed3cc12d4eb3a3d2f933e3dab, type: 3}
+      propertyPath: levers.Array.data[4]
       value: 
       objectReference: {fileID: 1811413622}
     - target: {fileID: 1371373369149630191, guid: 51df62eed3cc12d4eb3a3d2f933e3dab, type: 3}
